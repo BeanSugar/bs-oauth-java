@@ -1,0 +1,30 @@
+
+# Eclipse specific settings
+
+.classpath
+.project
+.settings
+
+# IntelliJ Idea settings
+.idea/
+*.iml
+
+# Binaries
+target/
+bin/
+build/
+*/build/
+classes/
+.gradle/
+
+#log
+*.log
+log/
+logs/
+
+#test
+*/test/*/*TestLocal.java
+*ExampleLocal.java
+*MainLocal.java
+test.*.json
+test.*.xml

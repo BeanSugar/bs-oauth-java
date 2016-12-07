@@ -1,0 +1,103 @@
+package org.scriptonbasestar.oauth.o20;
+
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.scriptonbasestar.oauth.core.exception.OAuthAuthException;
+import org.scriptonbasestar.oauth.core.model.State;
+import org.scriptonbasestar.oauth.core.nobi.DefaultStateNobi;
+import org.scriptonbasestar.oauth.o20.model.Token20;
+import org.scriptonbasestar.oauth.o20.service.OAuth20Worker;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
+/**
+ * @author archmagece
+ * @date 2015-11-18
+ */
+public class OAuth2ExampleHelper {
+	static void test(OAuth20Worker oAuth20Service, String SERVICE_NAME, String PROTECTED_RESOURCE_URL) {
+		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("=== " + SERVICE_NAME + "  ===");
+		System.out.println();
+
+		//authorize url
+		System.out.println("Authorize URL 생성s");
+		String authorizationUrl = oAuth20Service.getAuthorizeUrl(state0);
+		System.out.println("url : " + authorizationUrl);
+		System.out.println("Authorize URL 생성e");
+
+		System.out.println();
+		System.out.println();
+
+		System.out.println(SERVICE_NAME + "로부터 받은 code 입력");
+		System.out.println("verifier >>");
+		String verifier = scanner.nextLine();
+		System.out.println(SERVICE_NAME + "로부터 받은 state 입력");
+		System.out.println("state >>");
+		String stateReturn = scanner.nextLine();
+		if (!stateReturn.equals(state0.getValue())) {
+			throw new OAuthAuthException("인증실패");
+		}
+		System.out.println();
+		System.out.println();
+
+		//access token
+		System.out.println("Access Token 호출s");
+		System.out.println("google은 state null");
+		Token20 token20 = oAuth20Service.getAccessToken(verifier, state0);
+		System.out.println("access token : " + token20);
+		System.out.println("Access Token 호출e");
+		System.out.println();
+		System.out.println();
+
+		//protected resource
+//		System.out.println("Projected Resource 호출s");
+//		String response = oAuth20Service.getResource(PROTECTED_RESOURCE_URL, token20.getAccessToken());
+//		System.out.println("(resource : " + response + " )");
+//		System.out.println("Projected Resource 호출e");
+//		System.out.println();
+//		System.out.println();
+
+		System.out.println("FIN.");
+	}
+
+	public void nakedCall(String urlString) {
+
+		CloseableHttpClient httpclient = null;
+		try {
+			httpclient = HttpClients.createDefault();
+			HttpGet httpget = new HttpGet(urlString);
+			CloseableHttpResponse response = httpclient.execute(httpget);
+
+			HttpEntity entity = response.getEntity();
+			InputStream inStream = entity.getContent();
+			BufferedInputStream bufInStream = new BufferedInputStream(inStream);
+			StringBuffer sb = new StringBuffer();
+			byte[] b = new byte[4096];
+			for (int n; (n = bufInStream.read(b)) != -1; ) {
+				sb.append(new String(b, 0, n));
+			}
+			System.out.println(sb.toString());
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				httpclient.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
