@@ -2,8 +2,6 @@ package org.scriptonbasestar.oauth.o20;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.experimental.UtilityClass;
-import org.scriptonbasestar.oauth.core.model.DefinedKey;
 
 /**
  * @author archmagece
