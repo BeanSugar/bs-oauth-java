@@ -23,6 +23,17 @@
 		<url>https://github.com/ScriptonBasestar/bs-oauth-java</url>
 	</scm>
 
+	<distributionManagement>
+		<repository>
+			<id>beansugar-public-release</id>
+			<url>http://nexus.beansugar.org/content/repositories/public-release</url>
+		</repository>
+		<snapshotRepository>
+			<id>beansugar-public-snapshot</id>
+			<url>http://nexus.beansugar.org/content/repositories/public-snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.beansugar.tools</groupId>
