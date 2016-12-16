@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.beansugar.oauth</groupId>
 	<artifactId>bs-oauth-java</artifactId>
-	<packaging>jar</packaging>
-	<version>bs-oauth-201612-1-BUILD-SNAPSHOT</version>
 	<name>BS OAuth library</name>
+	<url>https://github.com/BeanSugar/bs-oauth-java</url>
+	<version>bs-oauth-201612-1-BUILD-SNAPSHOT</version>
 	<description>OAuth library 만들어보는중.</description>
-	<url>https://github.com/ScriptonBasestar/bs-oauth-java</url>
+	<packaging>pom</packaging>
 
 	<properties>
 		<java-version>1.7</java-version>

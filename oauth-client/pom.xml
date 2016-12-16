@@ -7,9 +7,7 @@
 		<version>bs-oauth-201612-1-BUILD-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.beansugar.oauth</groupId>
 	<artifactId>oauth-client</artifactId>
-	<packaging>jar</packaging>
 
 	<dependencies>
 	</dependencies>
