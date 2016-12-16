@@ -7,8 +7,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-26 14
+ * @author archmagece
+ * @since 2016-10-26 14
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class OAuthEncodeUtil {

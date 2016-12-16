@@ -3,8 +3,8 @@ package org.scriptonbasestar.oauth.http;
 import java.util.*;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-26 16
+ * @author archmagece
+ * @since 2016-10-26 16
  */
 public class ParamLister {
 //public class ParamLister<PARAM extends Param>{

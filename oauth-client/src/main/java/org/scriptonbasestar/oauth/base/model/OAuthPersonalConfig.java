@@ -5,7 +5,7 @@ import org.beansugar.tools.core.check.Check;
 
 /**
  * @author archmagece
- * @date 2016-10-24
+ * @since 2016-10-24
  */
 @Getter
 public class OAuthPersonalConfig {

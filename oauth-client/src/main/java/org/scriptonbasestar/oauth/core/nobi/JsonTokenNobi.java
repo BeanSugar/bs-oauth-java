@@ -7,8 +7,8 @@ import org.scriptonbasestar.oauth.o20.type.AccessTokenType;
 import java.util.Map;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-27
+ * @author archmagece
+ * @since 2016-10-27
  */
 public class JsonTokenNobi implements TokenNobi {
 	private Gson gson = new Gson();

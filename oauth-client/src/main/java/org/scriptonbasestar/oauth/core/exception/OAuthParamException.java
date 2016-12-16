@@ -2,7 +2,7 @@ package org.scriptonbasestar.oauth.core.exception;
 
 /**
  * @author archmagece
- * @date 2016-11-01
+ * @since 2016-11-01
  */
 public class OAuthParamException extends OAuthException {
 

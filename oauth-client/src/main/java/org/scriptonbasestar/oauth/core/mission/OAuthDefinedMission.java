@@ -4,7 +4,7 @@ import java.util.Set;
 
 /**
  * @author archmagece
- * @date 2016-11-01
+ * @since 2016-11-01
  */
 public class OAuthDefinedMission {
 	//필수 파라미터

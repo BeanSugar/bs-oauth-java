@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * @author archmagece
- * @date 2016-10-24
+ * @since 2016-10-24
  */
 public enum OAuth10aConstants {
 	TIMESTAMP("oauth_timestamp"),

@@ -5,8 +5,8 @@ import org.scriptonbasestar.oauth.o20.model.Token20;
 import org.scriptonbasestar.oauth.o20.type.AccessTokenType;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-26 19
+ * @author archmagece
+ * @since 2016-10-26 19
  *
  * facebook
  */

@@ -5,8 +5,8 @@ import org.joda.time.DateTime;
 import org.scriptonbasestar.oauth.core.model.State;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-26 16
+ * @author archmagece
+ * @since 2016-10-26 16
  */
 @Slf4j
 public class DefaultStateNobi implements StateNobi {

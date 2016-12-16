@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @author archmagece
- * @date 2016-10-31
+ * @since 2016-10-31
  */
 @AllArgsConstructor
 public enum ResponseFormatType {

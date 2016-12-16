@@ -9,8 +9,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-26 13
+ * @author archmagece
+ * @since 2016-10-26 13
  */
 //@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @UtilityClass

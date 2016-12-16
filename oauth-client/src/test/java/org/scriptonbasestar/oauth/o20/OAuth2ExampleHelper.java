@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 /**
  * @author archmagece
- * @date 2015-11-18
+ * @since 2015-11-18
  */
 public class OAuth2ExampleHelper {
 	static void test(OAuth20Client oAuth20Service, String SERVICE_NAME, String PROTECTED_RESOURCE_URL) {

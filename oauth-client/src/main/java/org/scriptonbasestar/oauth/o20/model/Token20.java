@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * @author archmagece
- * @date 2016-10-24
+ * @since 2016-10-24
  */
 @Getter
 @ToString

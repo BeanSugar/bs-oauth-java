@@ -12,7 +12,7 @@ import org.scriptonbasestar.oauth.o20.type.ResponseFormatType;
 
 /**
  * @author archmagece
- * @date 2016-10-25
+ * @since 2016-10-25
  */
 public class OAuth20FacebookServiceExample {
 

@@ -2,7 +2,7 @@ package org.scriptonbasestar.oauth.core.exception;
 
 /**
  * @author archmagece
- * @date 2016-10-24
+ * @since 2016-10-24
  */
 public class OAuthNetworkRemoteException extends OAuthException {
 

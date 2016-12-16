@@ -10,7 +10,7 @@ import org.scriptonbasestar.oauth.core.type.SignatureType;
 
 /**
  * @author archmagece
- * @date 2016-10-24
+ * @since 2016-10-24
  */
 @Getter
 @Builder

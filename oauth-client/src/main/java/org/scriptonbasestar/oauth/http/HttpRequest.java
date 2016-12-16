@@ -23,8 +23,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-25 16
+ * @author archmagece
+ * @since 2016-10-25 16
  */
 @Slf4j
 public final class HttpRequest {

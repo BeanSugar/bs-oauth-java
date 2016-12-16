@@ -12,7 +12,7 @@ import org.scriptonbasestar.oauth.o20.type.ResponseFormatType;
 
 /**
  * @author archmagece
- * @date 2016-10-25
+ * @since 2016-10-25
  * <p>
  * 카카오는 api-secret이 null이다. 아예 없다.
  */

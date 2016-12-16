@@ -2,7 +2,7 @@
 //
 ///**
 // * @author archmagece
-// * @date 2016-10-29
+// * @since 2016-10-29
 // */
 //public class DefinedKey extends StringModelBase {
 //	public DefinedKey(String value) {

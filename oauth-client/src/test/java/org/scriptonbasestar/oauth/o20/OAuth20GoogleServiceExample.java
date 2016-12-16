@@ -12,7 +12,7 @@ import org.scriptonbasestar.oauth.o20.client.OAuth20Client;
 
 /**
  * @author archmagece
- * @date 2016-10-25
+ * @since 2016-10-25
  * https://developers.google.com/identity/protocols/OAuth2UserAgent
  */
 public class OAuth20GoogleServiceExample {

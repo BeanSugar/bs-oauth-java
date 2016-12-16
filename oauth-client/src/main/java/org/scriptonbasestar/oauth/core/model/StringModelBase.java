@@ -5,8 +5,8 @@ import lombok.Getter;
 import org.beansugar.tools.core.check.Check;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-10-25 22
+ * @author archmagece
+ * @since 2016-10-25 22
  */
 @EqualsAndHashCode
 public abstract class StringModelBase {
