@@ -57,7 +57,7 @@ public class BeanConfig {
 <dependency>
 	<groupId>org.beansugar.oauth</groupId>
 	<artifactId>bs-oauth-java</artifactId>
-	<version>bs-oauth-201612-1-BUILD-SNAPSHOT</version>
+	<version>bs-oauth-201612-2-BUILD-SNAPSHOT</version>
 </dependency>
 ```
 
