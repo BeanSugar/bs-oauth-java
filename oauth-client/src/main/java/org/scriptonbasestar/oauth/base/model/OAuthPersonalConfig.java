@@ -1,4 +1,4 @@
-package org.scriptonbasestar.oauth.o20.model;
+package org.scriptonbasestar.oauth.base.model;
 
 import lombok.Getter;
 import org.beansugar.tools.core.check.Check;
@@ -8,12 +8,12 @@ import org.beansugar.tools.core.check.Check;
  * @date 2016-10-24
  */
 @Getter
-public class OAuth20PersonalConfig {
+public class OAuthPersonalConfig {
 	private final String apiKey;
 	//카카오만 api-secret null
 	private final String apiSecret;
 
-	public OAuth20PersonalConfig(String apiKey, String apiSecret){
+	public OAuthPersonalConfig(String apiKey, String apiSecret){
 		Check.notNullOrEmptyString(apiKey, "apiKey should not null or empty");
 		Check.notEmptyString(apiSecret, "apiSecret should not empty");
 		this.apiKey = apiKey;

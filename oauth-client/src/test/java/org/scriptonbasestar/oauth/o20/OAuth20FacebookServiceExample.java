@@ -5,9 +5,9 @@ import org.junit.Test;
 import org.scriptonbasestar.oauth.core.nobi.TokenStreamOutNobi;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AuthorizeTokenConfig;
-import org.scriptonbasestar.oauth.o20.model.OAuth20PersonalConfig;
+import org.scriptonbasestar.oauth.base.model.OAuthPersonalConfig;
 import org.scriptonbasestar.oauth.o20.model.Token20;
-import org.scriptonbasestar.oauth.o20.service.OAuth20Worker;
+import org.scriptonbasestar.oauth.o20.client.OAuth20Client;
 import org.scriptonbasestar.oauth.o20.type.ResponseFormatType;
 
 /**
@@ -17,8 +17,8 @@ import org.scriptonbasestar.oauth.o20.type.ResponseFormatType;
 public class OAuth20FacebookServiceExample {
 
 	private static final String SERVICE_NAME = "FACEBOOK";
-	private static OAuth20Worker oAuth20Service = new OAuth20Worker(
-			new OAuth20PersonalConfig("client-id", "client-secret"),
+	private static OAuth20Client oAuth20Service = new OAuth20Client(
+			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://www.facebook.com/v2.8/dialog/oauth")
 					.callbackUrl("http://test1.polypia.net/callback1")

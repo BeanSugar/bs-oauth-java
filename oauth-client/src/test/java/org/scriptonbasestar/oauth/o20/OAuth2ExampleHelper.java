@@ -11,7 +11,7 @@ import org.scriptonbasestar.oauth.core.exception.OAuthAuthException;
 import org.scriptonbasestar.oauth.core.model.State;
 import org.scriptonbasestar.oauth.core.nobi.DefaultStateNobi;
 import org.scriptonbasestar.oauth.o20.model.Token20;
-import org.scriptonbasestar.oauth.o20.service.OAuth20Worker;
+import org.scriptonbasestar.oauth.o20.client.OAuth20Client;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import java.util.Scanner;
  * @date 2015-11-18
  */
 public class OAuth2ExampleHelper {
-	static void test(OAuth20Worker oAuth20Service, String SERVICE_NAME, String PROTECTED_RESOURCE_URL) {
+	static void test(OAuth20Client oAuth20Service, String SERVICE_NAME, String PROTECTED_RESOURCE_URL) {
 		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
 		Scanner scanner = new Scanner(System.in);
 

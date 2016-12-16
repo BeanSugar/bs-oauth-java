@@ -6,9 +6,9 @@ import org.scriptonbasestar.oauth.core.nobi.TokenStreamOutNobi;
 import org.scriptonbasestar.oauth.core.type.OAuthHttpVerb;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AuthorizeTokenConfig;
-import org.scriptonbasestar.oauth.o20.model.OAuth20PersonalConfig;
+import org.scriptonbasestar.oauth.base.model.OAuthPersonalConfig;
 import org.scriptonbasestar.oauth.o20.model.Token20;
-import org.scriptonbasestar.oauth.o20.service.OAuth20Worker;
+import org.scriptonbasestar.oauth.o20.client.OAuth20Client;
 
 /**
  * @author archmagece
@@ -18,8 +18,8 @@ import org.scriptonbasestar.oauth.o20.service.OAuth20Worker;
 public class OAuth20GoogleServiceExample {
 
 	private static final String SERVICE_NAME = "GOOGLE";
-	private static OAuth20Worker oAuth20Service = new OAuth20Worker(
-			new OAuth20PersonalConfig("client-id", "client-secret"),
+	private static OAuth20Client oAuth20Service = new OAuth20Client(
+			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://accounts.google.com/o/oauth2/v2/auth")
 					.callbackUrl("http://test1.polypia.net/callback")

@@ -53,7 +53,8 @@ subprojects { subproject ->
 	apply plugin: 'java'
 
 	dependencies {
-		compileOnly 'org.projectlombok:lombok:1.16.4'
+		compileOnly "org.projectlombok:lombok:1.16.12"
+		testCompileOnly "org.projectlombok:lombok:1.16.12"
 		compileOnly 'org.codehaus.groovy:groovy-all:2.3.11'
 
 		compile 'org.beansugar.tools:bs-tools-core:tools-201612-1-BUILD-SNAPSHOT'

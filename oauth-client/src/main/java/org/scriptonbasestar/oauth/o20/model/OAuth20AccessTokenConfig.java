@@ -7,7 +7,6 @@ import org.scriptonbasestar.oauth.core.nobi.TokenNobi;
 import org.scriptonbasestar.oauth.core.type.GrantType;
 import org.scriptonbasestar.oauth.core.type.OAuthHttpVerb;
 import org.scriptonbasestar.oauth.core.type.SignatureType;
-import org.scriptonbasestar.oauth.o20.type.ResponseFormatType;
 
 /**
  * @author archmagece

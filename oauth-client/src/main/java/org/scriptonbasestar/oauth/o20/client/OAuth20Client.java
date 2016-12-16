@@ -1,4 +1,4 @@
-package org.scriptonbasestar.oauth.o20.service;
+package org.scriptonbasestar.oauth.o20.client;
 
 import com.google.gson.JsonParseException;
 import org.apache.http.HttpEntity;
@@ -20,7 +20,7 @@ import org.scriptonbasestar.oauth.http.ParamUtil;
 import org.scriptonbasestar.oauth.o20.OAuth20Constants;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AuthorizeTokenConfig;
-import org.scriptonbasestar.oauth.o20.model.OAuth20PersonalConfig;
+import org.scriptonbasestar.oauth.base.model.OAuthPersonalConfig;
 import org.scriptonbasestar.oauth.o20.model.Token20;
 
 import java.io.IOException;
@@ -33,15 +33,15 @@ import java.util.Map;
  * @author archmagece
  * @date 2016-10-24
  */
-public class OAuth20Worker {
+public class OAuth20Client {
 
-	private final OAuth20PersonalConfig oAuth20PersonalConfig;
+	private final OAuthPersonalConfig oAuth20PersonalConfig;
 	private final OAuth20AuthorizeTokenConfig oAuth20AuthorizeTokenConfig;
 	private final OAuth20AccessTokenConfig oAuth20AccessTokenConfig;
 //	private final OAuth20ResourceConfig oAuth20ResourceConfig;
 
-	public OAuth20Worker(OAuth20PersonalConfig oAuth20PersonalConfig, OAuth20AuthorizeTokenConfig oAuth20SiteAuthConfig
-	,OAuth20AccessTokenConfig oAuth20AccessTokenConfig) {
+	public OAuth20Client(OAuthPersonalConfig oAuth20PersonalConfig, OAuth20AuthorizeTokenConfig oAuth20SiteAuthConfig
+	, OAuth20AccessTokenConfig oAuth20AccessTokenConfig) {
 //	,OAuth20AccessTokenConfig oAuth20AccessTokenConfig, OAuth20ResourceConfig oAuth20ResourceConfig) {
 		Check.notNull(oAuth20PersonalConfig, "oAuth20PersonalConfig should not be null");
 		Check.notNull(oAuth20SiteAuthConfig, "oAuth20AuthorizeTokenConfig should not be null");
