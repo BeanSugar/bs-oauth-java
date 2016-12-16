@@ -3,9 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.beansugar.oauth</groupId>
 	<artifactId>bs-oauth-java</artifactId>
+	<version>bs-oauth-201612-1-BUILD-SNAPSHOT</version>
+
 	<name>BS OAuth library</name>
 	<url>https://github.com/BeanSugar/bs-oauth-java</url>
-	<version>bs-oauth-201612-1-BUILD-SNAPSHOT</version>
 	<description>OAuth library 만들어보는중.</description>
 	<packaging>pom</packaging>
 
@@ -18,9 +19,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:https://github.com/ScriptonBasestar/bs-oauth-java.git</connection>
-		<developerConnection>scm:https://github.com/ScriptonBasestar/bs-oauth-java.git</developerConnection>
-		<url>https://github.com/ScriptonBasestar/bs-oauth-java</url>
+		<connection>scm:https://github.com/BeanSugar/bs-oauth-java.git</connection>
+		<developerConnection>scm:https://github.com/BeanSugar/bs-oauth-java.git</developerConnection>
+		<url>https://github.com/BeanSugar/bs-oauth-java</url>
 	</scm>
 
 	<distributionManagement>
@@ -67,13 +68,18 @@
 			<version>4.5.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.2</version>
+		</dependency>
 
 		<!-- project lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.16.12</version>
-			<scope>provide</scope>
+			<scope>provided</scope>
 		</dependency>
 
 
