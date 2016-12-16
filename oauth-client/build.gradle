@@ -1,4 +1,0 @@
-ext.arctic = true
-hello.doLast {
-	println "pring print oauth client."
-}
