@@ -1,3 +1,0 @@
-rootProject.name = 'bs-oauth-java'
-
-include 'oauth-client'

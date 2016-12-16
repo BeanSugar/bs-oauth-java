@@ -1,4 +1,4 @@
-# sb-oauth-java
+# bs-oauth-java
 자바 OAuth 라이브러리
 
 
@@ -18,7 +18,7 @@ OAuth 1,2 클라이언트.
 
 ## 사용법 Usage
 
-사용법은 test - org.scriptonbasestar.oauth.examples.~ 참고
+사용법은 test - org.beansugar.oauth.examples.~ 참고
 
 
 ### 스프링에서 사용 예시(예 facebook)
@@ -48,16 +48,16 @@ public class BeanConfig {
 <!-- repository -->
 <repositories>
 	<repository>
-		<id>beansugar-release</id>
-		<url>http://nexus.beansugar.org/content/repositories/beansugar-release</url>
+		<id>beansugar-public-snapshot</id>
+		<url>http://nexus.beansugar.org/content/repositories/public-snapshot</url>
 	</repository>
 </repositories>
 
 <!-- dependency -->
 <dependency>
 	<groupId>org.beansugar.oauth</groupId>
-	<artifactId>sb-oauth-java</artifactId>
-	<version>0.1</version>
+	<artifactId>bs-oauth-java</artifactId>
+	<version>bs-oauth-201612-1-BUILD-SNAPSHOT</version>
 </dependency>
 ```
 
