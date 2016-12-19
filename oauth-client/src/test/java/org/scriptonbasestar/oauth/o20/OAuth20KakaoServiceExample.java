@@ -19,11 +19,12 @@ import org.scriptonbasestar.oauth.o20.type.ResponseFormatType;
 public class OAuth20KakaoServiceExample {
 
 	private static final String SERVICE_NAME = "KAKAO";
+	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
-			new OAuthPersonalConfig("client-id", "client-secret"),
+			new OAuthPersonalConfig("client-id", null),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://kauth.kakao.com/oauth/authorize")
-					.callbackUrl("http://test1.polypia.net/callback")
+					.callbackUrl(redirectUri)
 
 					//notnull
 					//CODE 코드나옴 code=verifier accessToken 호출해야함
@@ -38,7 +39,7 @@ public class OAuth20KakaoServiceExample {
 					.build(),
 			OAuth20AccessTokenConfig.builder()
 					.accessTokenUrl("https://kauth.kakao.com/oauth/token")
-					.callbackUrl("http://test1.polypia.net/callback")
+					.callbackUrl(redirectUri)
 
 //					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)

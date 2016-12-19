@@ -18,11 +18,12 @@ import org.scriptonbasestar.oauth.o20.client.OAuth20Client;
 public class OAuth20GoogleServiceExample {
 
 	private static final String SERVICE_NAME = "GOOGLE";
+	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
 			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://accounts.google.com/o/oauth2/v2/auth")
-					.callbackUrl("http://test1.polypia.net/callback")
+					.callbackUrl(redirectUri)
 
 					//notnull
 					//CODE 코드나옴 code=verifier accessToken 호출해야함
@@ -38,7 +39,7 @@ public class OAuth20GoogleServiceExample {
 					.build(),
 			OAuth20AccessTokenConfig.builder()
 					.accessTokenUrl("https://accounts.google.com/o/oauth2/token")
-					.callbackUrl("http://test1.polypia.net/callback")
+					.callbackUrl(redirectUri)
 
 					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)

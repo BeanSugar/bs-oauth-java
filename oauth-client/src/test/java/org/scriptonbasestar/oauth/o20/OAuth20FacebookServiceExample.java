@@ -17,17 +17,18 @@ import org.scriptonbasestar.oauth.o20.type.ResponseFormatType;
 public class OAuth20FacebookServiceExample {
 
 	private static final String SERVICE_NAME = "FACEBOOK";
+	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
 			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://www.facebook.com/v2.8/dialog/oauth")
-					.callbackUrl("http://test1.polypia.net/callback1")
+					.callbackUrl(redirectUri)
 
 					//nullable default CODE
 					//CODE 코드나옴 code=verifier accessToken 호출해야함
-//					.responseType(ResponseFormatType.CODE)
-					//TOKEN access token.. 사용자별 토큰?
-					.responseType(ResponseFormatType.TOKEN)
+					.responseType(ResponseFormatType.CODE)
+					//TOKEN access token.. 사용자별 토큰? 바로나옴
+//					.responseType(ResponseFormatType.TOKEN)
 
 					//nullable scope 없을시 기본값 적용
 					.scope("public_profile user_friends email")
@@ -37,7 +38,7 @@ public class OAuth20FacebookServiceExample {
 					.build(),
 			OAuth20AccessTokenConfig.builder()
 					.accessTokenUrl("https://graph.facebook.com/v2.8/oauth/access_token")
-					.callbackUrl("http://test1.polypia.net/callback1")
+					.callbackUrl(redirectUri)
 
 //					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)

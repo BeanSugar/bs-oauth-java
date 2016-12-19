@@ -23,7 +23,7 @@ import java.util.Scanner;
  * @since 2015-11-18
  */
 public class OAuth2ExampleHelper {
-	static void test(OAuth20Client oAuth20Service, String SERVICE_NAME, String PROTECTED_RESOURCE_URL) {
+	static void test(OAuth20Client oAuth20Service, final String SERVICE_NAME, final String PROTECTED_RESOURCE_URL) {
 		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
 		Scanner scanner = new Scanner(System.in);
 
@@ -42,18 +42,21 @@ public class OAuth2ExampleHelper {
 		System.out.println(SERVICE_NAME + "로부터 받은 code 입력");
 		System.out.println("verifier >>");
 		String verifier = scanner.nextLine();
+
 		System.out.println(SERVICE_NAME + "로부터 받은 state 입력");
 		System.out.println("state >>");
 		String stateReturn = scanner.nextLine();
 		if (!stateReturn.equals(state0.getValue())) {
-			throw new OAuthAuthException("인증실패");
+			throw new OAuthAuthException("인증실패 - state가 변조되었나 모르겠는데 값이다름");
+		}
+		if (SERVICE_NAME.equals("GOOGLE")) {
+			state0 = null;
 		}
 		System.out.println();
 		System.out.println();
 
 		//access token
 		System.out.println("Access Token 호출s");
-		System.out.println("google은 state null");
 		Token20 token20 = oAuth20Service.getAccessToken(verifier, state0);
 		System.out.println("access token : " + token20);
 		System.out.println("Access Token 호출e");
