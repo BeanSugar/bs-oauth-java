@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.beansugar.oauth</groupId>
+		<artifactId>bs-oauth-java</artifactId>
+		<version>bs-oauth-201612-3-BUILD-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>oauth-connector</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<!--oauth10-->
+		<module>connector-twitter</module>
+
+		<!--oauth20-->
+		<module>connector-google</module>
+		<module>connector-facebook</module>
+		<module>connector-naver</module>
+		<module>connector-kakao</module>
+	</modules>
+
+	<dependencies>
+	</dependencies>
+
+</project>

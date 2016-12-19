@@ -12,6 +12,8 @@
 
 	<modules>
 		<module>oauth-client</module>
+
+		<module>oauth-connector</module>
 	</modules>
 
 	<properties>
