@@ -3,8 +3,8 @@ package org.beansugar.oauth.connector.facebook;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @Author archmagece
- * @CreatedAt 2016-12-19 15
+ * @author archmagece
+ * @since 2016-12-19 15
  *
  * 리소스 요청시에 dto mapping
  * 시소스 접속주소
