@@ -24,6 +24,7 @@ import java.util.Scanner;
  */
 public class OAuth2ExampleHelper {
 	static void test(OAuth20Client oAuth20Service, final String SERVICE_NAME, final String PROTECTED_RESOURCE_URL) {
+		//TODO state 값이 client 안으로 들어갈 필요 있음
 		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
 		Scanner scanner = new Scanner(System.in);
 
