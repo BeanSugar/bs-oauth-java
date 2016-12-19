@@ -12,13 +12,13 @@
 
 	<modules>
 		<!--oauth10-->
-		<module>connector-twitter</module>
+		<!--<module>connector-twitter</module>-->
 
 		<!--oauth20-->
-		<module>connector-google</module>
+		<!--<module>connector-google</module>-->
 		<module>connector-facebook</module>
-		<module>connector-naver</module>
-		<module>connector-kakao</module>
+		<!--<module>connector-naver</module>-->
+		<!--<module>connector-kakao</module>-->
 	</modules>
 
 	<dependencies>
