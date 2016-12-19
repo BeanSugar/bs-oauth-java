@@ -1,14 +1,14 @@
 package org.beansugar.oauth.o20;
 
-import org.beansugar.oauth.base.model.OAuthPersonalConfig;
-import org.beansugar.oauth.o20.client.OAuth20Client;
-import org.beansugar.oauth.o20.model.Token20;
+import org.beansugar.oauth.client.base.model.OAuthPersonalConfig;
+import org.beansugar.oauth.client.o20.client.OAuth20Client;
+import org.beansugar.oauth.client.o20.model.Token20;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.beansugar.oauth.core.nobi.JsonTokenNobi;
-import org.beansugar.oauth.core.type.OAuthHttpVerb;
-import org.beansugar.oauth.o20.model.OAuth20AccessTokenConfig;
-import org.beansugar.oauth.o20.model.OAuth20AuthorizeTokenConfig;
+import org.beansugar.oauth.client.core.nobi.JsonTokenNobi;
+import org.beansugar.oauth.client.core.type.OAuthHttpVerb;
+import org.beansugar.oauth.client.o20.model.OAuth20AccessTokenConfig;
+import org.beansugar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
 
 /**
  * @author archmagece

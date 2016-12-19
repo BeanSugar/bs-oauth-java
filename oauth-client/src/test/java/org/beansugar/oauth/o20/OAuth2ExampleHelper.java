@@ -7,11 +7,11 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.beansugar.oauth.core.exception.OAuthAuthException;
-import org.beansugar.oauth.o20.client.OAuth20Client;
-import org.beansugar.oauth.o20.model.Token20;
-import org.beansugar.oauth.core.model.State;
-import org.beansugar.oauth.core.nobi.DefaultStateNobi;
+import org.beansugar.oauth.client.core.exception.OAuthAuthException;
+import org.beansugar.oauth.client.o20.client.OAuth20Client;
+import org.beansugar.oauth.client.o20.model.Token20;
+import org.beansugar.oauth.client.core.model.State;
+import org.beansugar.oauth.client.core.nobi.DefaultStateNobi;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
