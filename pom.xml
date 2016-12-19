@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.beansugar.oauth</groupId>
 	<artifactId>bs-oauth-java</artifactId>
-	<version>bs-oauth-201612-2-BUILD-SNAPSHOT</version>
+	<version>bs-oauth-201612-3-BUILD-SNAPSHOT</version>
 
 	<name>BS OAuth library</name>
 	<url>https://github.com/BeanSugar/bs-oauth-java</url>

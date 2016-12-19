@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.beansugar.oauth</groupId>
 		<artifactId>bs-oauth-java</artifactId>
-		<version>bs-oauth-201612-2-BUILD-SNAPSHOT</version>
+		<version>bs-oauth-201612-3-BUILD-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>oauth-client</artifactId>
