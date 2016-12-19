@@ -42,6 +42,13 @@ public class Token20 implements Serializable {
 		this.tokenType = tokenType;
 	}
 
+	public Token20(String accessToken, int expireIn, AccessTokenType tokenType, String refreshToken){
+		this.accessToken = accessToken;
+		this.expireIn = expireIn;
+		this.tokenType = tokenType;
+		this.refreshToken = refreshToken;
+	}
+
 	public Token20(String accessToken, int expireIn, AccessTokenType tokenType, String idToken, String refreshToken){
 		this.accessToken = accessToken;
 		this.expireIn = expireIn;

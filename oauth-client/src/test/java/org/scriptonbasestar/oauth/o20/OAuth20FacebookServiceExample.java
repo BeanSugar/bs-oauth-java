@@ -2,6 +2,7 @@ package org.scriptonbasestar.oauth.o20;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.scriptonbasestar.oauth.core.nobi.JsonTokenNobi;
 import org.scriptonbasestar.oauth.core.nobi.TokenStreamOutNobi;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AuthorizeTokenConfig;
@@ -33,8 +34,8 @@ public class OAuth20FacebookServiceExample {
 					//nullable scope 없을시 기본값 적용
 					.scope("public_profile user_friends email")
 
-//					.tokenFormatNobi(new JsonTokenNobi())
-					.tokenFormatNobi(new TokenStreamOutNobi())
+					.tokenFormatNobi(new JsonTokenNobi())
+//					.tokenFormatNobi(new TokenStreamOutNobi())
 					.build(),
 			OAuth20AccessTokenConfig.builder()
 					.accessTokenUrl("https://graph.facebook.com/v2.8/oauth/access_token")
@@ -42,7 +43,9 @@ public class OAuth20FacebookServiceExample {
 
 //					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)
-					.tokenFormatNobi(new TokenStreamOutNobi())
+
+					.tokenFormatNobi(new JsonTokenNobi())
+//					.tokenFormatNobi(new TokenStreamOutNobi())
 					.build()
 	);
 

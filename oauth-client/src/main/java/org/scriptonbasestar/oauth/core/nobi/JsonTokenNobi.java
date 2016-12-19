@@ -15,6 +15,6 @@ public class JsonTokenNobi implements TokenNobi {
 	@Override
 	public Token20 extract(String socialResponse) {
 		Map<String,String> map = gson.fromJson(socialResponse, Map.class);
-		return new Token20(map.get("access_token"), 0, AccessTokenType.valueOf(map.get("token_type").toUpperCase()));
+		return new Token20(map.get("access_token"), Integer.parseInt(map.get("expires_in")), AccessTokenType.valueOf(map.get("token_type").toUpperCase()), map.get("refresh_token"));
 	}
 }

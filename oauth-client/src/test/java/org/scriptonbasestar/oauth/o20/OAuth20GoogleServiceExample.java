@@ -2,6 +2,7 @@ package org.scriptonbasestar.oauth.o20;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.scriptonbasestar.oauth.core.nobi.JsonTokenNobi;
 import org.scriptonbasestar.oauth.core.nobi.TokenStreamOutNobi;
 import org.scriptonbasestar.oauth.core.type.OAuthHttpVerb;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AccessTokenConfig;
@@ -34,8 +35,8 @@ public class OAuth20GoogleServiceExample {
 					//구글은 scope가 필수
 					.scope("https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email")
 
-//					.tokenFormatNobi(new JsonTokenNobi())
-					.tokenFormatNobi(new TokenStreamOutNobi())
+					.tokenFormatNobi(new JsonTokenNobi())
+//					.tokenFormatNobi(new TokenStreamOutNobi())
 					.build(),
 			OAuth20AccessTokenConfig.builder()
 					.accessTokenUrl("https://accounts.google.com/o/oauth2/token")
@@ -43,7 +44,9 @@ public class OAuth20GoogleServiceExample {
 
 					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)
-					.tokenFormatNobi(new TokenStreamOutNobi())
+
+					.tokenFormatNobi(new JsonTokenNobi())
+//					.tokenFormatNobi(new TokenStreamOutNobi())
 					.build()
 	);
 

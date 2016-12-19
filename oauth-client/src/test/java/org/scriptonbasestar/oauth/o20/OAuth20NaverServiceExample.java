@@ -2,6 +2,7 @@ package org.scriptonbasestar.oauth.o20;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.scriptonbasestar.oauth.core.nobi.JsonTokenNobi;
 import org.scriptonbasestar.oauth.core.nobi.TokenStreamOutNobi;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.o20.model.OAuth20AuthorizeTokenConfig;
@@ -33,8 +34,8 @@ public class OAuth20NaverServiceExample {
 //					기본 scope 자동적용
 //					.scope("")
 
-//					.tokenFormatNobi(new JsonTokenNobi())
-					.tokenFormatNobi(new TokenStreamOutNobi())
+					.tokenFormatNobi(new JsonTokenNobi())
+//					.tokenFormatNobi(new TokenStreamOutNobi())
 					.build(),
 			OAuth20AccessTokenConfig.builder()
 					.accessTokenUrl("https://nid.naver.com/oauth2.0/token")
@@ -43,7 +44,9 @@ public class OAuth20NaverServiceExample {
 
 //					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)
-					.tokenFormatNobi(new TokenStreamOutNobi())
+
+					.tokenFormatNobi(new JsonTokenNobi())
+//					.tokenFormatNobi(new TokenStreamOutNobi())
 					.build()
 	);
 
