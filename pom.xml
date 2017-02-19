@@ -36,7 +36,7 @@
 			<url>http://nexus.beansugar.org/repository/maven-public-release</url>
 		</repository>
 		<snapshotRepository>
-			<id>beansugar-private-snapshot</id>
+			<id>beansugar-public-snapshot</id>
 			<url>http://nexus.beansugar.org/repository/maven-public-snapshot</url>
 		</snapshotRepository>
 	</distributionManagement>
