@@ -15,13 +15,17 @@
 		<!--<module>connector-twitter</module>-->
 
 		<!--oauth20-->
-		<!--<module>connector-google</module>-->
 		<module>connector-facebook</module>
-		<!--<module>connector-naver</module>-->
-		<!--<module>connector-kakao</module>-->
+		<module>connector-google</module>
+		<module>connector-kakao</module>
+		<module>connector-naver</module>
 	</modules>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.beansugar.oauth</groupId>
+			<artifactId>oauth-client</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

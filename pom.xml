@@ -17,11 +17,12 @@
 	</modules>
 
 	<properties>
-		<java-version>1.7</java-version>
+		<java-version>1.8</java-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<org.beansugar.tools-version>bs-tools-201612-1-BUILD-SNAPSHOT</org.beansugar.tools-version>
+		<org.beansugar.oauth-version>bs-oauth-201612-3-BUILD-SNAPSHOT</org.beansugar.oauth-version>
 	</properties>
 
 	<scm>
@@ -33,13 +34,23 @@
 	<distributionManagement>
 		<repository>
 			<id>beansugar-public-release</id>
-			<url>http://nexus.beansugar.org/repository/maven-public-release</url>
+			<url>http://nexus.polypia.net/repository/maven-public-release</url>
 		</repository>
 		<snapshotRepository>
 			<id>beansugar-public-snapshot</id>
-			<url>http://nexus.beansugar.org/repository/maven-public-snapshot</url>
+			<url>http://nexus.polypia.net/repository/maven-public-snapshot</url>
 		</snapshotRepository>
 	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.beansugar.oauth</groupId>
+				<artifactId>oauth-client</artifactId>
+				<version>${org.beansugar.oauth-version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
@@ -159,4 +170,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

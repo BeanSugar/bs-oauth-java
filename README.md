@@ -49,7 +49,7 @@ public class BeanConfig {
 <repositories>
 	<repository>
 		<id>beansugar-public-snapshot</id>
-		<url>http://nexus.beansugar.org/content/repositories/public-snapshot</url>
+		<url>http://nexus.polypia.net/content/repositories/public-snapshot</url>
 	</repository>
 </repositories>
 
