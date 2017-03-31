@@ -2,7 +2,6 @@ package org.beansugar.oauth.client.core.nobi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.beansugar.oauth.client.core.model.State;
-import org.joda.time.DateTime;
 
 /**
  * @author archmagece
@@ -21,6 +20,6 @@ public class DefaultStateNobi implements StateNobi {
 
 	@Override
 	public State getState() {
-		return new State(name + separator + DateTime.now().getMillis());
+		return new State(name + separator + System.currentTimeMillis());
 	}
 }
