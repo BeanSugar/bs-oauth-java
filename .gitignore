@@ -28,3 +28,4 @@ logs/
 *MainLocal.java
 test.*.json
 test.*.xml
+*-test.properties
