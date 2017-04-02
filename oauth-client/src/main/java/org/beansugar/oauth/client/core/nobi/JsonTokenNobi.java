@@ -15,12 +15,12 @@ public class JsonTokenNobi implements TokenNobi {
 	private Gson gson = new Gson();
 	@Override
 	public Token20 extract(String socialResponse) {
-		Map<String,String> map = gson.fromJson(socialResponse, Map.class);
+		Map<String,Object> map = gson.fromJson(socialResponse, Map.class);
 		return new Token20(
-				OutputUtil.nos(map.get("access_token")),
-				Double.parseDouble(OutputUtil.nos(map.get("expires_in"))),
-				AccessTokenType.valueOf(OutputUtil.nos(map.get("token_type")).toUpperCase()),
-				OutputUtil.nos(map.get("refresh_token"))
+				map.get("access_token").toString(),
+				map.get("expires_in")==null?0:Double.parseDouble(map.get("expires_in").toString()),
+				map.get("token_type")==null?null:AccessTokenType.valueOf(map.get("token_type").toString().toUpperCase()),
+				map.get("refresh_token").toString()
 		);
 	}
 }

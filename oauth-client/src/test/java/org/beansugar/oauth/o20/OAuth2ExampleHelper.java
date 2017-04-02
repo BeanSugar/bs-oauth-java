@@ -65,12 +65,12 @@ public class OAuth2ExampleHelper {
 		System.out.println();
 
 		//protected resource
-//		System.out.println("Projected Resource 호출s");
-//		String response = oAuth20Service.getResource(PROTECTED_RESOURCE_URL, token20.getAccessToken());
-//		System.out.println("(resource : " + response + " )");
-//		System.out.println("Projected Resource 호출e");
-//		System.out.println();
-//		System.out.println();
+		System.out.println("Projected Resource 호출s");
+		String response = oAuth20Service.getResource(PROTECTED_RESOURCE_URL, token20.getAccessToken());
+		System.out.println("(resource : " + response + " )");
+		System.out.println("Projected Resource 호출e");
+		System.out.println();
+		System.out.println();
 
 		System.out.println("FIN.");
 	}
