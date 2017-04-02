@@ -19,7 +19,7 @@ public class Token20 implements Serializable {
 	//REQUIRED
 	private AccessTokenType tokenType;
 	//RECOMMENDED
-	private int expireIn;
+	private double expireIn;
 	//OPTIONAL,
 //	OPTIONAL, if identical to the scope requested by the client;
 //	otherwise, REQUIRED.  The scope of the access token as
@@ -30,26 +30,26 @@ public class Token20 implements Serializable {
 	private String idToken;
 	private String refreshToken;
 
-	public Token20(String accessToken, int expireIn){
+	public Token20(String accessToken, double expireIn){
 		this.accessToken = accessToken;
 		this.expireIn = expireIn;
 		this.tokenType = AccessTokenType.BEARER;
 	}
 
-	public Token20(String accessToken, int expireIn, AccessTokenType tokenType){
+	public Token20(String accessToken, double expireIn, AccessTokenType tokenType){
 		this.accessToken = accessToken;
 		this.expireIn = expireIn;
 		this.tokenType = tokenType;
 	}
 
-	public Token20(String accessToken, int expireIn, AccessTokenType tokenType, String refreshToken){
+	public Token20(String accessToken, double expireIn, AccessTokenType tokenType, String refreshToken){
 		this.accessToken = accessToken;
 		this.expireIn = expireIn;
 		this.tokenType = tokenType;
 		this.refreshToken = refreshToken;
 	}
 
-	public Token20(String accessToken, int expireIn, AccessTokenType tokenType, String idToken, String refreshToken){
+	public Token20(String accessToken, double expireIn, AccessTokenType tokenType, String idToken, String refreshToken){
 		this.accessToken = accessToken;
 		this.expireIn = expireIn;
 		this.tokenType = tokenType;

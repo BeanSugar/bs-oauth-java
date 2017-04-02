@@ -1,6 +1,7 @@
 package org.beansugar.oauth.client.core.nobi;
 
 import com.google.gson.Gson;
+import org.beansugar.oauth.client.core.util.OutputUtil;
 import org.beansugar.oauth.client.o20.model.Token20;
 import org.beansugar.oauth.client.o20.type.AccessTokenType;
 
@@ -15,6 +16,11 @@ public class JsonTokenNobi implements TokenNobi {
 	@Override
 	public Token20 extract(String socialResponse) {
 		Map<String,String> map = gson.fromJson(socialResponse, Map.class);
-		return new Token20(map.get("access_token"), Integer.parseInt(map.get("expires_in")), AccessTokenType.valueOf(map.get("token_type").toUpperCase()), map.get("refresh_token"));
+		return new Token20(
+				OutputUtil.nos(map.get("access_token")),
+				Double.parseDouble(OutputUtil.nos(map.get("expires_in"))),
+				AccessTokenType.valueOf(OutputUtil.nos(map.get("token_type")).toUpperCase()),
+				OutputUtil.nos(map.get("refresh_token"))
+		);
 	}
 }

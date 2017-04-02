@@ -87,17 +87,6 @@
 	</distributionManagement>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.beansugar.tools</groupId>
-			<artifactId>bs-tools-core</artifactId>
-			<version>${org.beansugar.tools-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.beansugar.tools</groupId>
-			<artifactId>bs-tools-collection</artifactId>
-			<version>${org.beansugar.tools-version}</version>
-		</dependency>
-
 		<!-- commons -->
 		<dependency>
 			<groupId>commons-codec</groupId>
