@@ -109,7 +109,7 @@
 	<distributionManagement>
 		<repository>
 			<id>bintray-archmagece-jvm-repo</id>
-			<name>bintray-archmagece-jvm-repo</name>
+			<name>archmagece-jvm-repo</name>
 			<url>https://api.bintray.com/maven/archmagece/jvm-repo/sb-oauth-java/;publish=1</url>
 		</repository>
 		<!--<repository>-->
@@ -127,7 +127,7 @@
 			<dependency>
 				<groupId>org.beansugar.oauth</groupId>
 				<artifactId>oauth-client</artifactId>
-				<version>${org.beansugar.oauth-version}</version>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -135,12 +135,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.scriptonbasestar.tool</groupId>
-			<artifactId>sb-tool-core</artifactId>
+			<artifactId>core</artifactId>
 			<version>${scriptonbasestar_tool_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.scriptonbasestar.tool</groupId>
-			<artifactId>sb-tool-collection</artifactId>
+			<artifactId>collection</artifactId>
 			<version>${scriptonbasestar_tool_version}</version>
 		</dependency>
 
@@ -158,32 +158,10 @@
 			<version>${gson_version}</version>
 		</dependency>
 
-		<!-- Guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava_version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava-testlib</artifactId>
-			<version>${guava_version}</version>
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${apache_httpcomponents_version}</version>
-		</dependency>
-
-		<!-- project lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok_version}</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<!-- Logging -->
@@ -209,6 +187,31 @@
 			<version>${logback_version}</version>
 		</dependency>
 		<!-- /Logging -->
+
+
+
+		<!-- project lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok_version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- Guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava_version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava-testlib</artifactId>
+			<version>${guava_version}</version>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>io.netty</groupId>
