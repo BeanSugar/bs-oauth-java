@@ -1,4 +1,4 @@
-package org.beansugar.oauth.connector.facebook;
+package org.scriptonbasestar.oauth.connector.facebook;
 
 import lombok.extern.slf4j.Slf4j;
 

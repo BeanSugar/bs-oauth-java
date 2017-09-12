@@ -25,6 +25,9 @@
 		<scriptonbasestar_tool_version>201709-1-RELEASE</scriptonbasestar_tool_version>
 
 		<!--ver 20170912-->
+		<groovy_version>2.4.12</groovy_version>
+		<kotlin_version>1.1.4-2</kotlin_version>
+
 		<!-- spring -->
 		<spring_boot_version>1.5.6.RELEASE</spring_boot_version>
 		<spring_version>4.3.11.RELEASE</spring_version>
@@ -142,6 +145,12 @@
 			<groupId>org.scriptonbasestar.tool</groupId>
 			<artifactId>collection</artifactId>
 			<version>${scriptonbasestar_tool_version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>${groovy_version}</version>
 		</dependency>
 
 		<!-- commons -->
@@ -262,6 +271,25 @@
 						<id>attach-javadocs</id>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>addSources</goal>
+							<goal>addTestSources</goal>
+							<goal>generateStubs</goal>
+							<goal>compile</goal>
+							<goal>testGenerateStubs</goal>
+							<goal>testCompile</goal>
+							<goal>removeStubs</goal>
+							<goal>removeTestStubs</goal>
 						</goals>
 					</execution>
 				</executions>
