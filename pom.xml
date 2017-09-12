@@ -17,12 +17,12 @@
 	</modules>
 
 	<properties>
-		<java-version>1.7</java-version>
+		<java_version>1.7</java_version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- tool -->
-		<org.beansugar.tool-version>sb-tool-201703-1-RELEASE</org.beansugar.tool-version>
+		<scriptonbasestar_tool_version>201709-1-RELEASE</scriptonbasestar_tool_version>
 
 		<!--ver 20170912-->
 		<!-- spring -->
@@ -59,6 +59,7 @@
 
 		<apache_httpcomponents_core_version>4.4.6</apache_httpcomponents_core_version>
 		<apache_httpcomponents_version>4.5.3</apache_httpcomponents_version>
+		<netty_version>4.1.9.Final</netty_version>
 
 		<!--commons-->
 		<commons_dbcp2_version>2.1.1</commons_dbcp2_version>
@@ -133,55 +134,55 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.beansugar.tools</groupId>
-			<artifactId>bs-tools-core</artifactId>
-			<version>${org.beansugar.tools-version}</version>
+			<groupId>org.scriptonbasestar.tool</groupId>
+			<artifactId>sb-tool-core</artifactId>
+			<version>${scriptonbasestar_tool_version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.beansugar.tools</groupId>
-			<artifactId>bs-tools-collection</artifactId>
-			<version>${org.beansugar.tools-version}</version>
+			<groupId>org.scriptonbasestar.tool</groupId>
+			<artifactId>sb-tool-collection</artifactId>
+			<version>${scriptonbasestar_tool_version}</version>
 		</dependency>
 
 		<!-- commons -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>${commons-codec-version}</version>
+			<version>${commons_codec_version}</version>
 		</dependency>
 
 		<!-- gson,json -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>${com.google.code.gson-version}</version>
+			<version>${gson_version}</version>
 		</dependency>
 
 		<!-- Guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>${com.google.guava-version}</version>
+			<version>${guava_version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava-testlib</artifactId>
-			<version>${com.google.guava-version}</version>
+			<version>${guava_version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>${org.apache.httpcomponents-version}</version>
+			<version>${apache_httpcomponents_version}</version>
 		</dependency>
 
 		<!-- project lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>${org.projectlombok-version}</version>
+			<version>${lombok_version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -189,30 +190,30 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j-version}</version>
+			<version>${slf4j_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j-version}</version>
+			<version>${slf4j_version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>${logback-version}</version>
+			<version>${logback_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>${logback-version}</version>
+			<version>${logback_version}</version>
 		</dependency>
 		<!-- /Logging -->
 
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
-			<version>4.1.9.Final</version>
+			<version>${netty_version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -220,7 +221,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit-version}</version>
+			<version>${junit_version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -229,10 +230,10 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.7.0</version>
 				<configuration>
-					<source>${java-version}</source>
-					<target>${java-version}</target>
+					<source>${java_version}</source>
+					<target>${java_version}</target>
 				</configuration>
 			</plugin>
 
