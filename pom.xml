@@ -22,7 +22,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- tool -->
-		<scriptonbasestar_tool_version>201709-1-RELEASE</scriptonbasestar_tool_version>
+		<scriptonbasestar_tool_version>20170913-1-RELEASE</scriptonbasestar_tool_version>
 
 		<!--ver 20170912-->
 		<groovy_version>2.4.12</groovy_version>
