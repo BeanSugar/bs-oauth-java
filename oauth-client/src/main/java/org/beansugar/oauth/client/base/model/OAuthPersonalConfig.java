@@ -1,7 +1,7 @@
 package org.beansugar.oauth.client.base.model;
 
 import lombok.Getter;
-import org.beansugar.tools.core.check.Check;
+import org.scriptonbasestar.tool.core.check.Check;
 
 /**
  * @author archmagece

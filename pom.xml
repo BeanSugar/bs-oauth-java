@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.beansugar.oauth</groupId>
-	<artifactId>bs-oauth-java</artifactId>
-	<version>bs-oauth-201612-3-BUILD-SNAPSHOT</version>
+	<groupId>org.scriptonbasestar.oauth</groupId>
+	<artifactId>sb-oauth-java</artifactId>
+	<version>20170913-1-RELEASE</version>
 
 	<name>BS OAuth library</name>
 	<url>https://github.com/BeanSugar/bs-oauth-java</url>
@@ -12,8 +12,8 @@
 
 	<modules>
 		<module>oauth-client</module>
-		<module>oauth-integration</module>
 		<module>oauth-connector</module>
+		<module>oauth-integration</module>
 	</modules>
 
 	<properties>
@@ -114,16 +114,27 @@
 		<url>https://github.com/ScriptonBasestar-Lib/sb-oauth-java.git</url>
 	</scm>
 
+	<repositories>
+		<repository>
+			<id>bintray-archmagece-jvm-repo</id>
+			<url>https://dl.bintray.com/archmagece/jvm-repo</url>
+		</repository>
+		<repository>
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>bintray</id>
+			<url>https://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
+
 	<distributionManagement>
 		<repository>
 			<id>bintray-archmagece-jvm-repo</id>
 			<name>archmagece-jvm-repo</name>
 			<url>https://api.bintray.com/maven/archmagece/jvm-repo/sb-oauth-java/;publish=1</url>
 		</repository>
-		<!--<repository>-->
-		<!--<id>beansugar-public-release</id>-->
-		<!--<url>http://nexus.polypia.net/repository/maven-public-release</url>-->
-		<!--</repository>-->
 		<snapshotRepository>
 			<id>beansugar-public-snapshot</id>
 			<url>http://nexus.polypia.net/repository/maven-public-snapshot</url>
@@ -133,7 +144,7 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.beansugar.oauth</groupId>
+				<groupId>org.scriptonbasestar.oauth</groupId>
 				<artifactId>oauth-client</artifactId>
 				<version>${project.version}</version>
 			</dependency>

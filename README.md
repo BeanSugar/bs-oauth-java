@@ -48,16 +48,19 @@ public class BeanConfig {
 <!-- repository -->
 <repositories>
 	<repository>
-		<id>beansugar-public-snapshot</id>
-		<url>http://nexus.polypia.net/content/repositories/public-snapshot</url>
+			<id>jcenter</id>
+			<name>bintray</name>
+			<url>https://jcenter.bintray.com</url>
 	</repository>
 </repositories>
+```
 
+```xml
 <!-- dependency -->
 <dependency>
-	<groupId>org.beansugar.oauth</groupId>
-	<artifactId>bs-oauth-java</artifactId>
-	<version>bs-oauth-201612-3-BUILD-SNAPSHOT</version>
+	<groupId>org.scriptonbasestar.oauth</groupId>
+	<artifactId>sb-oauth-java</artifactId>
+	<version>20170913-1-RELEASE</version>
 </dependency>
 ```
 

@@ -10,7 +10,7 @@ import org.beansugar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
 import org.beansugar.oauth.client.o20.model.Token20;
 import org.beansugar.oauth.client.o20.type.AccessTokenType;
 import org.beansugar.oauth.client.o20.type.ResponseFormatType;
-import org.beansugar.tools.core.prop.BSPropertiesUtil;
+import org.scriptonbasestar.tool.core.prop.BSPropertiesUtil;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -9,7 +9,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.beansugar.tools.core.check.Check;
+import org.scriptonbasestar.tool.core.check.Check;
 import org.beansugar.oauth.client.core.exception.OAuthParamException;
 import org.beansugar.oauth.client.core.model.State;
 import org.beansugar.oauth.client.core.type.GrantType;
