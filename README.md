@@ -60,7 +60,7 @@ public class BeanConfig {
 <dependency>
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
-	<version>20170913-1-RELEASE</version>
+	<version>20170913-2-RELEASE</version>
 </dependency>
 ```
 

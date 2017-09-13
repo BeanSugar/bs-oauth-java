@@ -1,5 +1,6 @@
 package org.scriptonbasestar.oauth.o20;
 
+import org.scriptonbasestar.oauth.client.core.nobi.DefaultStateNobi;
 import org.scriptonbasestar.oauth.client.o20.client.OAuth20Client;
 import org.scriptonbasestar.oauth.client.o20.model.Token20;
 import org.junit.Ignore;
@@ -19,6 +20,8 @@ public class OAuth20NaverServiceExample {
 	private static final String SERVICE_NAME = "NAVER";
 	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
+			SERVICE_NAME,
+			new DefaultStateNobi(),
 			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://nid.naver.com/oauth2.0/authorize")

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
-	<version>20170913-1-RELEASE</version>
+	<version>20170913-2-RELEASE</version>
 
 	<name>BS OAuth library</name>
 	<url>https://github.com/ScriptonBasestar-Lib/sb-oauth-java</url>

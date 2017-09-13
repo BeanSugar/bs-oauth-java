@@ -41,6 +41,8 @@ public class ClientTest {
 		);
 
 		client = new OAuth20Client(
+				SERVICE_NAME,
+				new DefaultStateNobi(),
 				new OAuthPersonalConfig(propBaseCofig.getProperty("naver.apiKey"), propBaseCofig.getProperty("naver.secret")),
 				OAuth20AuthorizeTokenConfig.builder()
 						.authorizeUrl("https://nid.naver.com/oauth2.0/authorize")
@@ -75,8 +77,7 @@ public class ClientTest {
 	@Test
 	@Ignore
 	public void test(){
-		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
-		String urlString = client.getAuthorizeUrl(state0);
+		String urlString = client.getAuthorizeUrl(client.generateState());
 		System.out.println(urlString);
 	}
 

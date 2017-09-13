@@ -23,17 +23,16 @@ import java.util.Scanner;
  * @since 2015-11-18
  */
 public class OAuth2ExampleHelper {
-	static void test(OAuth20Client oAuth20Service, final String SERVICE_NAME, final String PROTECTED_RESOURCE_URL) {
-		//TODO state 값이 client 안으로 들어갈 필요 있음
-		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
+	static void test(OAuth20Client oAuth20Client, final String SERVICE_NAME, final String PROTECTED_RESOURCE_URL) {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("=== " + SERVICE_NAME + "  ===");
 		System.out.println();
 
+		State state0 = oAuth20Client.generateState();
 		//authorize url
 		System.out.println("Authorize URL 생성s");
-		String authorizationUrl = oAuth20Service.getAuthorizeUrl(state0);
+		String authorizationUrl = oAuth20Client.getAuthorizeUrl(state0);
 		System.out.println("url : " + authorizationUrl);
 		System.out.println("Authorize URL 생성e");
 
@@ -58,7 +57,7 @@ public class OAuth2ExampleHelper {
 
 		//access token
 		System.out.println("Access Token 호출s");
-		Token20 token20 = oAuth20Service.getAccessToken(verifier, state0);
+		Token20 token20 = oAuth20Client.getAccessToken(verifier, state0);
 		System.out.println("access token : " + token20);
 		System.out.println("Access Token 호출e");
 		System.out.println();
@@ -66,7 +65,7 @@ public class OAuth2ExampleHelper {
 
 		//protected resource
 		System.out.println("Projected Resource 호출s");
-		String response = oAuth20Service.getResource(PROTECTED_RESOURCE_URL, token20.getAccessToken());
+		String response = oAuth20Client.getResource(PROTECTED_RESOURCE_URL, token20.getAccessToken());
 		System.out.println("(resource : " + response + " )");
 		System.out.println("Projected Resource 호출e");
 		System.out.println();

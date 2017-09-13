@@ -1,6 +1,7 @@
 package org.scriptonbasestar.oauth.o20;
 
 import org.scriptonbasestar.oauth.client.base.model.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.core.nobi.DefaultStateNobi;
 import org.scriptonbasestar.oauth.client.core.nobi.JsonTokenNobi;
 import org.scriptonbasestar.oauth.client.o20.client.OAuth20Client;
 import org.scriptonbasestar.oauth.client.o20.model.OAuth20AccessTokenConfig;
@@ -19,6 +20,8 @@ public class OAuth20FacebookServiceExample {
 	private static final String SERVICE_NAME = "FACEBOOK";
 	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
+			SERVICE_NAME,
+			new DefaultStateNobi(),
 			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://www.facebook.com/v2.8/dialog/oauth")
