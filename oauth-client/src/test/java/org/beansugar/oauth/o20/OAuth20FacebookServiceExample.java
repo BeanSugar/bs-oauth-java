@@ -19,7 +19,7 @@ public class OAuth20FacebookServiceExample {
 	private static final String SERVICE_NAME = "FACEBOOK";
 	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
-			new OAuthPersonalConfig("289615599023-144oq78ovnk25aesjqcdf5h42l9aqjjg.apps.googleusercontent.com", "U34LT8BbmLHytOvNuwHKAtUq"),
+			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://www.facebook.com/v2.8/dialog/oauth")
 					.callbackUrl(redirectUri)

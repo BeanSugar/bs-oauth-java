@@ -20,7 +20,7 @@ public class OAuth20GoogleServiceExample {
 	private static final String SERVICE_NAME = "GOOGLE";
 	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
-			new OAuthPersonalConfig("289615599023-144oq78ovnk25aesjqcdf5h42l9aqjjg.apps.googleusercontent.com", "U34LT8BbmLHytOvNuwHKAtUq"),
+			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://accounts.google.com/o/oauth2/v2/auth")
 					.callbackUrl(redirectUri)
