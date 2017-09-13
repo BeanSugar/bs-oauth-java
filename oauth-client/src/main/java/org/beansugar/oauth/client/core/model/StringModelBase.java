@@ -2,6 +2,7 @@ package org.beansugar.oauth.client.core.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import org.scriptonbasestar.tool.core.check.Check;
 
 /**
  * @author archmagece

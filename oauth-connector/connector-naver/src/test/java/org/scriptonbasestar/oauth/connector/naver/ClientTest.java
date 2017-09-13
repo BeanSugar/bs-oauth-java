@@ -9,9 +9,9 @@ import org.beansugar.oauth.client.o20.client.OAuth20Client;
 import org.beansugar.oauth.client.o20.model.OAuth20AccessTokenConfig;
 import org.beansugar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
 import org.beansugar.oauth.client.o20.type.ResponseFormatType;
-import org.scriptonbasestar.tool.core.prop.BSPropertiesUtil;
 import org.junit.Before;
 import org.junit.Test;
+import org.scriptonbasestar.tool.core.prop.SBPropertiesUtil;
 
 import java.util.Properties;
 
@@ -29,12 +29,12 @@ public class ClientTest {
 	OAuth20Client client = null;
 	@Before
 	public void before(){
-		propBaseCofig = BSPropertiesUtil.propertiesMaker(
+		propBaseCofig = SBPropertiesUtil.propertiesMaker(
 				ClientTest.class,
 				"common-test.properties",
 				"base-test.properties"
 		);
-		propsUserConfig = BSPropertiesUtil.propertiesMaker(
+		propsUserConfig = SBPropertiesUtil.propertiesMaker(
 				ClientTest.class,
 				"user-test.properties"
 		);
