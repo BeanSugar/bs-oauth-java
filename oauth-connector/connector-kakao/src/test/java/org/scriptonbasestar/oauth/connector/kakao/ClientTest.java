@@ -45,6 +45,8 @@ public class ClientTest {
 
 
 		client = new OAuth20Client(
+				SERVICE_NAME,
+				new DefaultStateNobi(),
 				new OAuthPersonalConfig(propBaseCofig.getProperty("kakao.apiKey"), null),
 				OAuth20AuthorizeTokenConfig.builder()
 						.authorizeUrl("https://kauth.kakao.com/oauth/authorize")
@@ -98,8 +100,7 @@ public class ClientTest {
 	@Test
 	@Ignore
 	public void test(){
-		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
-		String urlString = client.getAuthorizeUrl(state0);
+		String urlString = client.getAuthorizeUrl(client.generateState());
 		System.out.println(urlString);
 	}
 

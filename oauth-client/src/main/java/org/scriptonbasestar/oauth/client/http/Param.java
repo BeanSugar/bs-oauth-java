@@ -8,7 +8,7 @@ import org.scriptonbasestar.tool.core.check.Check;
  * @since 2016-10-25
  *
  * TODO generic.
- * TODO ParamUtil - ParamLister 안으로
+ * TODO ParamUtil - ParamList 안으로
  * TODO
  */
 @Getter

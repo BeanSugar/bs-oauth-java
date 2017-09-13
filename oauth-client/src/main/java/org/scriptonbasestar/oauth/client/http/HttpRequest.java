@@ -31,7 +31,7 @@ public final class HttpRequest {
 
 	private CloseableHttpClient httpclient;
 	private final String url;
-	private ParamLister paramLister = new ParamLister();
+	private ParamList paramList = new ParamList();
 
 	private HttpRequest(String url){
 		httpclient = HttpClients.createDefault();
@@ -43,17 +43,17 @@ public final class HttpRequest {
 	}
 
 	public HttpRequest add(String key, String value){
-		paramLister.add(key, value);
+		paramList.add(key, value);
 		return this;
 	}
 
 	public HttpRequest add(Param... params){
-		paramLister.add(params);
+		paramList.add(params);
 		return this;
 	}
 
 	public HttpRequest add(Collection<Param> params){
-		paramLister.add(params);
+		paramList.add(params);
 		return this;
 	}
 
@@ -76,7 +76,7 @@ public final class HttpRequest {
 		log.debug("postContent()");
 		try {
 			List<NameValuePair> formParams = new ArrayList<>();
-			for(Param param : paramLister.paramSet()){
+			for(Param param : paramList.paramSet()){
 				log.debug("param : " + param);
 				formParams.add(new BasicNameValuePair(param.getKey(), param.getValue()[0]));
 			}
@@ -97,7 +97,7 @@ public final class HttpRequest {
 	private String getContent() throws IOException {
 		log.debug("getContent()");
 		try {
-			HttpGet httpget = new HttpGet(ParamUtil.generateOAuthQuery(url, paramLister.paramSet()));
+			HttpGet httpget = new HttpGet(ParamUtil.generateOAuthQuery(url, paramList.paramSet()));
 			log.debug("connect url  " + httpget.getURI().toURL());
 
 			log.debug("Executing request " + httpget.getRequestLine());

@@ -10,16 +10,15 @@ import org.scriptonbasestar.oauth.client.core.model.State;
 @Slf4j
 public class DefaultStateNobi implements StateNobi {
 
-	private final String name;
 	private final char separator;
 
-	public DefaultStateNobi(String name){
-		this.name = name;
+	public DefaultStateNobi(){
 		this.separator = '-';
 	}
 
 	@Override
-	public State getState() {
-		return new State(name + separator + System.currentTimeMillis());
+	public State getState(String serviceName) {
+		return new State(serviceName + separator + System.currentTimeMillis());
 	}
+
 }

@@ -7,5 +7,5 @@ import org.scriptonbasestar.oauth.client.core.model.State;
  * @since 2016-10-27
  */
 public interface StateNobi {
-	 State getState();
+	 State getState(String serviceName);
 }

@@ -15,7 +15,7 @@ import org.scriptonbasestar.oauth.client.o20.type.ResponseFormatType;
 public class OAuth20AuthorizeTokenConfig {
 	@NonNull
 	private String authorizeUrl;
-	@NonNull
+//	@NonNull
 	private String callbackUrl;
 	@NonNull
 	private TokenNobi tokenFormatNobi;
