@@ -4,12 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.scriptonbasestar.tool.core.check.Check;
 
+import java.io.Serializable;
+
 /**
  * @author archmagece
  * @since 2016-10-25 22
  */
 @EqualsAndHashCode
-public abstract class StringModelBase {
+public abstract class StringModelBase implements Serializable {
 	@Getter
 	protected final String value;
 
