@@ -48,9 +48,9 @@ public class BeanConfig {
 <!-- repository -->
 <repositories>
 	<repository>
-			<id>jcenter</id>
-			<name>bintray</name>
-			<url>https://jcenter.bintray.com</url>
+			<id>bintray-archmagece-jvm-repo</id>
+			<name>bintray-archmagece-jvm-repo</name>
+			<url>https://dl.bintray.com/archmagece/jvm-repo</url>
 	</repository>
 </repositories>
 ```
