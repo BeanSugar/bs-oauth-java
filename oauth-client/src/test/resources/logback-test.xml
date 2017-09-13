@@ -11,7 +11,7 @@
 	</appender>
 	<!--
 	<appender name="file" class="ch.qos.logback.core.FileAppender">
-		<file>logs/org.beansugar.web.log.txt</file>
+		<file>logs/org.scriptonbasestar.oauth.log.txt</file>
 		<append>true</append>
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36}.%method : %msg%n</pattern>
@@ -20,7 +20,7 @@
 		</encoder>
 	</appender>
 	-->
-	<logger name="org.beansugar.oauth" level="TRACE"/>
+	<logger name="org.scriptonbasestar.oauth" level="TRACE"/>
 	<root level="DEBUG">
 		<appender-ref ref="console"/>
 	</root>

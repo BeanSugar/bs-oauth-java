@@ -1,16 +1,16 @@
 package org.scriptonbasestar.oauth.connector.kakao;
 
 import com.google.gson.Gson;
-import org.beansugar.oauth.client.base.model.OAuthPersonalConfig;
-import org.beansugar.oauth.client.core.model.State;
-import org.beansugar.oauth.client.core.nobi.DefaultStateNobi;
-import org.beansugar.oauth.client.core.nobi.TokenNobi;
-import org.beansugar.oauth.client.o20.client.OAuth20Client;
-import org.beansugar.oauth.client.o20.model.OAuth20AccessTokenConfig;
-import org.beansugar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
-import org.beansugar.oauth.client.o20.model.Token20;
-import org.beansugar.oauth.client.o20.type.AccessTokenType;
-import org.beansugar.oauth.client.o20.type.ResponseFormatType;
+import org.scriptonbasestar.oauth.client.base.model.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.core.model.State;
+import org.scriptonbasestar.oauth.client.core.nobi.DefaultStateNobi;
+import org.scriptonbasestar.oauth.client.core.nobi.TokenNobi;
+import org.scriptonbasestar.oauth.client.o20.client.OAuth20Client;
+import org.scriptonbasestar.oauth.client.o20.model.OAuth20AccessTokenConfig;
+import org.scriptonbasestar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
+import org.scriptonbasestar.oauth.client.o20.model.Token20;
+import org.scriptonbasestar.oauth.client.o20.type.AccessTokenType;
+import org.scriptonbasestar.oauth.client.o20.type.ResponseFormatType;
 import org.junit.Before;
 import org.junit.Test;
 import org.scriptonbasestar.tool.core.prop.SBPropertiesUtil;

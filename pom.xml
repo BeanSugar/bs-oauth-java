@@ -6,7 +6,7 @@
 	<version>20170913-1-RELEASE</version>
 
 	<name>BS OAuth library</name>
-	<url>https://github.com/BeanSugar/bs-oauth-java</url>
+	<url>https://github.com/ScriptonBasestar-Lib/sb-oauth-java</url>
 	<description>OAuth library 만들어보는중.</description>
 	<packaging>pom</packaging>
 
@@ -136,8 +136,9 @@
 			<url>https://api.bintray.com/maven/archmagece/jvm-repo/sb-oauth-java/;publish=1</url>
 		</repository>
 		<snapshotRepository>
-			<id>beansugar-public-snapshot</id>
-			<url>http://nexus.polypia.net/repository/maven-public-snapshot</url>
+			<id>bintray-archmagece-jvm-repo-snapshot</id>
+			<name>archmagece-jvm-repo-snapshot</name>
+			<url>https://dl.bintray.com/archmagece/jvm-repo-snapshot</url>
 		</snapshotRepository>
 	</distributionManagement>
 
