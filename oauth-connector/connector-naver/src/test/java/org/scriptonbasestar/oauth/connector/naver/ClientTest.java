@@ -1,6 +1,7 @@
 package org.scriptonbasestar.oauth.connector.naver;
 
 import com.google.gson.Gson;
+import org.junit.Ignore;
 import org.scriptonbasestar.oauth.client.base.model.OAuthPersonalConfig;
 import org.scriptonbasestar.oauth.client.core.model.State;
 import org.scriptonbasestar.oauth.client.core.nobi.DefaultStateNobi;
@@ -72,6 +73,7 @@ public class ClientTest {
 	}
 
 	@Test
+	@Ignore
 	public void test(){
 		State state0 = new DefaultStateNobi(SERVICE_NAME).getState();
 		String urlString = client.getAuthorizeUrl(state0);
