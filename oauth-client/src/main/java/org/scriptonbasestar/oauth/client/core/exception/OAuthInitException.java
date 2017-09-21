@@ -6,10 +6,10 @@ package org.scriptonbasestar.oauth.client.core.exception;
  */
 public class OAuthInitException extends OAuthException {
 
-	private static final String MSG = "초기화 실패";
+	private static final String DEFAULT_MSG = "초기화 실패";
 
 	public OAuthInitException() {
-		super(MSG);
+		super(DEFAULT_MSG);
 	}
 
 	public OAuthInitException(String message) {

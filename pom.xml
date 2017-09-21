@@ -1,14 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
-	<version>20170913-2-RELEASE</version>
-
-	<name>BS OAuth library</name>
-	<url>https://github.com/ScriptonBasestar-Lib/sb-oauth-java</url>
-	<description>OAuth library 만들어보는중.</description>
 	<packaging>pom</packaging>
+	<version>sb-oauth-20180914-DEV</version>
+
+	<name>Scripton OAuth Library</name>
+	<url>https://github.com/ScriptonBasestar-io/sb-oauth-java</url>
+	<description>OAuth Library - 내부사용</description>
 
 	<modules>
 		<module>oauth-client</module>
@@ -17,101 +18,31 @@
 	</modules>
 
 	<properties>
-		<java_version>1.7</java_version>
+		<java_version>1.8</java_version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<!-- tool -->
-		<scriptonbasestar_tool_version>20170913-1-RELEASE</scriptonbasestar_tool_version>
+		<sb_tools_java_version>sb-tools-20180914-DEV</sb_tools_java_version>
 
-		<!--ver 20170912-->
-		<groovy_version>2.4.12</groovy_version>
-		<kotlin_version>1.1.4-2</kotlin_version>
-
-		<!-- spring -->
-		<spring_boot_version>1.5.6.RELEASE</spring_boot_version>
-		<spring_version>4.3.11.RELEASE</spring_version>
-		<spring_loaded_version>1.2.7.RELEASE</spring_loaded_version>
-		<spring_webflow_version>2.4.5.RELEASE</spring_webflow_version>
-		<spring_cloud_version>Dalston.SR3</spring_cloud_version>
-		<spring_oauth_version>2.2.0.RELEASE</spring_oauth_version>
-		<spring_mobile_version>1.1.5.RELEASE</spring_mobile_version>
-		<spring_ws_version>2.4.0.RELEASE</spring_ws_version>
-		<spring_security_version>4.2.2.RELEASE</spring_security_version>
-		<spring_amqp_version>1.7.1.RELEASE</spring_amqp_version>
-
-		<keycload_version>3.2.1.Final</keycload_version>
-
-		<aspectj_version>1.8.10</aspectj_version>
-		<jackson_fastxml_version>2.8.7</jackson_fastxml_version>
-		<modelmapper_version>1.1.0</modelmapper_version>
-		<xstream_version>1.4.9</xstream_version>
-
-		<!--data-->
-		<hikari_version>2.6.1</hikari_version>
-		<mongodb-version>3.4.2</mongodb-version>
-		<hibernate_envers_version>5.2.10.Final</hibernate_envers_version>
-
-		<grpc_version>1.3.0</grpc_version>
-		<querydsl_version>4.1.4</querydsl_version>
-
-		<guava_version>21.0</guava_version>
-		<gson_version>2.8.1</gson_version>
-		<joda_version>2.9.9</joda_version>
-
-		<apache_httpcomponents_core_version>4.4.6</apache_httpcomponents_core_version>
-		<apache_httpcomponents_version>4.5.3</apache_httpcomponents_version>
-		<netty_version>4.1.9.Final</netty_version>
-
-		<!--commons-->
-		<commons_dbcp2_version>2.1.1</commons_dbcp2_version>
-		<commons_lang3_version>3.5</commons_lang3_version>
-		<commons_codec_version>1.10</commons_codec_version>
-		<commons_net_version>3.6</commons_net_version>
-		<commons_io_version>2.5</commons_io_version>
-		<commons_collection_version>3.2.2</commons_collection_version>
-		<commons_cli_version>1.4</commons_cli_version>
-		<commons_logging_version>1.2</commons_logging_version>
-		<commons_beanutils_version>1.9.3</commons_beanutils_version>
-		<commons_fileupload_version>1.3.1</commons_fileupload_version>
-
-		<!--crypto-->
+		<!-- project -->
+		<guava_version>26.0-jre</guava_version>
+		<avro_version>1.8.2</avro_version>
 		<jasypt_version>1.9.2</jasypt_version>
+		<commons_net_version>3.6</commons_net_version>
+		<jodd_core_version>4.3.1</jodd_core_version>
+		<jackson_fastxml_version>2.9.6</jackson_fastxml_version>
+		<xstream_version>1.4.10</xstream_version>
+		<javax_jsp_version>2.3.3</javax_jsp_version>
 
-		<!--rpc-->
-		<avro_version>1.8.1</avro_version>
-
-		<!--view-->
-		<thymeleaf_version>3.0.7.RELEASE</thymeleaf_version>
-		<thymeleaf_layout_version>2.2.2</thymeleaf_layout_version>
-		<tiles_version>2.2.2</tiles_version>
-		<!--<tiles_version>3.0.7</tiles_version>-->
-
-		<!--servlet-->
-		<!--<javax_servlet_version>3.1.0</javax_servlet_version>-->
-		<javax_servlet_version>4.0.0</javax_servlet_version>
-		<!--<javax_jsp_version>2.2</javax_jsp_version>-->
-		<javax_jsp_version>2.3.1</javax_jsp_version>
-		<javax_jstl_version>1.2</javax_jstl_version>
-		<javax_el_version>3.0.0</javax_el_version>
-		<javax_validation_version>1.1.0.Final</javax_validation_version>
-		<javax_mail_version>1.4.7</javax_mail_version>
-
-		<!--logging-->
-		<slf4j_version>1.7.25</slf4j_version>
-		<logback_version>1.2.3</logback_version>
-
-		<!--test-->
-		<junit_version>4.12</junit_version>
-
-		<!--for all-->
-		<lombok_version>1.16.18</lombok_version>
+		<springboot_version>2.0.5.RELEASE</springboot_version>
 	</properties>
 
 	<scm>
-		<connection>scm:https://github.com/ScriptonBasestar-Lib/sb-oauth-java.git</connection>
-		<developerConnection>scm:https://github.com/ScriptonBasestar-Lib/sb-oauth-java.git</developerConnection>
-		<url>https://github.com/ScriptonBasestar-Lib/sb-oauth-java.git</url>
+		<connection>scm:https://github.com/ScriptonBasestar-io/sb-oauth-java.git</connection>
+		<developerConnection>scm:https://github.com/ScriptonBasestar-io/sb-oauth-java.git</developerConnection>
+		<url>https://github.com/ScriptonBasestar-io/sb-oauth-java.git</url>
 	</scm>
 
 	<repositories>
@@ -133,97 +64,70 @@
 		<repository>
 			<id>bintray-archmagece-jvm-repo</id>
 			<name>archmagece-jvm-repo</name>
-			<url>https://api.bintray.com/maven/archmagece/jvm-repo/sb-oauth-java/;publish=1</url>
+			<url>https://api.bintray.com/maven/archmagece/jvm-repo/sb-tools-java/;publish=1</url>
 		</repository>
-		<snapshotRepository>
-			<id>bintray-archmagece-jvm-repo-snapshot</id>
-			<name>archmagece-jvm-repo-snapshot</name>
-			<url>https://dl.bintray.com/archmagece/jvm-repo-snapshot</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>kr.scripton.tools</groupId>
+				<artifactId>sb-tools-core</artifactId>
+				<version>${sb_tools_java_version}</version>
+			</dependency>
+
+			<dependency>
 				<groupId>org.scriptonbasestar.oauth</groupId>
 				<artifactId>oauth-client</artifactId>
-				<version>${project.version}</version>
+				<version>sb-oauth-20180914-DEV</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springboot_version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.scriptonbasestar.tool</groupId>
-			<artifactId>core</artifactId>
-			<version>${scriptonbasestar_tool_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.scriptonbasestar.tool</groupId>
-			<artifactId>collection</artifactId>
-			<version>${scriptonbasestar_tool_version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>${groovy_version}</version>
 		</dependency>
 
 		<!-- commons -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>${commons_codec_version}</version>
 		</dependency>
 
 		<!-- gson,json -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>${gson_version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>${apache_httpcomponents_version}</version>
 		</dependency>
 
 		<!-- Logging -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j_version}</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${logback_version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
 		</dependency>
 		<!-- /Logging -->
-
-
 
 		<!-- project lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>${lombok_version}</version>
 			<scope>provided</scope>
 		</dependency>
-
 
 		<!-- Guava -->
 		<dependency>
@@ -242,7 +146,6 @@
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
-			<version>${netty_version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -250,68 +153,8 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit_version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<source>${java_version}</source>
-					<target>${java_version}</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.4</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.gmavenplus</groupId>
-				<artifactId>gmavenplus-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>addSources</goal>
-							<goal>addTestSources</goal>
-							<goal>generateStubs</goal>
-							<goal>compile</goal>
-							<!--<goal>testGenerateStubs</goal>-->
-							<!--<goal>testCompile</goal>-->
-							<goal>removeStubs</goal>
-							<goal>removeTestStubs</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

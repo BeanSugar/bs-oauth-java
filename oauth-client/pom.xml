@@ -4,12 +4,16 @@
 	<parent>
 		<groupId>org.scriptonbasestar.oauth</groupId>
 		<artifactId>sb-oauth-java</artifactId>
-		<version>20170913-2-RELEASE</version>
+		<version>sb-oauth-20180914-DEV</version>
 	</parent>
 
 	<artifactId>oauth-client</artifactId>
 
 	<dependencies>
+		<dependency>
+			<groupId>kr.scripton.tools</groupId>
+			<artifactId>sb-tools-core</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

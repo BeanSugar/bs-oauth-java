@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>org.scriptonbasestar.oauth</groupId>
 		<artifactId>oauth-connector</artifactId>
-		<version>20170913-2-RELEASE</version>
+		<version>sb-oauth-20180914-DEV</version>
 	</parent>
 
-	<artifactId>connector-facebook</artifactId>
+	<artifactId>oauth-connector-facebook</artifactId>
 
 	<dependencies>
 	</dependencies>

@@ -6,10 +6,10 @@ package org.scriptonbasestar.oauth.client.core.exception;
  */
 public class OAuthAuthException extends OAuthException {
 
-	private static final String MSG = "인증/권한 오류";
+	private static final String DEFAULT_MSG = "인증/권한 오류";
 
 	public OAuthAuthException() {
-		super(MSG);
+		super(DEFAULT_MSG);
 	}
 
 	public OAuthAuthException(String message) {

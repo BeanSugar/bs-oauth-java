@@ -6,10 +6,10 @@ package org.scriptonbasestar.oauth.client.core.exception;
  */
 public abstract class OAuthException extends RuntimeException {
 
-	private static final String MSG = "알 수 없는 실패";
+	private static final String DEFAULT_MSG = "알 수 없는 실패";
 
 	public OAuthException() {
-		super(MSG);
+		super(DEFAULT_MSG);
 	}
 
 	public OAuthException(String message) {

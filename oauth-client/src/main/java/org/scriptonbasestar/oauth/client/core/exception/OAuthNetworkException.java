@@ -6,10 +6,10 @@ package org.scriptonbasestar.oauth.client.core.exception;
  */
 public class OAuthNetworkException extends OAuthException {
 
-	private static final String MSG = "네트워크 오류";
+	private static final String DEFAULT_MSG = "네트워크 오류";
 
 	public OAuthNetworkException() {
-		super(MSG);
+		super(DEFAULT_MSG);
 	}
 
 	public OAuthNetworkException(String message) {

@@ -4,10 +4,11 @@
 	<parent>
 		<groupId>org.scriptonbasestar.oauth</groupId>
 		<artifactId>oauth-connector</artifactId>
-		<version>20170913-2-RELEASE</version>
+		<!--suppress MavenPropertyInParent -->
+		<version>sb-oauth-20180914-DEV</version>
 	</parent>
 
-	<artifactId>connector-twitter</artifactId>
+	<artifactId>oauth-connector-twitter</artifactId>
 
 	<dependencies>
 	</dependencies>

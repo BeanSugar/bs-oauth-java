@@ -6,10 +6,10 @@ package org.scriptonbasestar.oauth.client.core.exception;
  */
 public class OAuthNetworkRemoteException extends OAuthException {
 
-	private static final String MSG = "원격 서버 접속 오류";
+	private static final String DEFAULT_MSG = "원격 서버 접속 오류";
 
 	public OAuthNetworkRemoteException() {
-		super(MSG);
+		super(DEFAULT_MSG);
 	}
 
 	public OAuthNetworkRemoteException(String message) {

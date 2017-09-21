@@ -6,10 +6,10 @@ package org.scriptonbasestar.oauth.client.core.exception;
  */
 public class OAuthParamException extends OAuthException {
 
-	private static final String MSG = "파라미터 오류";
+	private static final String DEFAULT_MSG = "파라미터 오류";
 
 	public OAuthParamException() {
-		super(MSG);
+		super(DEFAULT_MSG);
 	}
 
 	public OAuthParamException(String message) {

@@ -1,6 +1,8 @@
 # bs-oauth-java
-자바 OAuth 라이브러리
+자바 OAuth Client 라이브러리
 
+spec
+https://tools.ietf.org/html/rfc6749
 
 ## 기능목록
 Facebook
@@ -10,7 +12,6 @@ Naver
 Kakao
 Twitter
 
-
 2차. SpringSecurity 연동
 
 OAuth 1,2 클라이언트.
@@ -18,7 +19,7 @@ OAuth 1,2 클라이언트.
 
 ## 사용법 Usage
 
-사용법은 test - org.scriptonbasestar.oauth.examples.~ 참고
+적절히
 
 
 ### 스프링에서 사용 예시(예 facebook)
@@ -49,7 +50,6 @@ public class BeanConfig {
 <repositories>
 	<repository>
 			<id>bintray-archmagece-jvm-repo</id>
-			<name>bintray-archmagece-jvm-repo</name>
 			<url>https://dl.bintray.com/archmagece/jvm-repo</url>
 	</repository>
 </repositories>
@@ -60,7 +60,7 @@ public class BeanConfig {
 <dependency>
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
-	<version>20170913-2-RELEASE</version>
+	<version>sb-oauth-20180914-DEV</version>
 </dependency>
 ```
 
