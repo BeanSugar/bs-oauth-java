@@ -15,6 +15,7 @@
 		<module>oauth-client</module>
 		<module>oauth-connector</module>
 		<module>oauth-integration</module>
+		<module>oauth-storage</module>
 	</modules>
 
 	<properties>
@@ -73,6 +74,11 @@
 			<dependency>
 				<groupId>kr.scripton.tools</groupId>
 				<artifactId>sb-tools-core</artifactId>
+				<version>${sb_tools_java_version}</version>
+			</dependency>
+			<dependency>
+				<groupId>kr.scripton.tools</groupId>
+				<artifactId>sb-tools-validation</artifactId>
 				<version>${sb_tools_java_version}</version>
 			</dependency>
 

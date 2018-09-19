@@ -3,23 +3,25 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.scriptonbasestar.oauth</groupId>
-		<artifactId>sb-oauth-java</artifactId>
+		<artifactId>oauth-storage</artifactId>
 		<version>sb-oauth-20180914-DEV</version>
 	</parent>
 
-	<artifactId>oauth-client</artifactId>
+	<artifactId>oauth-storage-redis</artifactId>
 
 	<dependencies>
 		<dependency>
-			<groupId>kr.scripton.tools</groupId>
-			<artifactId>sb-tools-core</artifactId>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
 		</dependency>
-
-
-		<!--<dependency>-->
-			<!--<groupId>com.fasterxml.jackson.core</groupId>-->
-			<!--<artifactId>jackson-annotations</artifactId>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

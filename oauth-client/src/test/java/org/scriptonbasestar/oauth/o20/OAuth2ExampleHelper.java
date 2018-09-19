@@ -11,7 +11,6 @@ import org.scriptonbasestar.oauth.client.core.exception.OAuthAuthException;
 import org.scriptonbasestar.oauth.client.o20.client.OAuth20Client;
 import org.scriptonbasestar.oauth.client.o20.model.Token20;
 import org.scriptonbasestar.oauth.client.core.model.State;
-import org.scriptonbasestar.oauth.client.core.nobi.DefaultStateNobi;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

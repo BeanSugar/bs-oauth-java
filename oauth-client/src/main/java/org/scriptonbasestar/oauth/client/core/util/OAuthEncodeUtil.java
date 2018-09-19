@@ -15,13 +15,17 @@ public final class OAuthEncodeUtil {
 
 	private static String CHARSET = "UTF-8";
 
-	public static String encode(String value) throws UnsupportedEncodingException {
-		return URLEncoder.encode(value, CHARSET);
+	public static String encode(String value) {
+		try {
+			return URLEncoder.encode(value, CHARSET);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
-	public static String[] encodeArray(String[] values) throws UnsupportedEncodingException {
+	public static String[] encodeArray(String[] values) {
 		for (int i = 0; i < values.length; i++) {
-			values[i] = URLEncoder.encode(values[i], CHARSET);
+			values[i] = OAuthEncodeUtil.encode(values[i]);
 		}
 		return values;
 	}

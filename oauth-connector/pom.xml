@@ -26,6 +26,11 @@
 			<groupId>org.scriptonbasestar.oauth</groupId>
 			<artifactId>oauth-client</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>kr.scripton.tools</groupId>
+			<artifactId>sb-tools-validation</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

@@ -3,7 +3,7 @@ package org.scriptonbasestar.oauth.client.o20.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
-import org.scriptonbasestar.oauth.client.core.nobi.TokenNobi;
+import org.scriptonbasestar.oauth.client.core.token.TokenExtractor;
 import org.scriptonbasestar.oauth.client.core.type.OAuthHttpVerb;
 import org.scriptonbasestar.oauth.client.core.type.SignatureType;
 import org.scriptonbasestar.oauth.client.o20.type.ResponseFormatType;
@@ -27,7 +27,7 @@ public class OAuth20ResourceConfig {
 	private String callbackUrl;
 	private String scope;
 	@NonNull
-	private TokenNobi tokenFormatNobi;
+	private TokenExtractor tokenFormatNobi;
 
 	public static class OAuth20ResourceConfigBuilder{
 		private boolean oobSupport = false;

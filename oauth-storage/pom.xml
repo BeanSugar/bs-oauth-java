@@ -7,19 +7,19 @@
 		<version>sb-oauth-20180914-DEV</version>
 	</parent>
 
-	<artifactId>oauth-client</artifactId>
+	<artifactId>oauth-storage</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>storage-ehcache</module>
+		<module>storage-redis</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
-			<groupId>kr.scripton.tools</groupId>
-			<artifactId>sb-tools-core</artifactId>
+			<groupId>org.scriptonbasestar.oauth</groupId>
+			<artifactId>oauth-client</artifactId>
 		</dependency>
-
-
-		<!--<dependency>-->
-			<!--<groupId>com.fasterxml.jackson.core</groupId>-->
-			<!--<artifactId>jackson-annotations</artifactId>-->
-		<!--</dependency>-->
 	</dependencies>
 
 </project>

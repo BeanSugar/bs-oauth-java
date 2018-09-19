@@ -2,10 +2,9 @@ package org.scriptonbasestar.oauth.connector.naver;
 
 import com.google.gson.Gson;
 import org.junit.Ignore;
-import org.scriptonbasestar.oauth.client.base.model.OAuthPersonalConfig;
-import org.scriptonbasestar.oauth.client.core.model.State;
-import org.scriptonbasestar.oauth.client.core.nobi.DefaultStateNobi;
-import org.scriptonbasestar.oauth.client.core.nobi.JsonTokenNobi;
+import org.scriptonbasestar.oauth.client.core.model.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.core.nobi.RandomStringStateGenerator;
+import org.scriptonbasestar.oauth.client.core.nobi.JsonTokenExtractor;
 import org.scriptonbasestar.oauth.client.o20.client.OAuth20Client;
 import org.scriptonbasestar.oauth.client.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
@@ -42,7 +41,7 @@ public class ClientTest {
 
 		client = new OAuth20Client(
 				SERVICE_NAME,
-				new DefaultStateNobi(),
+				new RandomStringStateGenerator(),
 				new OAuthPersonalConfig(propBaseCofig.getProperty("naver.apiKey"), propBaseCofig.getProperty("naver.secret")),
 				OAuth20AuthorizeTokenConfig.builder()
 						.authorizeUrl("https://nid.naver.com/oauth2.0/authorize")
@@ -57,8 +56,8 @@ public class ClientTest {
 //					기본 scope 자동적용
 //					.scope("")
 
-						.tokenFormatNobi(new JsonTokenNobi())
-//					.tokenFormatNobi(new TokenStreamOutNobi())
+						.tokenFormatNobi(new JsonTokenExtractor())
+//					.tokenFormatNobi(new TokenStreamOutExtractor())
 						.build(),
 				OAuth20AccessTokenConfig.builder()
 						.accessTokenUrl("https://nid.naver.com/oauth2.0/token")
@@ -68,8 +67,8 @@ public class ClientTest {
 //					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)
 
-						.tokenFormatNobi(new JsonTokenNobi())
-//					.tokenFormatNobi(new TokenStreamOutNobi())
+						.tokenFormatNobi(new JsonTokenExtractor())
+//					.tokenFormatNobi(new TokenStreamOutExtractor())
 						.build()
 		);
 	}

@@ -10,7 +10,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.scriptonbasestar.oauth.client.core.model.State;
-import org.scriptonbasestar.oauth.client.core.nobi.StateNobi;
+import org.scriptonbasestar.oauth.client.core.token.StateGenerator;
 import org.scriptonbasestar.oauth.client.http.HttpRequest;
 import org.scriptonbasestar.oauth.client.o20.model.Token20;
 import org.scriptonbasestar.tool.core.check.Check;
@@ -22,7 +22,7 @@ import org.scriptonbasestar.oauth.client.http.ParamUtil;
 import org.scriptonbasestar.oauth.client.o20.OAuth20Constants;
 import org.scriptonbasestar.oauth.client.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
-import org.scriptonbasestar.oauth.client.base.model.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.core.model.OAuthPersonalConfig;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -34,7 +34,7 @@ import java.io.UnsupportedEncodingException;
 public class OAuth20Client {
 
 	private final String serviceName;
-	private final StateNobi stateNobi;
+	private final StateGenerator stateNobi;
 	private final OAuthPersonalConfig oAuth20PersonalConfig;
 	private final OAuth20AuthorizeTokenConfig oAuth20AuthorizeTokenConfig;
 	private final OAuth20AccessTokenConfig oAuth20AccessTokenConfig;
@@ -42,7 +42,7 @@ public class OAuth20Client {
 
 	public OAuth20Client(
 			String serviceName,
-			StateNobi stateNobi,
+			StateGenerator stateNobi,
 			OAuthPersonalConfig oAuth20PersonalConfig,
 			OAuth20AuthorizeTokenConfig oAuth20SiteAuthConfig,
 			OAuth20AccessTokenConfig oAuth20AccessTokenConfig
@@ -61,7 +61,7 @@ public class OAuth20Client {
 	}
 
 	public State generateState(){
-		return stateNobi.getState(serviceName);
+		return stateNobi.generate(serviceName);
 	}
 
 	public String getAuthorizeUrl(State state) {
@@ -81,9 +81,7 @@ public class OAuth20Client {
 		if (oAuth20AuthorizeTokenConfig.getScope() != null) {
 			paramList.add(OAuth20Constants.SCOPE.getValue(), oAuth20AuthorizeTokenConfig.getScope());
 		}
-		if (state != null) {
-			paramList.add(OAuth20Constants.STATE.getValue(), state.getValue());
-		}
+		paramList.add(OAuth20Constants.STATE.getValue(), state.getValue());
 		try {
 			return ParamUtil.generateOAuthQuery(oAuth20AuthorizeTokenConfig.getAuthorizeUrl(), paramList.paramSet());
 		} catch (UnsupportedEncodingException e) {
@@ -160,7 +158,7 @@ public class OAuth20Client {
 			ResponseHandler<String> responseHandler1 = new ResponseHandler<String>() {
 				@Override
 				public String handleResponse(
-						final HttpResponse response) throws ClientProtocolException, IOException {
+						final HttpResponse response) throws IOException {
 					int status = response.getStatusLine().getStatusCode();
 					if (status >= 200 && status < 300) {
 						HttpEntity entity = response.getEntity();
@@ -186,6 +184,10 @@ public class OAuth20Client {
 			}
 		}
 		return null;
+	}
+
+	public void removeToken(){
+
 	}
 
 //	private Map<String, String> parseHeaders(HttpURLConnection conn) {

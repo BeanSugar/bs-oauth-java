@@ -1,5 +1,7 @@
 # bs-oauth-java
-자바 OAuth Client 라이브러리
+자바 OAuth2 Client 라이브러리
+
+1.0a 안씀. 제대로된 사이트는 전부 1.0 지원 끊음.
 
 spec
 https://tools.ietf.org/html/rfc6749
@@ -10,7 +12,6 @@ Facebook
   bearer
 Naver
 Kakao
-Twitter
 
 2차. SpringSecurity 연동
 

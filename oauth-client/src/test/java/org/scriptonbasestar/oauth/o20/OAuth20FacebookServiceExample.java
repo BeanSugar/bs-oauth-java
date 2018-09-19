@@ -1,8 +1,8 @@
 package org.scriptonbasestar.oauth.o20;
 
-import org.scriptonbasestar.oauth.client.base.model.OAuthPersonalConfig;
-import org.scriptonbasestar.oauth.client.core.nobi.DefaultStateNobi;
-import org.scriptonbasestar.oauth.client.core.nobi.JsonTokenNobi;
+import org.scriptonbasestar.oauth.client.core.model.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.core.nobi.RandomStringStateGenerator;
+import org.scriptonbasestar.oauth.client.core.nobi.JsonTokenExtractor;
 import org.scriptonbasestar.oauth.client.o20.client.OAuth20Client;
 import org.scriptonbasestar.oauth.client.o20.model.OAuth20AccessTokenConfig;
 import org.scriptonbasestar.oauth.client.o20.model.OAuth20AuthorizeTokenConfig;
@@ -21,7 +21,7 @@ public class OAuth20FacebookServiceExample {
 	private static final String redirectUri = "http://test1.polypia.net/callback1";
 	private static OAuth20Client oAuth20Service = new OAuth20Client(
 			SERVICE_NAME,
-			new DefaultStateNobi(),
+			new RandomStringStateGenerator(),
 			new OAuthPersonalConfig("client-id", "client-secret"),
 			OAuth20AuthorizeTokenConfig.builder()
 					.authorizeUrl("https://www.facebook.com/v2.8/dialog/oauth")
@@ -36,8 +36,8 @@ public class OAuth20FacebookServiceExample {
 					//nullable scope 없을시 기본값 적용
 					.scope("public_profile user_friends email")
 
-					.tokenFormatNobi(new JsonTokenNobi())
-//					.tokenFormatNobi(new TokenStreamOutNobi())
+					.tokenFormatNobi(new JsonTokenExtractor())
+//					.tokenFormatNobi(new TokenStreamOutExtractor())
 					.build(),
 			OAuth20AccessTokenConfig.builder()
 					.accessTokenUrl("https://graph.facebook.com/v2.8/oauth/access_token")
@@ -46,8 +46,8 @@ public class OAuth20FacebookServiceExample {
 //					.accessTokenVerb(OAuthHttpVerb.POST)
 //					.signatureType(SignatureType.Header)
 
-					.tokenFormatNobi(new JsonTokenNobi())
-//					.tokenFormatNobi(new TokenStreamOutNobi())
+					.tokenFormatNobi(new JsonTokenExtractor())
+//					.tokenFormatNobi(new TokenStreamOutExtractor())
 					.build()
 	);
 

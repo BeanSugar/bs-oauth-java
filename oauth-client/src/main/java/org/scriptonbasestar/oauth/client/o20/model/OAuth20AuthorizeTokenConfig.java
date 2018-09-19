@@ -3,7 +3,7 @@ package org.scriptonbasestar.oauth.client.o20.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
-import org.scriptonbasestar.oauth.client.core.nobi.TokenNobi;
+import org.scriptonbasestar.oauth.client.core.token.TokenExtractor;
 import org.scriptonbasestar.oauth.client.o20.type.ResponseFormatType;
 
 /**
@@ -18,7 +18,7 @@ public class OAuth20AuthorizeTokenConfig {
 //	@NonNull
 	private String callbackUrl;
 	@NonNull
-	private TokenNobi tokenFormatNobi;
+	private TokenExtractor tokenFormatNobi;
 
 	private boolean oobSupport;
 	//oauth spec 필수
