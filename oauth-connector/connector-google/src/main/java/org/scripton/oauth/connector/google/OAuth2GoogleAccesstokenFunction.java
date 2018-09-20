@@ -1,4 +1,4 @@
-package org.scripton.oauth.connector.naver;
+package org.scripton.oauth.connector.google;
 
 import org.scriptonbasestar.oauth.client.OAuth20Constants;
 import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
@@ -11,19 +11,20 @@ import org.scriptonbasestar.oauth.client.model.Verifier;
 import org.scriptonbasestar.oauth.client.nobi.TokenStorage;
 import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
 import org.scriptonbasestar.oauth.client.type.GrantType;
+import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
 import org.scriptonbasestar.tool.core.check.Check;
 
-public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction<OAuth2NaverTokenRes> {
+public class OAuth2GoogleAccesstokenFunction implements OAuth2AccessTokenFunction<OAuth2GoogleTokenRes> {
 
-	private final OAuth2NaverConfig serviceConfig;
+	private final OAuth2GoogleConfig serviceConfig;
 	private final OAuthPersonalConfig personalConfig;
-	private final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor;
+	private final TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
 
-	public OAuth2NaverAccesstokenFunction(OAuth2NaverConfig serviceConfig,
-										  OAuthPersonalConfig personalConfig,
-										  TokenExtractor<OAuth2NaverTokenRes> tokenExtractor,
-										  TokenStorage tokenStorage
+	public OAuth2GoogleAccesstokenFunction(OAuth2GoogleConfig serviceConfig,
+										   OAuthPersonalConfig personalConfig,
+										   TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor,
+										   TokenStorage tokenStorage
 	) {
 		this.serviceConfig = serviceConfig;
 		this.personalConfig = personalConfig;
@@ -37,14 +38,14 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 	 * client_secret string Y
 	 * <p>
 	 * code string Y
-	 * state string Y
+	 * redirect_uri string Y
 	 *
 	 * @param verifier
 	 * @param state
 	 * @return
 	 */
 	@Override
-	public OAuth2NaverTokenRes issue(Verifier verifier, State state) {
+	public OAuth2GoogleTokenRes issue(Verifier verifier, State state) {
 		Check.notNull(verifier, "verifier must not null");
 		Check.notNull(state, "state must not null");
 
@@ -55,8 +56,8 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.CODE, verifier);
-		paramList.add(OAuth20Constants.STATE, state);
-//		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getAuthorizeUri());
+//		paramList.add(OAuth20Constants.STATE, state);
+		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getAuthorizeUri());
 
 		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
 
@@ -74,7 +75,7 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 	 * @return
 	 */
 	@Override
-	public OAuth2NaverTokenRes refresh(Token refreshToken) {
+	public OAuth2GoogleTokenRes refresh(Token refreshToken) {
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
@@ -99,34 +100,14 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 	 * @return
 	 */
 	@Override
-	public OAuth2NaverTokenRes revoke(Token accessToken) {
+	public OAuth2GoogleTokenRes revoke(Token accessToken) {
 		ParamList paramList = new ParamList();
 
-		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
-
 		paramList.add(OAuth20Constants.ACCESS_TOKEN, accessToken);
-		paramList.add("service_provider", "NAVER");
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getRevokeUri(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(OAuthHttpVerb.GET));
 	}
-
-//	@Override
-//	public OAuth2NaverTokenRes bearer() {
-//		ParamList paramList = new ParamList();
-//
-//		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.AUTHORIZATION_CODE);
-//		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-//		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
-//
-//		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.CLIENT_CREDENTIALS);
-//
-//		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
-//
-//		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
-//	}
 
 }

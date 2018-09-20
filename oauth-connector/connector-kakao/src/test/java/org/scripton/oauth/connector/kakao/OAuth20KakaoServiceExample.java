@@ -1,4 +1,4 @@
-package org.scripton.oauth.connector.naver;
+package org.scripton.oauth.connector.kakao;//package org.scripton.test.o20;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.scripton.test.OAuth2ExampleHelper;
@@ -17,8 +17,10 @@ import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
 /**
  * @author archmagece
  * @since 2016-10-25
+ * <p>
+ * 카카오는 api-secret이 null이다. 아예 없다.
  */
-public class OAuth20NaverServiceExample {
+public class OAuth20KakaoServiceExample {
 
 	private static final ReadSetting readSetting = ReadSetting.readProjectResource("setting.cfg");
 
@@ -29,24 +31,24 @@ public class OAuth20NaverServiceExample {
 	private static final String RESOURCE_PROFILE_URI = readSetting.getProperty("resource_profile_uri");
 
 
-	private static final OAuth2NaverConfig serviceConfig = new OAuth2NaverConfig();
+	private static final OAuth2KakaoConfig serviceConfig = new OAuth2KakaoConfig();
 	private static final OAuthPersonalConfig personalConfig = new OAuthPersonalConfig(
 		CLIENT_ID,
 		CLIENT_SECRET
 	);
-//	private static final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor = new PrintTokenExtractor<>();
-	private static final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor = new JsonTokenExtractor(new TypeReference<OAuth2NaverTokenRes>(){});
+//	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new PrintTokenExtractor<>();
+	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new JsonTokenExtractor(new TypeReference<OAuth2KakaoTokenRes>(){});
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
 	private static final OAuth2ExampleHelper exampleHelper = new OAuth2ExampleHelper(
 		SERVICE_NAME,
 		new RandomStringStateGenerator(SERVICE_NAME)
 	);
-	private static final OAuth2GenerateAuthorizeUrlFunction authorizeUrlFunction = new OAuth2NaverGenerateAuthorizeUrlFunction(
+	private static final OAuth2GenerateAuthorizeUrlFunction authorizeUrlFunction = new OAuth2KakaoGenerateAuthorizeUrlFunction(
 		serviceConfig, personalConfig, REDIRECT_URI
 	);
-	private static final OAuth2AccessTokenFunction<OAuth2NaverTokenRes> tokenFunction = new OAuth2NaverAccesstokenFunction(
-		serviceConfig, personalConfig, tokenExtractor, tokenStorage
+	private static final OAuth2AccessTokenFunction<OAuth2KakaoTokenRes> tokenFunction = new OAuth2KakaoAccesstokenFunction(
+		serviceConfig, personalConfig, tokenExtractor, tokenStorage, REDIRECT_URI
 	);
 	private static final OAuth2ResourceFunction resourceFunction = new DefaultOAuth2ResourceFunction(RESOURCE_PROFILE_URI);
 

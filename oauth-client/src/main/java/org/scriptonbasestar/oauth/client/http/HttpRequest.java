@@ -2,6 +2,7 @@ package org.scriptonbasestar.oauth.client.http;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.Consts;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -16,6 +17,9 @@ import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author archmagece
@@ -33,8 +37,27 @@ public final class HttpRequest {
 		this.url = url;
 		this.paramList = paramList;
 	}
+
+	private HttpRequest(String url, ParamList paramList, Collection<Header> headers) {
+		this.httpclient = HttpClients
+			.custom()
+			.setDefaultHeaders(headers)
+			.build();
+		this.url = url;
+		this.paramList = paramList;
+	}
+
+	public static HttpRequest create(String url) {
+		return new HttpRequest(url, new ParamList());
+	}
 	public static HttpRequest create(String url, ParamList paramList) {
 		return new HttpRequest(url, paramList);
+	}
+	public static HttpRequest create(String url, ParamList paramList, Collection<Header> headers) {
+		return new HttpRequest(url, paramList, headers);
+	}
+	public static HttpRequest create(String url, Collection<Header> headers) {
+		return new HttpRequest(url, new ParamList(), headers);
 	}
 
 	public String run(OAuthHttpVerb httpVerb) {

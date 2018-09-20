@@ -32,7 +32,7 @@ public interface OAuth2AccessTokenFunction<TOKEN_RES extends TokenPack> {
 
 	TOKEN_RES refresh(Token refreshToken);
 
-	TOKEN_RES delete(Token accessToken);
+	TOKEN_RES revoke(Token accessToken);
 
-	TOKEN_RES bearer();
+//	TOKEN_RES bearer();
 }

@@ -26,7 +26,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<sb_tools_java_version>sb-tools-20180914-DEV</sb_tools_java_version>
+		<sb_tools_java_version>sb-tools-20180921-DEV</sb_tools_java_version>
 
 		<!-- project -->
 		<guava_version>26.0-jre</guava_version>
@@ -73,12 +73,12 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>kr.scripton.tools</groupId>
+				<groupId>org.scriptonbasestar.tools</groupId>
 				<artifactId>sb-tools-core</artifactId>
 				<version>${sb_tools_java_version}</version>
 			</dependency>
 			<dependency>
-				<groupId>kr.scripton.tools</groupId>
+				<groupId>org.scriptonbasestar.tools</groupId>
 				<artifactId>sb-tools-validation</artifactId>
 				<version>${sb_tools_java_version}</version>
 			</dependency>

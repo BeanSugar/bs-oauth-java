@@ -1,4 +1,4 @@
-package org.scripton.oauth.connector.naver;
+package org.scripton.oauth.connector.google;
 
 import org.scriptonbasestar.oauth.client.OAuth20Constants;
 import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeUrlFunction;
@@ -8,26 +8,29 @@ import org.scriptonbasestar.oauth.client.http.ParamUtil;
 import org.scriptonbasestar.oauth.client.model.State;
 import org.scriptonbasestar.tool.core.check.Check;
 
-public class OAuth2NaverGenerateAuthorizeUrlFunction implements OAuth2GenerateAuthorizeUrlFunction {
+public class OAuth2GoogleGenerateAuthorizeUrlFunction implements OAuth2GenerateAuthorizeUrlFunction {
 
-	private final OAuth2NaverConfig serviceConfig;
+	private final OAuth2GoogleConfig serviceConfig;
 	private final OAuthPersonalConfig personalConfig;
 	private final String redirectUri;
 
-	public OAuth2NaverGenerateAuthorizeUrlFunction(OAuth2NaverConfig serviceConfig,
-												   OAuthPersonalConfig personalConfig,
-												   String redirectUri) {
+	public OAuth2GoogleGenerateAuthorizeUrlFunction(OAuth2GoogleConfig serviceConfig,
+													OAuthPersonalConfig personalConfig,
+													String redirectUri) {
 		this.serviceConfig = serviceConfig;
 		this.personalConfig = personalConfig;
 		this.redirectUri = redirectUri;
 	}
 
 	/**
-	 * response_type string Y "code"
 	 * client_id string Y
 	 * redirect_uri string Y
-	 * state string Y
-	 * scope string N null
+	 * scope string Y
+	 * access_type string Recommended online/offline
+	 * state string Recommended
+	 * include_granted_scopes string N true/false
+	 * login_hint string N 유저 정보를 알고있는경우 email/id 등
+	 * prompt string N none/consent/select_account
 	 *
 	 * @param state
 	 * @return

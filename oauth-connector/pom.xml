@@ -28,7 +28,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>kr.scripton.tools</groupId>
+			<groupId>org.scriptonbasestar.tools</groupId>
 			<artifactId>sb-tools-validation</artifactId>
 		</dependency>
 

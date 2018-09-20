@@ -1,4 +1,4 @@
-package org.scripton.oauth.connector.naver;
+package org.scripton.oauth.connector.kakao;
 
 import org.scriptonbasestar.oauth.client.OAuth20Constants;
 import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeUrlFunction;
@@ -8,13 +8,13 @@ import org.scriptonbasestar.oauth.client.http.ParamUtil;
 import org.scriptonbasestar.oauth.client.model.State;
 import org.scriptonbasestar.tool.core.check.Check;
 
-public class OAuth2NaverGenerateAuthorizeUrlFunction implements OAuth2GenerateAuthorizeUrlFunction {
+public class OAuth2KakaoGenerateAuthorizeUrlFunction implements OAuth2GenerateAuthorizeUrlFunction {
 
-	private final OAuth2NaverConfig serviceConfig;
+	private final OAuth2KakaoConfig serviceConfig;
 	private final OAuthPersonalConfig personalConfig;
 	private final String redirectUri;
 
-	public OAuth2NaverGenerateAuthorizeUrlFunction(OAuth2NaverConfig serviceConfig,
+	public OAuth2KakaoGenerateAuthorizeUrlFunction(OAuth2KakaoConfig serviceConfig,
 												   OAuthPersonalConfig personalConfig,
 												   String redirectUri) {
 		this.serviceConfig = serviceConfig;
@@ -23,12 +23,11 @@ public class OAuth2NaverGenerateAuthorizeUrlFunction implements OAuth2GenerateAu
 	}
 
 	/**
-	 * response_type string Y "code"
 	 * client_id string Y
 	 * redirect_uri string Y
-	 * state string Y
-	 * scope string N null
-	 *
+	 * response_type string Y
+	 * state string N
+	 * encode_state boolean N "false"
 	 * @param state
 	 * @return
 	 */
@@ -40,7 +39,7 @@ public class OAuth2NaverGenerateAuthorizeUrlFunction implements OAuth2GenerateAu
 			.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId())
 			.add(OAuth20Constants.REDIRECT_URI, redirectUri)
 			.add(OAuth20Constants.RESPONSE_TYPE, serviceConfig.getResponseType())
-//			.add(OAuth20Constants.SCOPE, )
-			.add(OAuth20Constants.STATE, state));
+			.add(OAuth20Constants.STATE, state)
+			.add("encode_state", "false"));
 	}
 }

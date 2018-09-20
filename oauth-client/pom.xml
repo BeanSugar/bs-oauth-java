@@ -11,7 +11,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>kr.scripton.tools</groupId>
+			<groupId>org.scriptonbasestar.tools</groupId>
 			<artifactId>sb-tools-core</artifactId>
 		</dependency>
 

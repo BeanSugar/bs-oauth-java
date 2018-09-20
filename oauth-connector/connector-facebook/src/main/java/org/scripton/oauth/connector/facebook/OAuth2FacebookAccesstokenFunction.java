@@ -1,4 +1,4 @@
-package org.scripton.oauth.connector.naver;
+package org.scripton.oauth.connector.facebook;
 
 import org.scriptonbasestar.oauth.client.OAuth20Constants;
 import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
@@ -13,17 +13,17 @@ import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
 import org.scriptonbasestar.oauth.client.type.GrantType;
 import org.scriptonbasestar.tool.core.check.Check;
 
-public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction<OAuth2NaverTokenRes> {
+public class OAuth2FacebookAccesstokenFunction implements OAuth2AccessTokenFunction<OAuth2FacebookTokenRes> {
 
-	private final OAuth2NaverConfig serviceConfig;
+	private final OAuth2FacebookConfig serviceConfig;
 	private final OAuthPersonalConfig personalConfig;
-	private final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor;
+	private final TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
 
-	public OAuth2NaverAccesstokenFunction(OAuth2NaverConfig serviceConfig,
-										  OAuthPersonalConfig personalConfig,
-										  TokenExtractor<OAuth2NaverTokenRes> tokenExtractor,
-										  TokenStorage tokenStorage
+	public OAuth2FacebookAccesstokenFunction(OAuth2FacebookConfig serviceConfig,
+											 OAuthPersonalConfig personalConfig,
+											 TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor,
+											 TokenStorage tokenStorage
 	) {
 		this.serviceConfig = serviceConfig;
 		this.personalConfig = personalConfig;
@@ -32,19 +32,18 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 	}
 
 	/**
-	 * grant_type string Y
 	 * client_id string Y
 	 * client_secret string Y
+	 * redirect_uri string Y
 	 * <p>
 	 * code string Y
-	 * state string Y
 	 *
 	 * @param verifier
 	 * @param state
 	 * @return
 	 */
 	@Override
-	public OAuth2NaverTokenRes issue(Verifier verifier, State state) {
+	public OAuth2FacebookTokenRes issue(Verifier verifier, State state) {
 		Check.notNull(verifier, "verifier must not null");
 		Check.notNull(state, "state must not null");
 
@@ -74,7 +73,7 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 	 * @return
 	 */
 	@Override
-	public OAuth2NaverTokenRes refresh(Token refreshToken) {
+	public OAuth2FacebookTokenRes refresh(Token refreshToken) {
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
@@ -99,7 +98,7 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 	 * @return
 	 */
 	@Override
-	public OAuth2NaverTokenRes revoke(Token accessToken) {
+	public OAuth2FacebookTokenRes revoke(Token accessToken) {
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
@@ -113,20 +112,5 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 
 		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
 	}
-
-//	@Override
-//	public OAuth2NaverTokenRes bearer() {
-//		ParamList paramList = new ParamList();
-//
-//		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.AUTHORIZATION_CODE);
-//		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-//		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
-//
-//		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.CLIENT_CREDENTIALS);
-//
-//		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
-//
-//		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
-//	}
 
 }
