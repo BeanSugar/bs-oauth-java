@@ -31,6 +31,13 @@
 			<groupId>kr.scripton.tools</groupId>
 			<artifactId>sb-tools-validation</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.scriptonbasestar.oauth</groupId>
+			<artifactId>test-helper</artifactId>
+			<version>sb-oauth-20180914-DEV</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 </project>

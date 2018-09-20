@@ -50,3 +50,4 @@ logs/
 test.*.json
 test.*.xml
 *-test.properties
+setting.cfg

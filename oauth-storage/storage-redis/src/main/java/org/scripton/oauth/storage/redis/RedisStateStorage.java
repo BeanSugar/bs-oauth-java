@@ -1,6 +1,7 @@
 package org.scripton.oauth.storage.redis;
 
-import org.scriptonbasestar.oauth.client.core.token.StateStorage;
+import org.scriptonbasestar.oauth.client.model.State;
+import org.scriptonbasestar.oauth.client.nobi.StateStorage;
 import redis.clients.jedis.Jedis;
 
 public class RedisStateStorage implements StateStorage {
@@ -11,12 +12,12 @@ public class RedisStateStorage implements StateStorage {
 	}
 
 	@Override
-	public void add(String userid, String state) {
+	public void add(String userId, State state) {
 
 	}
 
 	@Override
-	public void exists(String userid, String state) {
+	public void exists(String userId, State state) {
 
 	}
 }

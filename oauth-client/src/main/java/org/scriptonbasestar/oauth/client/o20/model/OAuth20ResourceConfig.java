@@ -3,10 +3,10 @@ package org.scriptonbasestar.oauth.client.o20.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
-import org.scriptonbasestar.oauth.client.core.token.TokenExtractor;
-import org.scriptonbasestar.oauth.client.core.type.OAuthHttpVerb;
-import org.scriptonbasestar.oauth.client.core.type.SignatureType;
-import org.scriptonbasestar.oauth.client.o20.type.ResponseFormatType;
+import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
+import org.scriptonbasestar.oauth.client.o20.type.VerifierResponseType;
+import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
+import org.scriptonbasestar.oauth.client.type.SignatureType;
 
 /**
  * @author archmagece
@@ -18,7 +18,7 @@ public class OAuth20ResourceConfig {
 	@NonNull
 	private String authorizeUrl;
 	private boolean oobSupport;
-	private ResponseFormatType responseFormatType;
+	private VerifierResponseType responseFormatType;
 	@NonNull
 	private String accessTokenUrl;
 	private OAuthHttpVerb accessTokenVerb;
@@ -31,7 +31,7 @@ public class OAuth20ResourceConfig {
 
 	public static class OAuth20ResourceConfigBuilder{
 		private boolean oobSupport = false;
-		private ResponseFormatType responseFormatType = ResponseFormatType.CODE;
+		private VerifierResponseType responseFormatType = VerifierResponseType.CODE;
 		private OAuthHttpVerb accessTokenVerb = OAuthHttpVerb.GET;
 		private SignatureType signatureType = SignatureType.Header;
 	}

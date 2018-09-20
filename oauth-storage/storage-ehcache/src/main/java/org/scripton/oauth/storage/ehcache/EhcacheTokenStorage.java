@@ -2,7 +2,8 @@ package org.scripton.oauth.storage.ehcache;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
-import org.scriptonbasestar.oauth.client.core.token.TokenStorage;
+import org.scriptonbasestar.oauth.client.model.Token;
+import org.scriptonbasestar.oauth.client.nobi.TokenStorage;
 
 public class EhcacheTokenStorage implements TokenStorage {
 
@@ -12,12 +13,12 @@ public class EhcacheTokenStorage implements TokenStorage {
 	}
 
 	@Override
-	public String load(String id) {
-		return (String) cache.get(id).getObjectValue();
+	public Token load(String id) {
+		return (Token) cache.get(id).getObjectValue();
 	}
 
 	@Override
-	public void store(String id, String token) {
+	public void store(String id, Token token) {
 		cache.put(new Element(id, token));
 	}
 

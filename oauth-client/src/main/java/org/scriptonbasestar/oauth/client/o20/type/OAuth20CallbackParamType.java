@@ -2,13 +2,14 @@ package org.scriptonbasestar.oauth.client.o20.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.scriptonbasestar.oauth.client.model.ValueModel;
 
 /**
  * @author archmagece
  * @since 2016-10-24
  */
 @AllArgsConstructor
-public enum OAuth20CallbackParamType {
+public enum OAuth20CallbackParamType implements ValueModel {
 	//google,naver
 	ACCESS_TOKEN("access_token"),
 	//google,naver
@@ -23,7 +24,7 @@ public enum OAuth20CallbackParamType {
 	ID_TOKEN("id_token");
 
 	@Getter
-	public String value;
+	public final String value;
 
 	public String toString() {
 		return value;

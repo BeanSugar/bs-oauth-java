@@ -3,10 +3,10 @@ package org.scriptonbasestar.oauth.client.o20.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
-import org.scriptonbasestar.oauth.client.core.token.TokenExtractor;
-import org.scriptonbasestar.oauth.client.core.type.GrantType;
-import org.scriptonbasestar.oauth.client.core.type.OAuthHttpVerb;
-import org.scriptonbasestar.oauth.client.core.type.SignatureType;
+import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
+import org.scriptonbasestar.oauth.client.type.GrantType;
+import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
+import org.scriptonbasestar.oauth.client.type.SignatureType;
 
 /**
  * @author archmagece

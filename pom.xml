@@ -16,6 +16,7 @@
 		<module>oauth-connector</module>
 		<module>oauth-integration</module>
 		<module>oauth-storage</module>
+		<module>test-helper</module>
 	</modules>
 
 	<properties>

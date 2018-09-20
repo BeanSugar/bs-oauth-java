@@ -1,10 +1,13 @@
 package org.scriptonbasestar.oauth.client.http;
 
 import lombok.experimental.UtilityClass;
-import org.scriptonbasestar.oauth.client.core.util.OAuthEncodeUtil;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.scriptonbasestar.oauth.client.util.OAuthEncodeUtil;
 
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author archmagece
@@ -13,59 +16,42 @@ import java.util.Collection;
 //@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @UtilityClass
 public final class ParamUtil {
-	private static final char queryQuestion = '?';
-	private static final char queryAnd = '&';
-	private static final char queryEqual = '=';
+	private static final char QUERY_QUESTION = '?';
+	private static final char QUERY_AND = '&';
+	private static final char QUERY_EQUAL = '=';
 
-	public static String generateQuery(String url, Collection<Param> params) {
-		return url + queryQuestion + generateQuery(params.toArray(new Param[params.size()]));
+	public static String generateOAuthQuery(String url, ParamList paramList) {
+		return generateOAuthQuery(url, paramList.paramSet().toArray(new Param[paramList.paramSet().size()]));
 	}
 
-	public static String generateQuery(String url, Param... params) {
-		return url + queryQuestion + generateQuery(params);
+	public static String generateOAuthQuery(String url, Collection<Param> params) {
+		return generateOAuthQuery(url, params.toArray(new Param[params.size()]));
 	}
 
-	public static String generateQuery(Collection<Param> params) {
-		return generateQuery(params.toArray(new Param[params.size()]));
-	}
-
-	public static String generateQuery(Param... params) {
+	public static String generateOAuthQuery(String url, Param... params) {
 		StringBuilder sb = new StringBuilder();
+		sb.append(url).append(QUERY_QUESTION);
 
-		int i = 0;
 		for (Param param : params) {
-			for(int j=0;j<param.getValue().length;j++){
-				sb.append(param.getKey()).append(queryEqual).append(param.getValue()[j]);
-				sb.append(queryAnd);
+			for (int j = 0; j < param.getValues().length; j++) {
+				sb.append(param.getKey()).append(QUERY_EQUAL).append(OAuthEncodeUtil.encode(param.getValues()[j]));
+				if (j < param.getValues().length) {
+					sb.append(QUERY_AND);
+				}
 			}
 		}
-		sb.deleteCharAt(sb.length()-1);
+		sb.deleteCharAt(sb.length() - 1);
 		return sb.toString();
 	}
 
-	public static String generateOAuthQuery(String url, Collection<Param> params) throws UnsupportedEncodingException {
-		return url + queryQuestion + generateOAuthQuery(params.toArray(new Param[params.size()]));
-	}
-
-	public static String generateOAuthQuery(String url, Param... params) throws UnsupportedEncodingException {
-		return url + queryQuestion + generateOAuthQuery(params);
-	}
-
-	public static String generateOAuthQuery(Collection<Param> params) throws UnsupportedEncodingException {
-		return generateOAuthQuery(params.toArray(new Param[params.size()]));
-	}
-
-	public static String generateOAuthQuery(Param... params) throws UnsupportedEncodingException {
-		StringBuilder sb = new StringBuilder();
-
-		int i = 0;
-		for (Param param : params) {
-			for(int j=0;j<param.getValue().length;j++){
-				sb.append(param.getKey()).append(queryEqual).append(OAuthEncodeUtil.encode(param.getValue()[j]));
-				sb.append(queryAnd);
+	public static List<NameValuePair> generateNameValueList(ParamList paramList) {
+		List<NameValuePair> formParams = new ArrayList<>();
+		for (Param param : paramList.paramSet()) {
+			for(String value : param.getValues()){
+				formParams.add(new BasicNameValuePair(param.getKey(), value));
 			}
 		}
-		sb.deleteCharAt(sb.length()-1);
-		return sb.toString();
+		return formParams;
 	}
+
 }
