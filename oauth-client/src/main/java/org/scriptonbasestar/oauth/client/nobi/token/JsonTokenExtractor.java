@@ -12,7 +12,8 @@ import java.io.IOException;
  * @author archmagece
  * @since 2016-10-27
  */
-public class JsonTokenExtractor<TOKEN extends TokenPack> implements TokenExtractor<TOKEN> {
+public class JsonTokenExtractor<TOKEN extends TokenPack>
+		implements TokenExtractor<TOKEN> {
 	private static ObjectMapper mapper;
 	private final TypeReference collectionType;
 

@@ -14,12 +14,11 @@ import org.scriptonbasestar.oauth.client.o20.type.VerifierResponseType;
 @Builder
 public class OAuth20AuthorizeTokenConfig {
 	@NonNull
-	private String authorizeUrl;
-//	@NonNull
-	private String callbackUrl;
+	private String authorizeEndpoint;
+	//@NonNull
+	private String redirectUri;
 	@NonNull
 	private TokenExtractor tokenFormatNobi;
-
 	private boolean oobSupport;
 	//oauth spec 필수
 	//3.1.1.  Response Type
@@ -31,7 +30,7 @@ public class OAuth20AuthorizeTokenConfig {
 	//없으면 안되겠지만 보통 기본 scope 나옴
 	private String scope;
 
-	public static class OAuth20AuthorizeTokenConfigBuilder{
+	public static class OAuth20AuthorizeTokenConfigBuilder {
 		private boolean oobSupport = false;
 		private VerifierResponseType responseType = VerifierResponseType.CODE;
 	}

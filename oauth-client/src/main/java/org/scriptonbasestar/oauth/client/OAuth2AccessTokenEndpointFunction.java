@@ -26,7 +26,7 @@ import org.scriptonbasestar.oauth.client.model.Verifier;
  *
  * @param <TOKEN_RES>
  */
-public interface OAuth2AccessTokenFunction<TOKEN_RES extends TokenPack> {
+public interface OAuth2AccessTokenEndpointFunction<TOKEN_RES extends TokenPack> {
 
 	TOKEN_RES issue(Verifier verifier, State state);
 

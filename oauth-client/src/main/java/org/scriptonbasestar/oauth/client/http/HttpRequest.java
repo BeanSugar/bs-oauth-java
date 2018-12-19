@@ -18,8 +18,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author archmagece
@@ -39,10 +37,7 @@ public final class HttpRequest {
 	}
 
 	private HttpRequest(String url, ParamList paramList, Collection<Header> headers) {
-		this.httpclient = HttpClients
-			.custom()
-			.setDefaultHeaders(headers)
-			.build();
+		this.httpclient = HttpClients.custom().setDefaultHeaders(headers).build();
 		this.url = url;
 		this.paramList = paramList;
 	}
@@ -50,12 +45,15 @@ public final class HttpRequest {
 	public static HttpRequest create(String url) {
 		return new HttpRequest(url, new ParamList());
 	}
+
 	public static HttpRequest create(String url, ParamList paramList) {
 		return new HttpRequest(url, paramList);
 	}
+
 	public static HttpRequest create(String url, ParamList paramList, Collection<Header> headers) {
 		return new HttpRequest(url, paramList, headers);
 	}
+
 	public static HttpRequest create(String url, Collection<Header> headers) {
 		return new HttpRequest(url, new ParamList(), headers);
 	}
@@ -77,7 +75,8 @@ public final class HttpRequest {
 
 	private String postContent() throws IOException {
 		log.debug("postContent()");
-		UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(ParamUtil.generateNameValueList(paramList), Consts.UTF_8);
+		UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(ParamUtil.generateNameValueList(paramList),
+																			 Consts.UTF_8);
 		log.debug("post to :" + url);
 
 		HttpPost httpPost = new HttpPost(url);

@@ -4,10 +4,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.scripton.test.OAuth2ExampleHelper;
 import org.scripton.test.ReadSetting;
 import org.scriptonbasestar.oauth.client.DefaultOAuth2ResourceFunction;
-import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
-import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeUrlFunction;
+import org.scriptonbasestar.oauth.client.OAuth2AccessTokenEndpointFunction;
+import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeEndpointFunction;
 import org.scriptonbasestar.oauth.client.OAuth2ResourceFunction;
-import org.scriptonbasestar.oauth.client.config.OAuthPersonalConfig;
 import org.scriptonbasestar.oauth.client.nobi.LocalTokenStorage;
 import org.scriptonbasestar.oauth.client.nobi.TokenStorage;
 import org.scriptonbasestar.oauth.client.nobi.state.RandomStringStateGenerator;
@@ -21,54 +20,48 @@ import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
  */
 public class OAuth20GoogleServiceExample {
 
-	private static final String      SERVICE_NAME = "GOOGLE";
+	private static final String SERVICE_NAME = "GOOGLE";
 	private static final ReadSetting readSetting = ReadSetting.readFile(System.getProperty("user.home") + "/.devenv/oauth/" + SERVICE_NAME + ".cfg");
 
 	private static final String CLIENT_ID = readSetting.getProperty("client_id");
 	private static final String CLIENT_SECRET = readSetting.getProperty("client_secret");
 	private static final String SCOPE = readSetting.getProperty("scope");
 	private static final String REDIRECT_URI = readSetting.getProperty("redirect_uri");
-	private static final String RESOURCE_PROFILE_URI = readSetting.getProperty("resource_profile_uri");
+	private static final String RESOURCE_PROFILE_URI = readSetting.getProperty("resource_profile_endpoint");
 
-	private static final String AUTHORIZE_URI = readSetting.getProperty("authorize_uri");
-	private static final String TOKEN_URI = readSetting.getProperty("token_uri");
-	private static final String REVOKE_URI = readSetting.getProperty("revoke_uri");
+	private static final String AUTHORIZE_ENDPOINT = readSetting.getProperty("authorize_endpoint");
+	private static final String ACCESS_TOKEN_ENDPOINT = readSetting.getProperty("access_token_endpoint");
+	private static final String REVOKE_ENDPOINT = readSetting.getProperty("revoke_endpoint");
 
 
-	private static final OAuth2GoogleConfig serviceConfig = new OAuth2GoogleConfig(
-			AUTHORIZE_URI,
-			SCOPE,
-			TOKEN_URI,
-			OAuthHttpVerb.POST,
-			REVOKE_URI
-	);
-	private static final OAuthPersonalConfig personalConfig = new OAuthPersonalConfig(
-		CLIENT_ID,
-		CLIENT_SECRET
-	);
-//	private static final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor = new PrintTokenExtractor<>();
-private static final TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor = new JsonTokenExtractor<>(new TypeReference<OAuth2GoogleTokenRes>(){});
+	private static final OAuth2GoogleConfig serviceConfig = new OAuth2GoogleConfig(CLIENT_ID,
+																				   CLIENT_SECRET,
+																				   AUTHORIZE_ENDPOINT,
+																				   SCOPE,
+																				   ACCESS_TOKEN_ENDPOINT,
+																				   OAuthHttpVerb.POST,
+																				   REVOKE_ENDPOINT);
+	//	private static final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor = new PrintTokenExtractor<>();
+	private static final TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor = new JsonTokenExtractor<>(new TypeReference<OAuth2GoogleTokenRes>() {});
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
 	private static final OAuth2ExampleHelper<OAuth2GoogleTokenRes> exampleHelper = new OAuth2ExampleHelper<>(
-		SERVICE_NAME,
-		new RandomStringStateGenerator(SERVICE_NAME)
-	);
-	private static final OAuth2GenerateAuthorizeUrlFunction authorizeUrlFunction = new OAuth2GoogleGenerateAuthorizeUrlFunction(
-		serviceConfig, personalConfig, REDIRECT_URI
-	);
-	private static final OAuth2AccessTokenFunction<OAuth2GoogleTokenRes> tokenFunction = new OAuth2GoogleAccesstokenFunction(
-		serviceConfig, personalConfig, tokenExtractor, tokenStorage, REDIRECT_URI
-	);
-	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(RESOURCE_PROFILE_URI);
+			SERVICE_NAME,
+			new RandomStringStateGenerator(SERVICE_NAME));
+	private static final OAuth2GenerateAuthorizeEndpointFunction authorizeUrlFunction = new OAuth2GoogleGenerateAuthorizeUrlFunction(
+			serviceConfig,
+			REDIRECT_URI);
+	private static final OAuth2AccessTokenEndpointFunction<OAuth2GoogleTokenRes> tokenFunction = new OAuth2GoogleAccessTokenEndpointFunction(
+			serviceConfig,
+			tokenExtractor,
+			tokenStorage,
+			REDIRECT_URI);
+	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(
+			RESOURCE_PROFILE_URI);
 
 
 	public static void main(String[] args) {
-		exampleHelper.test(
-			authorizeUrlFunction,
-			tokenFunction,
-			resourceFunction
-		);
+		exampleHelper.test(authorizeUrlFunction, tokenFunction, resourceFunction);
 	}
 
 //	@Ignore

@@ -3,36 +3,36 @@
 	"sites":{
 		"naver":{
 			"accessTokenExtractor": "",
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 	}
 }

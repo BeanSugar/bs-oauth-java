@@ -9,7 +9,8 @@ import org.scriptonbasestar.tool.core.check.Check;
  * @since 2016-10-26 16
  */
 @Slf4j
-public class RandomStringStateGenerator implements StateGenerator {
+public class RandomStringStateGenerator
+		implements StateGenerator {
 
 	private final char separator;
 //	private final String serviceName;

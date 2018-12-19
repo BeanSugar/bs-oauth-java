@@ -47,7 +47,7 @@ public final class ParamUtil {
 	public static List<NameValuePair> generateNameValueList(ParamList paramList) {
 		List<NameValuePair> formParams = new ArrayList<>();
 		for (Param param : paramList.paramSet()) {
-			for(String value : param.getValues()){
+			for (String value : param.getValues()) {
 				formParams.add(new BasicNameValuePair(param.getKey(), value));
 			}
 		}

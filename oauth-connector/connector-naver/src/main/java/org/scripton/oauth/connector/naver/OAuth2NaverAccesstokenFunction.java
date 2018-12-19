@@ -1,8 +1,7 @@
 package org.scripton.oauth.connector.naver;
 
 import org.scriptonbasestar.oauth.client.OAuth20Constants;
-import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
-import org.scriptonbasestar.oauth.client.config.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.OAuth2AccessTokenEndpointFunction;
 import org.scriptonbasestar.oauth.client.http.HttpRequest;
 import org.scriptonbasestar.oauth.client.http.ParamList;
 import org.scriptonbasestar.oauth.client.model.State;
@@ -13,20 +12,17 @@ import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
 import org.scriptonbasestar.oauth.client.type.GrantType;
 import org.scriptonbasestar.tool.core.check.Check;
 
-public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction<OAuth2NaverTokenRes> {
+public class OAuth2NaverAccesstokenFunction
+		implements OAuth2AccessTokenEndpointFunction<OAuth2NaverTokenRes> {
 
 	private final OAuth2NaverConfig serviceConfig;
-	private final OAuthPersonalConfig personalConfig;
 	private final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
 
 	public OAuth2NaverAccesstokenFunction(OAuth2NaverConfig serviceConfig,
-										  OAuthPersonalConfig personalConfig,
 										  TokenExtractor<OAuth2NaverTokenRes> tokenExtractor,
-										  TokenStorage tokenStorage
-	) {
+										  TokenStorage tokenStorage) {
 		this.serviceConfig = serviceConfig;
-		this.personalConfig = personalConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
 	}
@@ -51,16 +47,16 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.AUTHORIZATION_CODE);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_SECRET, serviceConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 		paramList.add(OAuth20Constants.STATE, state);
-//		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getAuthorizeUri());
+//		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getAuthorizeEndpoint());
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUri(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 	/**
@@ -78,14 +74,14 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_SECRET, serviceConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.REFRESH_TOKEN, refreshToken);
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUri(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 	/**
@@ -103,15 +99,15 @@ public class OAuth2NaverAccesstokenFunction implements OAuth2AccessTokenFunction
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_SECRET, serviceConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.ACCESS_TOKEN, accessToken);
 		paramList.add("service_provider", "NAVER");
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUri(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 //	@Override

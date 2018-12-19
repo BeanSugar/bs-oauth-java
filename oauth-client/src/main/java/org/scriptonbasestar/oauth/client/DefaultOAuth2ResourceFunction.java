@@ -3,7 +3,6 @@ package org.scriptonbasestar.oauth.client;
 import com.google.gson.JsonParseException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -14,7 +13,8 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 @Slf4j
-public class DefaultOAuth2ResourceFunction implements OAuth2ResourceFunction<String> {
+public class DefaultOAuth2ResourceFunction
+		implements OAuth2ResourceFunction<String> {
 
 	private final String resourceUri;
 
@@ -24,7 +24,7 @@ public class DefaultOAuth2ResourceFunction implements OAuth2ResourceFunction<Str
 
 	@Override
 	public String run(String accessToken) {
-		try (CloseableHttpClient httpClient = HttpClients.createDefault()){
+		try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 			HttpGet httpget1 = new HttpGet(resourceUri);
 			httpget1.addHeader("Authorization", "Bearer " + accessToken);
 			log.debug("Executing request " + httpget1.getRequestLine());

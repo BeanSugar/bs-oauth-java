@@ -6,7 +6,8 @@ import org.scriptonbasestar.oauth.client.model.State;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class LocalStateStorage implements StateStorage {
+public class LocalStateStorage
+		implements StateStorage {
 
 	private final String EMPTY = "";
 	private final ConcurrentMap<PairModel<String, State>, String> map = new ConcurrentHashMap<>();

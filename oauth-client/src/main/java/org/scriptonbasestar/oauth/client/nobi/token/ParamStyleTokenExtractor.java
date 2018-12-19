@@ -16,7 +16,8 @@ import java.io.IOException;
  * facebook
  */
 @Slf4j
-public class ParamStyleTokenExtractor<TOKEN extends TokenPack> implements TokenExtractor<TOKEN> {
+public class ParamStyleTokenExtractor<TOKEN extends TokenPack>
+		implements TokenExtractor<TOKEN> {
 	private final ObjectMapper mapper;
 	private final TypeReference collectionType;
 

@@ -1,37 +1,51 @@
 package org.scripton.oauth.connector.google;
 
-import lombok.Data;
+import lombok.Getter;
+import org.scriptonbasestar.oauth.client.config.OAuthBaseConfig;
 import org.scriptonbasestar.oauth.client.o20.type.VerifierResponseType;
 import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
 import org.scriptonbasestar.tool.core.check.Check;
 import org.scriptonbasestar.tool.core.check.MatchPattern;
 
-@Data
-public class OAuth2GoogleConfig {
-	private final String               authorizeUri;
-	private final String               scope;
+@Getter
+public class OAuth2GoogleConfig
+		extends OAuthBaseConfig {
+
+	private final String authorizeEndpoint;
+	private final String scope;
 	private final VerifierResponseType responseType = VerifierResponseType.CODE;
-	private final String               tokenUri;
-	private final OAuthHttpVerb        tokenVerb;
-	private final String               revokeUri;
+	private final String accessTokenEndpoint;
+	private final OAuthHttpVerb accessTokenVerb;
+	private final String revokeUrl;
 
 	/**
-	 * @param authorizeUri https://accounts.google.com/o/oauth2/v2/auth
-	 * @param scope        https://www.googleapis.com/auth/userinfo.profile
-	 * @param tokenUri     https://www.googleapis.com/oauth2/v4/token
-	 * @param tokenVerb    OAuthHttpVerb.POST
-	 * @param revokeUri    https://accounts.google.com/o/oauth2/revoke
+	 * @param authorizeEndpoint   https://accounts.google.com/o/oauth2/v2/auth
+	 * @param scope               https://www.googleapis.com/auth/userinfo.profile
+	 * @param accessTokenEndpoint https://www.googleapis.com/oauth2/v4/token
+	 * @param accessTokenVerb     OAuthHttpVerb.POST
+	 * @param revokeUrl           https://accounts.google.com/o/oauth2/revoke
 	 */
-	public OAuth2GoogleConfig(String authorizeUri, String scope, String tokenUri, OAuthHttpVerb tokenVerb, String revokeUri) {
-		Check.customPattern(authorizeUri, MatchPattern.url, "authorizeUri must not null or empty, and must full uri string");
+	public OAuth2GoogleConfig(String clientId,
+							  String clientSecret,
+							  String authorizeEndpoint,
+							  String scope,
+							  String accessTokenEndpoint,
+							  OAuthHttpVerb accessTokenVerb,
+							  String revokeUrl) {
+		super(clientId, clientSecret);
+		Check.customPattern(authorizeEndpoint,
+							MatchPattern.url,
+							"authorizeEndpoint must not null or empty, and must full uri string");
 		Check.notNull(scope, "scope must not null but empty is allowed");
-		Check.customPattern(tokenUri, MatchPattern.url, "authorizeUri must not null or empty, and must full uri string");
-		Check.notNull(tokenVerb, "tokenVerb must not null");
-		this.authorizeUri = authorizeUri;
+		Check.customPattern(accessTokenEndpoint,
+							MatchPattern.url,
+							"accessTokenEndpoint must not null or empty, and must full uri string");
+		Check.notNull(accessTokenVerb, "accessTokenVerb must not null");
+		this.authorizeEndpoint = authorizeEndpoint;
 		this.scope = scope;
-		this.tokenUri = tokenUri;
-		this.tokenVerb = tokenVerb;
-		this.revokeUri = revokeUri;
+		this.accessTokenEndpoint = accessTokenEndpoint;
+		this.accessTokenVerb = accessTokenVerb;
+		this.revokeUrl = revokeUrl;
 	}
 }
 

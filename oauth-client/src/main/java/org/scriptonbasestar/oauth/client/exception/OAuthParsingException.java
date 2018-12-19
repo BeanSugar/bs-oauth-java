@@ -4,11 +4,12 @@ package org.scriptonbasestar.oauth.client.exception;
  * @author archmagece
  * @since 2016-11-01
  */
-public class OAuthParsingException extends OAuthException {
+public class OAuthParsingException
+		extends OAuthException {
 
 	private static final String DEFAULT_MSG = "파싱 오류";
 
-	public OAuthParsingException(String message){
+	public OAuthParsingException(String message) {
 		super(message);
 	}
 

@@ -16,21 +16,20 @@ import org.scriptonbasestar.oauth.client.type.SignatureType;
 @Builder
 public class OAuth20AccessTokenConfig {
 	@NonNull
-	private String accessTokenUrl;
+	private String accessTokenEndpoint;
 	@NonNull
 	//authorized token 요청할 때 썼던 주소 그대로
-	private String callbackUrl;
+	private String redirectUri;
 	//	private String scope;
 	@NonNull
 	private TokenExtractor tokenFormatNobi;
-
 	private OAuthHttpVerb accessTokenVerb;
 	private SignatureType signatureType;
 	private GrantType grantType;
 
 //	private String refreshToken;
 
-	public static class OAuth20AccessTokenConfigBuilder{
+	public static class OAuth20AccessTokenConfigBuilder {
 		private OAuthHttpVerb accessTokenVerb = OAuthHttpVerb.GET;
 		private SignatureType signatureType = SignatureType.Header;
 		private GrantType grantType = GrantType.AUTHORIZATION_CODE;

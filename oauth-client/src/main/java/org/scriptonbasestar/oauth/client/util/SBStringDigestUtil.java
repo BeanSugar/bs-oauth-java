@@ -24,15 +24,15 @@ public class SBStringDigestUtil {
 		}
 	}
 
-	public static byte[] md5(String source){
+	public static byte[] md5(String source) {
 		return md5.digest(source.getBytes(StandardCharsets.UTF_8));
 	}
 
-	public static byte[] sha1(String source){
+	public static byte[] sha1(String source) {
 		return sha1.digest(source.getBytes(StandardCharsets.UTF_8));
 	}
 
-	public static byte[] sha256(String source){
+	public static byte[] sha256(String source) {
 		return sha256.digest(source.getBytes(StandardCharsets.UTF_8));
 	}
 }

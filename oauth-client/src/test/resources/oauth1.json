@@ -1,17 +1,17 @@
 {
 	"version":"oauth1",
 	"default":{
-		"authorizeUrl": "",
-		"authenticateUrl": ""
+		"authorizeEndpoint": "",
+		"accessTokenEndpoint": ""
 	},
 	"sites":{
 		"naver":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		},
 		"daum":{
-			"authorizeUrl": "",
-			"authenticateUrl": ""
+			"authorizeEndpoint": "",
+			"accessTokenEndpoint": ""
 		}
 	}
 }

@@ -5,7 +5,8 @@ import org.scriptonbasestar.oauth.client.model.Token;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class LocalTokenStorage implements TokenStorage {
+public class LocalTokenStorage
+		implements TokenStorage {
 
 	private final ConcurrentMap<String, Token> map = new ConcurrentHashMap<>();
 

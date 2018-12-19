@@ -2,10 +2,8 @@ package org.scripton.oauth.connector.kakao;
 
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BufferedHeader;
 import org.scriptonbasestar.oauth.client.OAuth20Constants;
-import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
-import org.scriptonbasestar.oauth.client.config.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.OAuth2AccessTokenEndpointFunction;
 import org.scriptonbasestar.oauth.client.http.HttpRequest;
 import org.scriptonbasestar.oauth.client.http.ParamList;
 import org.scriptonbasestar.oauth.client.model.State;
@@ -19,22 +17,19 @@ import org.scriptonbasestar.tool.core.check.Check;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OAuth2KakaoAccesstokenFunction implements OAuth2AccessTokenFunction<OAuth2KakaoTokenRes> {
+public class OAuth2KakaoAccesstokenFunction
+		implements OAuth2AccessTokenEndpointFunction<OAuth2KakaoTokenRes> {
 
 	private final OAuth2KakaoConfig serviceConfig;
-	private final OAuthPersonalConfig personalConfig;
 	private final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
 	private final String redirectUri;
 
 	public OAuth2KakaoAccesstokenFunction(OAuth2KakaoConfig serviceConfig,
-										  OAuthPersonalConfig personalConfig,
 										  TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor,
 										  TokenStorage tokenStorage,
-										  String redirectUri
-	) {
+										  String redirectUri) {
 		this.serviceConfig = serviceConfig;
-		this.personalConfig = personalConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
 		this.redirectUri = redirectUri;
@@ -63,16 +58,16 @@ public class OAuth2KakaoAccesstokenFunction implements OAuth2AccessTokenFunction
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.AUTHORIZATION_CODE);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
 		paramList.add(OAuth20Constants.REDIRECT_URI, redirectUri);
 //		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 //		paramList.add(OAuth20Constants.STATE, state);
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 	/**
@@ -90,14 +85,14 @@ public class OAuth2KakaoAccesstokenFunction implements OAuth2AccessTokenFunction
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_SECRET, serviceConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.REFRESH_TOKEN, refreshToken);
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 	/**
@@ -113,10 +108,10 @@ public class OAuth2KakaoAccesstokenFunction implements OAuth2AccessTokenFunction
 	@Override
 	public OAuth2KakaoTokenRes revoke(Token accessToken) {
 		List<Header> headers = new ArrayList<>();
-		headers.add(new BasicHeader("Authorization", "Bearer "+accessToken.getValue()));
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), headers);
+		headers.add(new BasicHeader("Authorization", "Bearer " + accessToken.getValue()));
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), headers);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 }

@@ -2,13 +2,12 @@ package org.scripton.test;
 
 
 import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
-import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeUrlFunction;
+import org.scriptonbasestar.oauth.client.OAuth2AccessTokenEndpointFunction;
+import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeEndpointFunction;
 import org.scriptonbasestar.oauth.client.OAuth2ResourceFunction;
 import org.scriptonbasestar.oauth.client.TokenPack;
 import org.scriptonbasestar.oauth.client.exception.OAuthAuthException;
@@ -16,7 +15,6 @@ import org.scriptonbasestar.oauth.client.exception.OAuthUnknownException;
 import org.scriptonbasestar.oauth.client.model.State;
 import org.scriptonbasestar.oauth.client.model.Verifier;
 import org.scriptonbasestar.oauth.client.nobi.state.StateGenerator;
-import org.scriptonbasestar.tool.core.exception.SBRuntimeBaseException;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -36,7 +34,7 @@ public class OAuth2ExampleHelper<TOKEN_RES extends TokenPack> {
 		this.stateGenerator = stateGenerator;
 	}
 
-	public void test(OAuth2GenerateAuthorizeUrlFunction authorizeUrlFunction, OAuth2AccessTokenFunction<TOKEN_RES> tokenFunction, OAuth2ResourceFunction<String> resourceFunction) {
+	public void test(OAuth2GenerateAuthorizeEndpointFunction authorizeUrlFunction, OAuth2AccessTokenEndpointFunction<TOKEN_RES> tokenFunction, OAuth2ResourceFunction<String> resourceFunction) {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("=== " + SERVICE_NAME + "  ===");

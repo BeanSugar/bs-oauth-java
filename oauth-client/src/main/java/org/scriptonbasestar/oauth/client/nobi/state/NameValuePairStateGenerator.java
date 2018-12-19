@@ -2,7 +2,8 @@ package org.scriptonbasestar.oauth.client.nobi.state;
 
 import org.scriptonbasestar.oauth.client.model.State;
 
-public class NameValuePairStateGenerator implements StateGenerator {
+public class NameValuePairStateGenerator
+		implements StateGenerator {
 
 	private final String[] keys;
 

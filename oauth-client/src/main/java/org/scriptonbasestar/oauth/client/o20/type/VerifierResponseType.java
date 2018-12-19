@@ -9,9 +9,8 @@ import org.scriptonbasestar.oauth.client.model.ValueModel;
  * @since 2016-10-31
  */
 @AllArgsConstructor
-public enum VerifierResponseType implements ValueModel {
-	CODE("code"),
-	TOKEN("token");
+public enum VerifierResponseType
+		implements ValueModel {CODE("code"), TOKEN("token");
 
 	@Getter
 	public final String value;

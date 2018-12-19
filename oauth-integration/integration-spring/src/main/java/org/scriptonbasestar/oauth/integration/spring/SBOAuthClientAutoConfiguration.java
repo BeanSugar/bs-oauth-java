@@ -3,7 +3,7 @@ package org.scriptonbasestar.oauth.integration.spring;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author chaeeung.e
+ * @author archmagece
  * @since 2017-09-12
  */
 @Configuration

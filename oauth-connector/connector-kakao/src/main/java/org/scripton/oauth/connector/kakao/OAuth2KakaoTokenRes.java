@@ -5,7 +5,8 @@ import org.scriptonbasestar.oauth.client.TokenPack;
 import org.scriptonbasestar.oauth.client.o20.type.AccessTokenType;
 
 @Data
-public class OAuth2KakaoTokenRes implements TokenPack {
+public class OAuth2KakaoTokenRes
+		implements TokenPack {
 
 	private String accessToken;
 	private Long expiresIn;

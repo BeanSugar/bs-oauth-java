@@ -1,8 +1,7 @@
 package org.scripton.oauth.connector.facebook;
 
 import org.scriptonbasestar.oauth.client.OAuth20Constants;
-import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
-import org.scriptonbasestar.oauth.client.config.OAuthPersonalConfig;
+import org.scriptonbasestar.oauth.client.OAuth2AccessTokenEndpointFunction;
 import org.scriptonbasestar.oauth.client.http.HttpRequest;
 import org.scriptonbasestar.oauth.client.http.ParamList;
 import org.scriptonbasestar.oauth.client.model.State;
@@ -13,22 +12,19 @@ import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
 import org.scriptonbasestar.oauth.client.type.GrantType;
 import org.scriptonbasestar.tool.core.check.Check;
 
-public class OAuth2FacebookAccesstokenFunction implements OAuth2AccessTokenFunction<OAuth2FacebookTokenRes> {
+public class OAuth2FacebookAccessTokenEndpointFunction
+		implements OAuth2AccessTokenEndpointFunction<OAuth2FacebookTokenRes> {
 
 	private final OAuth2FacebookConfig serviceConfig;
-	private final OAuthPersonalConfig personalConfig;
 	private final TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
 	private final String redirectUri;
 
-	public OAuth2FacebookAccesstokenFunction(OAuth2FacebookConfig serviceConfig,
-											 OAuthPersonalConfig personalConfig,
-											 TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor,
-											 TokenStorage tokenStorage,
-											 String redirectUri
-	) {
+	public OAuth2FacebookAccessTokenEndpointFunction(OAuth2FacebookConfig serviceConfig,
+													 TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor,
+													 TokenStorage tokenStorage,
+													 String redirectUri) {
 		this.serviceConfig = serviceConfig;
-		this.personalConfig = personalConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
 		this.redirectUri = redirectUri;
@@ -53,16 +49,16 @@ public class OAuth2FacebookAccesstokenFunction implements OAuth2AccessTokenFunct
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.AUTHORIZATION_CODE);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_SECRET, serviceConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 		paramList.add(OAuth20Constants.STATE, state);
 		paramList.add(OAuth20Constants.REDIRECT_URI, redirectUri);
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUrl(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 	/**
@@ -80,14 +76,14 @@ public class OAuth2FacebookAccesstokenFunction implements OAuth2AccessTokenFunct
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_SECRET, serviceConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.REFRESH_TOKEN, refreshToken);
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUrl(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 	/**
@@ -105,15 +101,15 @@ public class OAuth2FacebookAccesstokenFunction implements OAuth2AccessTokenFunct
 		ParamList paramList = new ParamList();
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.REFRESH_TOKEN);
-		paramList.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId());
-		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
+		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
+		paramList.add(OAuth20Constants.CLIENT_SECRET, serviceConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.ACCESS_TOKEN, accessToken);
 		paramList.add("service_provider", "NAVER");
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUrl(), paramList);
 
-		return tokenExtractor.extract(request.run(serviceConfig.getTokenVerb()));
+		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
 
 }

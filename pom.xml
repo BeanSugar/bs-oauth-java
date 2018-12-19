@@ -5,7 +5,7 @@
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
 	<packaging>pom</packaging>
-	<version>sb-oauth-20181219-DEV</version>
+	<version>sb-oauth-20181219-1-DEV</version>
 
 	<name>Scripton OAuth Library</name>
 	<url>https://github.com/ScriptonBasestar-io/sb-oauth-java</url>
@@ -66,7 +66,7 @@
 		<repository>
 			<id>bintray-archmagece-jvm-repo</id>
 			<name>archmagece-jvm-repo</name>
-			<url>https://api.bintray.com/maven/archmagece/jvm-repo/sb-tools-java/;publish=1</url>
+			<url>https://api.bintray.com/maven/archmagece/jvm-repo/sb-oauth-java/;publish=1</url>
 		</repository>
 	</distributionManagement>
 
@@ -86,7 +86,7 @@
 			<dependency>
 				<groupId>org.scriptonbasestar.oauth</groupId>
 				<artifactId>oauth-client</artifactId>
-				<version>sb-oauth-20181219-DEV</version>
+				<version>sb-oauth-20181219-1-DEV</version>
 			</dependency>
 
 			<dependency>

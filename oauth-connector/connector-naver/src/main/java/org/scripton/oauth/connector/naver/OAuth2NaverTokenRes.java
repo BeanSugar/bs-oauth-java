@@ -5,7 +5,8 @@ import org.scriptonbasestar.oauth.client.TokenPack;
 import org.scriptonbasestar.oauth.client.o20.type.AccessTokenType;
 
 @Data
-public class OAuth2NaverTokenRes implements TokenPack {
+public class OAuth2NaverTokenRes
+		implements TokenPack {
 	private String accessToken;
 	private AccessTokenType tokenType;
 	//null or not

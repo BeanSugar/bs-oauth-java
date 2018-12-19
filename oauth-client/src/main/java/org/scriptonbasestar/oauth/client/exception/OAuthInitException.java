@@ -4,11 +4,12 @@ package org.scriptonbasestar.oauth.client.exception;
  * @author archmagece
  * @since 2016-10-24
  */
-public class OAuthInitException extends OAuthException {
+public class OAuthInitException
+		extends OAuthException {
 
 	private static final String DEFAULT_MSG = "초기화 실패";
 
-	public OAuthInitException(String message){
+	public OAuthInitException(String message) {
 		super(message);
 	}
 

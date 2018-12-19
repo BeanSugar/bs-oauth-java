@@ -23,7 +23,8 @@ import org.scriptonbasestar.oauth.client.model.ValueModel;
  * Access Token10a Request : grant_type=client_credentials
  */
 @AllArgsConstructor
-public enum GrantType implements ValueModel {
+public enum GrantType
+		implements ValueModel {
 	AUTHORIZATION_CODE("authorization_code"),
 	PASSWORD("password"),
 	IMPLICIT("implicit"),
@@ -36,5 +37,4 @@ public enum GrantType implements ValueModel {
 	@Override
 	public String toString() {
 		return value;
-	}
-}
+	}}

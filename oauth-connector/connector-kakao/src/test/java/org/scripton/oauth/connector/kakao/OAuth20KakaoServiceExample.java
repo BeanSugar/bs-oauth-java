@@ -4,15 +4,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.scripton.test.OAuth2ExampleHelper;
 import org.scripton.test.ReadSetting;
 import org.scriptonbasestar.oauth.client.DefaultOAuth2ResourceFunction;
-import org.scriptonbasestar.oauth.client.OAuth2AccessTokenFunction;
-import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeUrlFunction;
+import org.scriptonbasestar.oauth.client.OAuth2AccessTokenEndpointFunction;
+import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeEndpointFunction;
 import org.scriptonbasestar.oauth.client.OAuth2ResourceFunction;
-import org.scriptonbasestar.oauth.client.config.OAuthPersonalConfig;
 import org.scriptonbasestar.oauth.client.nobi.LocalTokenStorage;
 import org.scriptonbasestar.oauth.client.nobi.TokenStorage;
 import org.scriptonbasestar.oauth.client.nobi.state.RandomStringStateGenerator;
 import org.scriptonbasestar.oauth.client.nobi.token.JsonTokenExtractor;
 import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
+import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
 
 /**
  * @author archmagece
@@ -22,43 +22,46 @@ import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
  */
 public class OAuth20KakaoServiceExample {
 
-	private static final String      SERVICE_NAME = "KAKAO";
+	private static final String SERVICE_NAME = "KAKAO";
 	private static final ReadSetting readSetting = ReadSetting.readFile(System.getProperty("user.home") + "/.devenv/oauth/" + SERVICE_NAME + ".cfg");
 
 	private static final String CLIENT_ID = readSetting.getProperty("client_id");
 	private static final String CLIENT_SECRET = readSetting.getProperty("client_secret");
+	private static final String SCOPE = readSetting.getProperty("scope");
 	private static final String REDIRECT_URI = readSetting.getProperty("redirect_uri");
-	private static final String RESOURCE_PROFILE_URI = readSetting.getProperty("resource_profile_uri");
+	private static final String RESOURCE_PROFILE_URI = readSetting.getProperty("resource_profile_endpoint");
 
+	private static final String AUTHORIZE_ENDPOINT = readSetting.getProperty("authorize_endpoint");
+	private static final String ACCESS_TOKEN_ENDPOINT = readSetting.getProperty("access_token_endpoint");
+	private static final String REVOKE_ENDPOINT = readSetting.getProperty("revoke_endpoint");
 
-	private static final OAuth2KakaoConfig serviceConfig = new OAuth2KakaoConfig();
-	private static final OAuthPersonalConfig personalConfig = new OAuthPersonalConfig(
-		CLIENT_ID,
-		CLIENT_SECRET
-	);
-//	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new PrintTokenExtractor<>();
-	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new JsonTokenExtractor<>(new TypeReference<OAuth2KakaoTokenRes>(){});
+	private static final OAuth2KakaoConfig serviceConfig = new OAuth2KakaoConfig(CLIENT_ID,
+																				 CLIENT_SECRET,
+																				 AUTHORIZE_ENDPOINT,
+																				 SCOPE,
+																				 ACCESS_TOKEN_ENDPOINT,
+																				 OAuthHttpVerb.POST);
+	//	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new PrintTokenExtractor<>();
+	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new JsonTokenExtractor<>(new TypeReference<OAuth2KakaoTokenRes>() {});
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
-	private static final OAuth2ExampleHelper<OAuth2KakaoTokenRes> exampleHelper = new OAuth2ExampleHelper<>(
-		SERVICE_NAME,
-		new RandomStringStateGenerator(SERVICE_NAME)
-	);
-	private static final OAuth2GenerateAuthorizeUrlFunction authorizeUrlFunction = new OAuth2KakaoGenerateAuthorizeUrlFunction(
-		serviceConfig, personalConfig, REDIRECT_URI
-	);
-	private static final OAuth2AccessTokenFunction<OAuth2KakaoTokenRes> tokenFunction = new OAuth2KakaoAccesstokenFunction(
-		serviceConfig, personalConfig, tokenExtractor, tokenStorage, REDIRECT_URI
-	);
-	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(RESOURCE_PROFILE_URI);
+	private static final OAuth2ExampleHelper<OAuth2KakaoTokenRes> exampleHelper = new OAuth2ExampleHelper<>(SERVICE_NAME,
+																											new RandomStringStateGenerator(
+																													SERVICE_NAME));
+	private static final OAuth2GenerateAuthorizeEndpointFunction authorizeEndpointFunction = new OAuth2KakaoGenerateAuthorizeEndpointFunction(
+			serviceConfig,
+			REDIRECT_URI);
+	private static final OAuth2AccessTokenEndpointFunction<OAuth2KakaoTokenRes> tokenFunction = new OAuth2KakaoAccesstokenFunction(
+			serviceConfig,
+			tokenExtractor,
+			tokenStorage,
+			REDIRECT_URI);
+	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(
+			RESOURCE_PROFILE_URI);
 
 
 	public static void main(String[] args) {
-		exampleHelper.test(
-			authorizeUrlFunction,
-			tokenFunction,
-			resourceFunction
-		);
+		exampleHelper.test(authorizeEndpointFunction, tokenFunction, resourceFunction);
 	}
 
 //	@Ignore

@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 //@UtilityClass
 @AllArgsConstructor
-public enum  OAuth20Constants {
+public enum OAuth20Constants {
 
 	//OAuth 2.0
 	ACCESS_TOKEN("access_token"),
@@ -27,5 +27,4 @@ public enum  OAuth20Constants {
 	SCOPE("scope");
 
 	@Getter
-	public String value;
-}
+	public String value;}

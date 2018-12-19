@@ -16,6 +16,7 @@ public class SBSingleInstances {
 
 	private static class ObjectMapperHolder {
 		public static final ObjectMapper INSTANCE = new ObjectMapper();
+
 		static {
 			INSTANCE.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
 //			INSTANCE.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
@@ -46,14 +47,16 @@ public class SBSingleInstances {
 			INSTANCE.registerModule(module);
 		}
 	}
-	public static ObjectMapper getObjectMapper(){
+
+	public static ObjectMapper getObjectMapper() {
 		return ObjectMapperHolder.INSTANCE;
 	}
 
 	private static class GsonHolder {
 		public static final Gson INSTANCE = new Gson();
 	}
-	public static Gson getGson(){
+
+	public static Gson getGson() {
 		return GsonHolder.INSTANCE;
 	}
 
