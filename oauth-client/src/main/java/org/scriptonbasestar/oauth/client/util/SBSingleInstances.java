@@ -15,6 +15,7 @@ import java.io.IOException;
 public class SBSingleInstances {
 
 	private static class ObjectMapperHolder {
+
 		public static final ObjectMapper INSTANCE = new ObjectMapper();
 
 		static {
@@ -24,10 +25,11 @@ public class SBSingleInstances {
 			SimpleModule module = new SimpleModule();
 			module.setDeserializerModifier(new BeanDeserializerModifier() {
 				@Override
-				public JsonDeserializer<Enum> modifyEnumDeserializer(DeserializationConfig config,
-																	 final JavaType type,
-																	 BeanDescription beanDesc,
-																	 final JsonDeserializer<?> deserializer) {
+				public JsonDeserializer<Enum> modifyEnumDeserializer(
+						DeserializationConfig config,
+						final JavaType type,
+						BeanDescription beanDesc,
+						final JsonDeserializer<?> deserializer) {
 					return new JsonDeserializer<Enum>() {
 						@Override
 						public Enum deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
@@ -53,6 +55,7 @@ public class SBSingleInstances {
 	}
 
 	private static class GsonHolder {
+
 		public static final Gson INSTANCE = new Gson();
 	}
 

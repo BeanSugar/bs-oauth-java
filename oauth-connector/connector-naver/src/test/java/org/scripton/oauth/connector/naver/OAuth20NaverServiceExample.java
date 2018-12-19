@@ -35,6 +35,7 @@ public class OAuth20NaverServiceExample {
 
 	private static final OAuth2NaverConfig serviceConfig = new OAuth2NaverConfig(CLIENT_ID,
 																				 CLIENT_SECRET,
+																				 REDIRECT_URI,
 																				 AUTHORIZE_ENDPOINT,
 																				 SCOPE,
 																				 ACCESS_TOKEN_ENDPOINT,
@@ -44,15 +45,12 @@ public class OAuth20NaverServiceExample {
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
 	private static final OAuth2ExampleHelper<OAuth2NaverTokenRes> exampleHelper = new OAuth2ExampleHelper<>(SERVICE_NAME,
-																											new RandomStringStateGenerator(
-																													SERVICE_NAME));
+																											new RandomStringStateGenerator());
 	private static final OAuth2GenerateAuthorizeEndpointFunction authorizeUrlFunction = new OAuth2NaverGenerateAuthorizeEndpointFunction(
-			serviceConfig,
-			REDIRECT_URI);
-	private static final OAuth2AccessTokenEndpointFunction<OAuth2NaverTokenRes> tokenFunction = new OAuth2NaverAccesstokenFunction(
-			serviceConfig,
-			tokenExtractor,
-			tokenStorage);
+			serviceConfig);
+	private static final OAuth2AccessTokenEndpointFunction<OAuth2NaverTokenRes> tokenFunction = new OAuth2NaverAccesstokenFunction(serviceConfig,
+																																   tokenExtractor,
+																																   tokenStorage);
 	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(
 			RESOURCE_PROFILE_URI);
 

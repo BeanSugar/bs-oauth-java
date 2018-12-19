@@ -27,4 +27,6 @@ public enum OAuth20Constants {
 	SCOPE("scope");
 
 	@Getter
-	public String value;}
+	public String value;
+
+}

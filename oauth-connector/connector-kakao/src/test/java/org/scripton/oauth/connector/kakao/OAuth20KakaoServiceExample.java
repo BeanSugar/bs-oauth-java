@@ -37,6 +37,7 @@ public class OAuth20KakaoServiceExample {
 
 	private static final OAuth2KakaoConfig serviceConfig = new OAuth2KakaoConfig(CLIENT_ID,
 																				 CLIENT_SECRET,
+																				 REDIRECT_URI,
 																				 AUTHORIZE_ENDPOINT,
 																				 SCOPE,
 																				 ACCESS_TOKEN_ENDPOINT,
@@ -46,16 +47,12 @@ public class OAuth20KakaoServiceExample {
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
 	private static final OAuth2ExampleHelper<OAuth2KakaoTokenRes> exampleHelper = new OAuth2ExampleHelper<>(SERVICE_NAME,
-																											new RandomStringStateGenerator(
-																													SERVICE_NAME));
+																											new RandomStringStateGenerator());
 	private static final OAuth2GenerateAuthorizeEndpointFunction authorizeEndpointFunction = new OAuth2KakaoGenerateAuthorizeEndpointFunction(
-			serviceConfig,
-			REDIRECT_URI);
-	private static final OAuth2AccessTokenEndpointFunction<OAuth2KakaoTokenRes> tokenFunction = new OAuth2KakaoAccesstokenFunction(
-			serviceConfig,
-			tokenExtractor,
-			tokenStorage,
-			REDIRECT_URI);
+			serviceConfig);
+	private static final OAuth2AccessTokenEndpointFunction<OAuth2KakaoTokenRes> tokenFunction = new OAuth2KakaoAccesstokenFunction(serviceConfig,
+																																   tokenExtractor,
+																																   tokenStorage);
 	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(
 			RESOURCE_PROFILE_URI);
 

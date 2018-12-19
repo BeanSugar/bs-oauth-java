@@ -11,6 +11,7 @@ import org.scriptonbasestar.tool.core.check.MatchPattern;
 public class OAuth2NaverConfig
 		extends OAuthBaseConfig {
 
+	private final String redirectUri;
 	private final String authorizeEndpoint;
 	private final String scope;
 	private final VerifierResponseType responseType = VerifierResponseType.CODE;
@@ -18,26 +19,32 @@ public class OAuth2NaverConfig
 	private final OAuthHttpVerb accessTokenVerb;
 
 	/**
+	 * @param redirectUri
 	 * @param authorizeEndpoint
 	 * @param scope
 	 * @param accessTokenEndpoint
 	 * @param accessTokenVerb
 	 */
-	public OAuth2NaverConfig(String clientId,
-							 String clientSecret,
-							 String authorizeEndpoint,
-							 String scope,
-							 String accessTokenEndpoint,
-							 OAuthHttpVerb accessTokenVerb) {
+	public OAuth2NaverConfig(
+			String clientId,
+			String clientSecret,
+			String redirectUri,
+			String authorizeEndpoint,
+			String scope,
+			String accessTokenEndpoint,
+			OAuthHttpVerb accessTokenVerb) {
 		super(clientId, clientSecret);
-		Check.customPattern(authorizeEndpoint,
-							MatchPattern.url,
-							"authorizeEndpoint must not null or empty, and must full uri string");
+		Check.customPattern(
+				authorizeEndpoint,
+				MatchPattern.url,
+				"authorizeEndpoint must not null or empty, and must full uri string");
 		Check.notNull(scope, "scope must not null but empty is allowed");
-		Check.customPattern(accessTokenEndpoint,
-							MatchPattern.url,
-							"accessTokenEndpoint must not null or empty, and must full uri string");
+		Check.customPattern(
+				accessTokenEndpoint,
+				MatchPattern.url,
+				"accessTokenEndpoint must not null or empty, and must full uri string");
 		Check.notNull(accessTokenVerb, "accessTokenVerb must not null");
+		this.redirectUri = redirectUri;
 		this.authorizeEndpoint = authorizeEndpoint;
 		this.scope = scope;
 		this.accessTokenUri = accessTokenEndpoint;

@@ -19,24 +19,23 @@ public class OAuth2GoogleAccessTokenEndpointFunction
 	private final OAuth2GoogleConfig serviceConfig;
 	private final TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
-	private final String redirectUri;
 
-	public OAuth2GoogleAccessTokenEndpointFunction(OAuth2GoogleConfig serviceConfig,
-												   TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor,
-												   TokenStorage tokenStorage,
-												   String redirectUri) {
+	public OAuth2GoogleAccessTokenEndpointFunction(
+			OAuth2GoogleConfig serviceConfig,
+			TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor,
+			TokenStorage tokenStorage) {
 		this.serviceConfig = serviceConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
-		this.redirectUri = redirectUri;
 	}
 
 	/**
-	 * grant_type string Y
+	 * grant_type string Y "authorization_code"
 	 * client_id string Y
 	 * client_secret string Y
 	 * <p>
 	 * code string Y
+	 * state string N
 	 * redirect_uri string Y
 	 *
 	 * @param verifier
@@ -56,7 +55,7 @@ public class OAuth2GoogleAccessTokenEndpointFunction
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 //		paramList.add(OAuth20Constants.STATE, state);
-		paramList.add(OAuth20Constants.REDIRECT_URI, redirectUri);
+		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getRedirectUri());
 
 		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), paramList);
 

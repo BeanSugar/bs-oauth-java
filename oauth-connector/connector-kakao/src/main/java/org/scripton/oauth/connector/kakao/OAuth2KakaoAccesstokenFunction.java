@@ -23,28 +23,24 @@ public class OAuth2KakaoAccesstokenFunction
 	private final OAuth2KakaoConfig serviceConfig;
 	private final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
-	private final String redirectUri;
 
-	public OAuth2KakaoAccesstokenFunction(OAuth2KakaoConfig serviceConfig,
-										  TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor,
-										  TokenStorage tokenStorage,
-										  String redirectUri) {
+	public OAuth2KakaoAccesstokenFunction(
+			OAuth2KakaoConfig serviceConfig,
+			TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor,
+			TokenStorage tokenStorage) {
 		this.serviceConfig = serviceConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
-		this.redirectUri = redirectUri;
 	}
 
 	/**
 	 * grant_type string Y "authorization_code"
 	 * client_id string Y
-	 * client_secret string YN 카카오는 기형아라 기본으로 빠져 있지만 최근에 수정을 했는지
-	 * 추가기능이추가됨추가를눌렀으면추가해야됨
-	 * <p>
-	 * redirect_uri string Y 좀전에썼던값
+	 * client_secret string YN 카카오는 기형아라 기본으로 빠져 있지만 최근에 수정을 했는지 추가기능이추가됨추가를눌렀으면추가해야됨
 	 * <p>
 	 * code string Y
-	 * state???없네
+	 * state string N 없네
+	 * redirect_uri string Y
 	 *
 	 * @param verifier
 	 * @param state
@@ -59,11 +55,11 @@ public class OAuth2KakaoAccesstokenFunction
 
 		paramList.add(OAuth20Constants.GRANT_TYPE, GrantType.AUTHORIZATION_CODE);
 		paramList.add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId());
-		paramList.add(OAuth20Constants.REDIRECT_URI, redirectUri);
 //		paramList.add(OAuth20Constants.CLIENT_SECRET, personalConfig.getClientSecret());
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 //		paramList.add(OAuth20Constants.STATE, state);
+		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getRedirectUri());
 
 		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), paramList);
 

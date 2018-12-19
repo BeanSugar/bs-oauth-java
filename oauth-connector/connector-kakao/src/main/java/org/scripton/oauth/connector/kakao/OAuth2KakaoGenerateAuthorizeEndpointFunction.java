@@ -10,12 +10,10 @@ import org.scriptonbasestar.tool.core.check.Check;
 public class OAuth2KakaoGenerateAuthorizeEndpointFunction
 		implements OAuth2GenerateAuthorizeEndpointFunction {
 
-	private final OAuth2KakaoConfig serviceConfig;
-	private final String redirectUri;
+	private final OAuth2KakaoConfig config;
 
-	public OAuth2KakaoGenerateAuthorizeEndpointFunction(OAuth2KakaoConfig serviceConfig, String redirectUri) {
-		this.serviceConfig = serviceConfig;
-		this.redirectUri = redirectUri;
+	public OAuth2KakaoGenerateAuthorizeEndpointFunction(OAuth2KakaoConfig config) {
+		this.config = config;
 	}
 
 	/**
@@ -32,12 +30,11 @@ public class OAuth2KakaoGenerateAuthorizeEndpointFunction
 	public String generate(State state) {
 		Check.notNull(state, "state must not null");
 
-		return ParamUtil.generateOAuthQuery(serviceConfig.getAuthorizeEndpoint(),
+		return ParamUtil.generateOAuthQuery(config.getAuthorizeEndpoint(),
 											ParamList.create()
-													 .add(OAuth20Constants.CLIENT_ID, serviceConfig.getClientId())
-													 .add(OAuth20Constants.REDIRECT_URI, redirectUri)
-													 .add(OAuth20Constants.RESPONSE_TYPE,
-														  serviceConfig.getResponseType())
+													 .add(OAuth20Constants.CLIENT_ID, config.getClientId())
+													 .add(OAuth20Constants.REDIRECT_URI, config.getRedirectUri())
+													 .add(OAuth20Constants.RESPONSE_TYPE, config.getResponseType())
 													 .add(OAuth20Constants.STATE, state)
 													 .add("encode_state", "false"));
 	}

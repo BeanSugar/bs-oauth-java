@@ -11,7 +11,8 @@ import org.scriptonbasestar.oauth.client.model.ValueModel;
 public enum AccessTokenType
 		implements ValueModel {
 
-	BEARER("bearer"), MAC("mac");
+	BEARER("bearer"),
+	MAC("mac");
 
 	@Getter
 	public final String value;
@@ -22,4 +23,6 @@ public enum AccessTokenType
 
 	AccessTokenType(String value) {
 		this.value = value.toUpperCase();
-	}}
+	}
+
+}

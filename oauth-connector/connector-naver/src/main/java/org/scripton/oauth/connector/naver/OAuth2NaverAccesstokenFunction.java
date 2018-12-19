@@ -19,9 +19,10 @@ public class OAuth2NaverAccesstokenFunction
 	private final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
 
-	public OAuth2NaverAccesstokenFunction(OAuth2NaverConfig serviceConfig,
-										  TokenExtractor<OAuth2NaverTokenRes> tokenExtractor,
-										  TokenStorage tokenStorage) {
+	public OAuth2NaverAccesstokenFunction(
+			OAuth2NaverConfig serviceConfig,
+			TokenExtractor<OAuth2NaverTokenRes> tokenExtractor,
+			TokenStorage tokenStorage) {
 		this.serviceConfig = serviceConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
@@ -34,6 +35,7 @@ public class OAuth2NaverAccesstokenFunction
 	 * <p>
 	 * code string Y
 	 * state string Y
+	 * redirect_uri string Y
 	 *
 	 * @param verifier
 	 * @param state
@@ -52,7 +54,7 @@ public class OAuth2NaverAccesstokenFunction
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 		paramList.add(OAuth20Constants.STATE, state);
-//		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getAuthorizeEndpoint());
+//		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getRedirectUri());
 
 		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUri(), paramList);
 

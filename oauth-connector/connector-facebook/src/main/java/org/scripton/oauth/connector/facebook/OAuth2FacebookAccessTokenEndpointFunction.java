@@ -18,24 +18,23 @@ public class OAuth2FacebookAccessTokenEndpointFunction
 	private final OAuth2FacebookConfig serviceConfig;
 	private final TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
-	private final String redirectUri;
 
 	public OAuth2FacebookAccessTokenEndpointFunction(OAuth2FacebookConfig serviceConfig,
 													 TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor,
-													 TokenStorage tokenStorage,
-													 String redirectUri) {
+													 TokenStorage tokenStorage) {
 		this.serviceConfig = serviceConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
-		this.redirectUri = redirectUri;
 	}
 
 	/**
+	 * grant_type string Y "authorization_code"
 	 * client_id string Y
 	 * client_secret string Y
-	 * redirect_uri string Y
 	 * <p>
 	 * code string Y
+	 * state string Y
+	 * redirect_uri string Y
 	 *
 	 * @param verifier
 	 * @param state
@@ -54,9 +53,9 @@ public class OAuth2FacebookAccessTokenEndpointFunction
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 		paramList.add(OAuth20Constants.STATE, state);
-		paramList.add(OAuth20Constants.REDIRECT_URI, redirectUri);
+		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getRedirectUri());
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUrl(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), paramList);
 
 		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
@@ -81,7 +80,7 @@ public class OAuth2FacebookAccessTokenEndpointFunction
 
 		paramList.add(OAuth20Constants.REFRESH_TOKEN, refreshToken);
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUrl(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), paramList);
 
 		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}
@@ -107,7 +106,7 @@ public class OAuth2FacebookAccessTokenEndpointFunction
 		paramList.add(OAuth20Constants.ACCESS_TOKEN, accessToken);
 		paramList.add("service_provider", "NAVER");
 
-		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenUrl(), paramList);
+		HttpRequest request = HttpRequest.create(serviceConfig.getAccessTokenEndpoint(), paramList);
 
 		return tokenExtractor.extract(request.run(serviceConfig.getAccessTokenVerb()));
 	}

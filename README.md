@@ -92,7 +92,7 @@ gradle은 알아서
 <dependency>
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
-	<version>sb-oauth-20181219-1-DEV</version>
+	<version>sb-oauth-20181219-3-DEV</version>
 </dependency>
 ```
 

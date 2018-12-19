@@ -13,12 +13,13 @@ public class RandomStringStateGenerator
 		implements StateGenerator {
 
 	private final char separator;
-//	private final String serviceName;
 
-	public RandomStringStateGenerator(String serviceName) {
-		Check.notEmptyString(serviceName, "serviceName must not null");
+	public RandomStringStateGenerator() {
 		this.separator = '-';
-//		this.serviceName = serviceName;
+	}
+
+	public RandomStringStateGenerator(char separator) {
+		this.separator = separator;
 	}
 
 	@Override

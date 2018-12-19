@@ -1,15 +1,15 @@
 {
-	"version":"oauth1",
-	"default":{
+	"version": "oauth1",
+	"default": {
 		"authorizeEndpoint": "",
 		"accessTokenEndpoint": ""
 	},
-	"sites":{
-		"naver":{
+	"sites": {
+		"naver": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		}

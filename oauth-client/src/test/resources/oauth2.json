@@ -1,38 +1,38 @@
 {
-	"version":"oauth1",
-	"sites":{
-		"naver":{
+	"version": "oauth1",
+	"sites": {
+		"naver": {
 			"accessTokenExtractor": "",
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
 		},
-		"daum":{
+		"daum": {
 			"authorizeEndpoint": "",
 			"accessTokenEndpoint": ""
-		},
+		}
 	}
 }

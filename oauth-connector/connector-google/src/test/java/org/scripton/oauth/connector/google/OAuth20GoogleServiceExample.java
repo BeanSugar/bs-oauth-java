@@ -36,6 +36,7 @@ public class OAuth20GoogleServiceExample {
 
 	private static final OAuth2GoogleConfig serviceConfig = new OAuth2GoogleConfig(CLIENT_ID,
 																				   CLIENT_SECRET,
+																				   REDIRECT_URI,
 																				   AUTHORIZE_ENDPOINT,
 																				   SCOPE,
 																				   ACCESS_TOKEN_ENDPOINT,
@@ -45,17 +46,13 @@ public class OAuth20GoogleServiceExample {
 	private static final TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor = new JsonTokenExtractor<>(new TypeReference<OAuth2GoogleTokenRes>() {});
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
-	private static final OAuth2ExampleHelper<OAuth2GoogleTokenRes> exampleHelper = new OAuth2ExampleHelper<>(
-			SERVICE_NAME,
-			new RandomStringStateGenerator(SERVICE_NAME));
+	private static final OAuth2ExampleHelper<OAuth2GoogleTokenRes> exampleHelper = new OAuth2ExampleHelper<>(SERVICE_NAME,
+																											 new RandomStringStateGenerator());
 	private static final OAuth2GenerateAuthorizeEndpointFunction authorizeUrlFunction = new OAuth2GoogleGenerateAuthorizeUrlFunction(
-			serviceConfig,
-			REDIRECT_URI);
-	private static final OAuth2AccessTokenEndpointFunction<OAuth2GoogleTokenRes> tokenFunction = new OAuth2GoogleAccessTokenEndpointFunction(
-			serviceConfig,
-			tokenExtractor,
-			tokenStorage,
-			REDIRECT_URI);
+			serviceConfig);
+	private static final OAuth2AccessTokenEndpointFunction<OAuth2GoogleTokenRes> tokenFunction = new OAuth2GoogleAccessTokenEndpointFunction(serviceConfig,
+																																			 tokenExtractor,
+																																			 tokenStorage);
 	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(
 			RESOURCE_PROFILE_URI);
 
