@@ -5,6 +5,7 @@ import org.scriptonbasestar.oauth.client.http.ParamUtil;
 import org.scriptonbasestar.oauth.client.model.State;
 import org.scriptonbasestar.oauth.client.o20.type.VerifierResponseType;
 import org.scriptonbasestar.tool.core.check.Check;
+import org.scriptonbasestar.tool.core.check.MatchPattern;
 
 public class DefaultOAuth2GenerateAuthorizeUrlFunction implements OAuth2GenerateAuthorizeUrlFunction {
 
@@ -17,12 +18,12 @@ public class DefaultOAuth2GenerateAuthorizeUrlFunction implements OAuth2Generate
 	public DefaultOAuth2GenerateAuthorizeUrlFunction(String authorizeUri, String callbackUri, String apiKey,
 													 VerifierResponseType responseType,
 													 String scope) {
-		Check.notNullOrEmptyString(authorizeUri, "authorizeUri must not null or empty");
-		Check.notNullOrEmptyString(callbackUri, "callbackUri must not null or empty");
-		Check.urlCustomPattern(callbackUri, "callbackUrl must not null. Check oauth service OOB support.");
-		Check.notNullOrEmptyString(apiKey, "apiKey must not null or empty");
+		Check.notEmptyString(authorizeUri, "authorizeUri must not null or empty");
+		Check.notEmptyString(callbackUri, "callbackUri must not null or empty");
+		Check.customPattern(callbackUri, MatchPattern.url, "callbackUrl must not null. Check oauth service OOB support.");
+		Check.notEmptyString(apiKey, "apiKey must not null or empty");
 		Check.notNull(responseType, "responseType must not null or empty");
-		Check.notNullOrEmptyString(apiKey, "apiKey must not null or empty");
+		Check.notEmptyString(apiKey, "apiKey must not null or empty");
 
 		this.authorizeUri = authorizeUri;
 		this.callbackUri = callbackUri;

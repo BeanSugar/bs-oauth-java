@@ -19,16 +19,19 @@ public class OAuth2FacebookAccesstokenFunction implements OAuth2AccessTokenFunct
 	private final OAuthPersonalConfig personalConfig;
 	private final TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
+	private final String redirectUri;
 
 	public OAuth2FacebookAccesstokenFunction(OAuth2FacebookConfig serviceConfig,
 											 OAuthPersonalConfig personalConfig,
 											 TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor,
-											 TokenStorage tokenStorage
+											 TokenStorage tokenStorage,
+											 String redirectUri
 	) {
 		this.serviceConfig = serviceConfig;
 		this.personalConfig = personalConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
+		this.redirectUri = redirectUri;
 	}
 
 	/**
@@ -55,7 +58,7 @@ public class OAuth2FacebookAccesstokenFunction implements OAuth2AccessTokenFunct
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 		paramList.add(OAuth20Constants.STATE, state);
-//		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getAuthorizeUri());
+		paramList.add(OAuth20Constants.REDIRECT_URI, redirectUri);
 
 		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
 

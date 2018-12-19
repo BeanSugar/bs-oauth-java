@@ -15,7 +15,7 @@ public class RandomStringStateGenerator implements StateGenerator {
 //	private final String serviceName;
 
 	public RandomStringStateGenerator(String serviceName) {
-		Check.notNullOrEmptyString(serviceName, "serviceName must not null");
+		Check.notEmptyString(serviceName, "serviceName must not null");
 		this.separator = '-';
 //		this.serviceName = serviceName;
 	}

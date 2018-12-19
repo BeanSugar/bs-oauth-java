@@ -21,8 +21,8 @@ public final class Param {
 	protected String[] values;
 
 	public Param(String key, String... values) {
-		Check.notNullOrEmptyString(key, "Param.key will not empty");
-		Check.notNullOrEmpty(values, "Param.value will not empty");
+		Check.notEmptyString(key, "Param.key will not empty");
+		Check.notEmpty(values, "Param.value will not empty");
 		this.key = key;
 		this.values = values;
 	}

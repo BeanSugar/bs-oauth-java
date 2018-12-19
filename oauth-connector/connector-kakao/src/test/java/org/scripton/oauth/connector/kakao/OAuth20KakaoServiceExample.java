@@ -22,11 +22,11 @@ import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
  */
 public class OAuth20KakaoServiceExample {
 
-	private static final ReadSetting readSetting = ReadSetting.readProjectResource("setting.cfg");
+	private static final String      SERVICE_NAME = "KAKAO";
+	private static final ReadSetting readSetting = ReadSetting.readFile(System.getProperty("user.home") + "/.devenv/oauth/" + SERVICE_NAME + ".cfg");
 
 	private static final String CLIENT_ID = readSetting.getProperty("client_id");
 	private static final String CLIENT_SECRET = readSetting.getProperty("client_secret");
-	private static final String SERVICE_NAME = readSetting.getProperty("service_name");
 	private static final String REDIRECT_URI = readSetting.getProperty("redirect_uri");
 	private static final String RESOURCE_PROFILE_URI = readSetting.getProperty("resource_profile_uri");
 
@@ -37,10 +37,10 @@ public class OAuth20KakaoServiceExample {
 		CLIENT_SECRET
 	);
 //	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new PrintTokenExtractor<>();
-	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new JsonTokenExtractor(new TypeReference<OAuth2KakaoTokenRes>(){});
+	private static final TokenExtractor<OAuth2KakaoTokenRes> tokenExtractor = new JsonTokenExtractor<>(new TypeReference<OAuth2KakaoTokenRes>(){});
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
-	private static final OAuth2ExampleHelper exampleHelper = new OAuth2ExampleHelper(
+	private static final OAuth2ExampleHelper<OAuth2KakaoTokenRes> exampleHelper = new OAuth2ExampleHelper<>(
 		SERVICE_NAME,
 		new RandomStringStateGenerator(SERVICE_NAME)
 	);
@@ -50,7 +50,7 @@ public class OAuth20KakaoServiceExample {
 	private static final OAuth2AccessTokenFunction<OAuth2KakaoTokenRes> tokenFunction = new OAuth2KakaoAccesstokenFunction(
 		serviceConfig, personalConfig, tokenExtractor, tokenStorage, REDIRECT_URI
 	);
-	private static final OAuth2ResourceFunction resourceFunction = new DefaultOAuth2ResourceFunction(RESOURCE_PROFILE_URI);
+	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(RESOURCE_PROFILE_URI);
 
 
 	public static void main(String[] args) {

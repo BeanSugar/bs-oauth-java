@@ -6,6 +6,9 @@ sso-helper과 겹쳐서 제외예정.
 여기선 테스트 코드정도만
 oauth1.0a은 제외. 제대로된 사이트는 전부 1.0 지원 끊음.
 
+## 예정
+
+facebook 모듈 yaml 적용
 
 ## 모듈 설명
 
@@ -16,26 +19,34 @@ oauth-client <- oauth-storage <- oauth-connector
 test
 oauth-client <- test-helper <- oauth-connector-* 
 ```
-spec
+oauth spec
 https://tools.ietf.org/html/rfc6749
 
 
 ## 지원모듈
 
 * Naver
+  * https://developers.naver.com
+  * https://developers.naver.com/apps/#/myapps - 여기서 수동추가
 * Kakao
+  * https://developers.kakao.com
+  * https://developers.kakao.com/docs/restapi/user-management
 * Google
+  * https://console.developers.google.com
+  * https://developers.google.com/identity/protocols/googlescopes
 * Facebook
+  * https://developers.facebook.com
+  * https://developers.facebook.com/docs/facebook-login/permissions
 
 
 ## 사용법 Usage
 
-테스트시에 oauth-connector-* 프로젝트의 test/resources/setting.cfg 를 추가
+테스트시에 oauth-connector-* System.getProperty("user.home")/.devenv/oauth/NAVER.cfg 를 추가
 ```properties
 client_id=clientidstring
 client_secret=clientsecretstring
-service_name=NAVER
-redirect_uri=http://test4.polypia.net:8080/auth/action/social/naver/redirect
+redirect_uri=https://test.polypia.net/oauth/facebook/redirect
+scope= #네아로 화면에서 컨트롤
 resource_profile_uri=https://openapi.naver.com/v1/nid/me
 ```
 까까오는 secret에 아무거나 넣던가 secret를 사용하면 그걸 넣던가 해야함
@@ -81,7 +92,7 @@ gradle은 알아서
 <dependency>
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
-	<version>sb-oauth-20180914-DEV</version>
+	<version>sb-oauth-20181219-DEV</version>
 </dependency>
 ```
 

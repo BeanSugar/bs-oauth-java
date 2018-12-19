@@ -1,6 +1,7 @@
 package org.scripton.oauth.connector.facebook;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import groovyjarjarantlr.TokenStreamRewriteEngine;
 import org.scripton.test.OAuth2ExampleHelper;
 import org.scripton.test.ReadSetting;
 import org.scriptonbasestar.oauth.client.DefaultOAuth2ResourceFunction;
@@ -13,6 +14,11 @@ import org.scriptonbasestar.oauth.client.nobi.TokenStorage;
 import org.scriptonbasestar.oauth.client.nobi.state.RandomStringStateGenerator;
 import org.scriptonbasestar.oauth.client.nobi.token.JsonTokenExtractor;
 import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
+import org.scriptonbasestar.oauth.client.type.OAuthHttpVerb;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * @author archmagece
@@ -20,25 +26,35 @@ import org.scriptonbasestar.oauth.client.nobi.token.TokenExtractor;
  */
 public class OAuth20FacebookServiceExample {
 
-	private static final ReadSetting readSetting = ReadSetting.readProjectResource("setting.cfg");
+	private static final String      SERVICE_NAME = "FACEBOOK";
+	private static final ReadSetting readSetting = ReadSetting.readFile(System.getProperty("user.home") + "/.devenv/oauth/" + SERVICE_NAME + ".cfg");
 
 	private static final String CLIENT_ID = readSetting.getProperty("client_id");
 	private static final String CLIENT_SECRET = readSetting.getProperty("client_secret");
-	private static final String SERVICE_NAME = readSetting.getProperty("service_name");
+	private static final String SCOPE = readSetting.getProperty("scope");
 	private static final String REDIRECT_URI = readSetting.getProperty("redirect_uri");
 	private static final String RESOURCE_PROFILE_URI = readSetting.getProperty("resource_profile_uri");
 
+	private static final String AUTHORIZE_URI = readSetting.getProperty("authorize_uri");
+	private static final String TOKEN_URI = readSetting.getProperty("token_uri");
+//	private static final String REVOKE_URI = readSetting.getProperty("revoke_uri");
 
-	private static final OAuth2FacebookConfig serviceConfig = new OAuth2FacebookConfig();
+
+	private static final OAuth2FacebookConfig serviceConfig = new OAuth2FacebookConfig(
+			AUTHORIZE_URI,
+			SCOPE,
+			TOKEN_URI,
+			OAuthHttpVerb.POST
+	);
 	private static final OAuthPersonalConfig personalConfig = new OAuthPersonalConfig(
 		CLIENT_ID,
 		CLIENT_SECRET
 	);
 //	private static final TokenExtractor<OAuth2NaverTokenRes> tokenExtractor = new PrintTokenExtractor<>();
-private static final TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor = new JsonTokenExtractor(new TypeReference<OAuth2FacebookTokenRes>(){});
+private static final TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor = new JsonTokenExtractor<>(new TypeReference<OAuth2FacebookTokenRes>(){});
 	private static final TokenStorage tokenStorage = new LocalTokenStorage();
 
-	private static final OAuth2ExampleHelper exampleHelper = new OAuth2ExampleHelper(
+	private static final OAuth2ExampleHelper<OAuth2FacebookTokenRes> exampleHelper = new OAuth2ExampleHelper<>(
 		SERVICE_NAME,
 		new RandomStringStateGenerator(SERVICE_NAME)
 	);
@@ -46,9 +62,9 @@ private static final TokenExtractor<OAuth2FacebookTokenRes> tokenExtractor = new
 		serviceConfig, personalConfig, REDIRECT_URI
 	);
 	private static final OAuth2AccessTokenFunction<OAuth2FacebookTokenRes> tokenFunction = new OAuth2FacebookAccesstokenFunction(
-		serviceConfig, personalConfig, tokenExtractor, tokenStorage
+		serviceConfig, personalConfig, tokenExtractor, tokenStorage, REDIRECT_URI
 	);
-	private static final OAuth2ResourceFunction resourceFunction = new DefaultOAuth2ResourceFunction(RESOURCE_PROFILE_URI);
+	private static final OAuth2ResourceFunction<String> resourceFunction = new DefaultOAuth2ResourceFunction(RESOURCE_PROFILE_URI);
 
 
 	public static void main(String[] args) {

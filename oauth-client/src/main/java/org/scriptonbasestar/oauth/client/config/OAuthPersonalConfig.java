@@ -14,8 +14,8 @@ public class OAuthPersonalConfig {
 	private final String clientSecret;
 
 	public OAuthPersonalConfig(String clientId, String clientSecret){
-		Check.notNullOrEmptyString(clientId, "clientId should not null or empty");
-		Check.notEmptyString(clientSecret, "clientSecret should not empty");
+		Check.notEmptyString(clientId, "clientId should not null or empty");
+//		Check.notEmptyString(clientSecret, "clientSecret should not empty");
 		this.clientId = clientId;
 		this.clientSecret = clientSecret;
 	}

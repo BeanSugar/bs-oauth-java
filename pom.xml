@@ -5,7 +5,7 @@
 	<groupId>org.scriptonbasestar.oauth</groupId>
 	<artifactId>sb-oauth-java</artifactId>
 	<packaging>pom</packaging>
-	<version>sb-oauth-20180914-DEV</version>
+	<version>sb-oauth-20181219-DEV</version>
 
 	<name>Scripton OAuth Library</name>
 	<url>https://github.com/ScriptonBasestar-io/sb-oauth-java</url>
@@ -26,7 +26,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<sb_tools_java_version>sb-tools-20180921-DEV</sb_tools_java_version>
+		<sb_tools_java_version>sb-tools-20181207-1-DEV</sb_tools_java_version>
 
 		<!-- project -->
 		<guava_version>26.0-jre</guava_version>
@@ -86,7 +86,7 @@
 			<dependency>
 				<groupId>org.scriptonbasestar.oauth</groupId>
 				<artifactId>oauth-client</artifactId>
-				<version>sb-oauth-20180914-DEV</version>
+				<version>sb-oauth-20181219-DEV</version>
 			</dependency>
 
 			<dependency>
@@ -164,4 +164,26 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.gmaven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<version>1.5</version>
+				<configuration>
+					<providerSelection>${java_version}</providerSelection>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generateStubs</goal>
+							<goal>compile</goal>
+							<goal>generateTestStubs</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

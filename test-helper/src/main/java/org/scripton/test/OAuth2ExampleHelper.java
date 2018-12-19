@@ -12,9 +12,11 @@ import org.scriptonbasestar.oauth.client.OAuth2GenerateAuthorizeUrlFunction;
 import org.scriptonbasestar.oauth.client.OAuth2ResourceFunction;
 import org.scriptonbasestar.oauth.client.TokenPack;
 import org.scriptonbasestar.oauth.client.exception.OAuthAuthException;
+import org.scriptonbasestar.oauth.client.exception.OAuthUnknownException;
 import org.scriptonbasestar.oauth.client.model.State;
 import org.scriptonbasestar.oauth.client.model.Verifier;
 import org.scriptonbasestar.oauth.client.nobi.state.StateGenerator;
+import org.scriptonbasestar.tool.core.exception.SBRuntimeBaseException;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -58,7 +60,7 @@ public class OAuth2ExampleHelper<TOKEN_RES extends TokenPack> {
 		System.out.println("state >>");
 		String stateReturn = scanner.nextLine();
 		if (!stateReturn.equals(state0.getValue())) {
-			throw new OAuthAuthException("인증실패 - state가 변조되었나 모르겠는데 값이다름");
+			throw new OAuthAuthException("인증실패 - state가 변조되었나 모르겠는데 값이다름. 잘못잘라붙이는 경우 확인");
 		}
 //		if (SERVICE_NAME.equals("GOOGLE")) {
 //			state0 = null;
@@ -99,10 +101,8 @@ public class OAuth2ExampleHelper<TOKEN_RES extends TokenPack> {
 				sb.append(new String(b, 0, n));
 			}
 			System.out.println(sb.toString());
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
-			 e.printStackTrace();
-		 }
+			throw new OAuthUnknownException(e);
+		}
 	}
 }

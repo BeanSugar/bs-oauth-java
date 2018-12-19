@@ -43,7 +43,7 @@ public class OAuth2FacebookGenerateAuthorizeUrlFunction implements OAuth2Generat
 			.add(OAuth20Constants.CLIENT_ID, personalConfig.getClientId())
 			.add(OAuth20Constants.REDIRECT_URI, redirectUri)
 			.add(OAuth20Constants.RESPONSE_TYPE, serviceConfig.getResponseType())
-//			.add(OAuth20Constants.SCOPE, )
+			.add(OAuth20Constants.SCOPE, serviceConfig.getScope())
 			.add(OAuth20Constants.STATE, state));
 	}
 }

@@ -20,16 +20,19 @@ public class OAuth2GoogleAccesstokenFunction implements OAuth2AccessTokenFunctio
 	private final OAuthPersonalConfig personalConfig;
 	private final TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor;
 	private final TokenStorage tokenStorage;
+	private final String redirectUri;
 
 	public OAuth2GoogleAccesstokenFunction(OAuth2GoogleConfig serviceConfig,
 										   OAuthPersonalConfig personalConfig,
 										   TokenExtractor<OAuth2GoogleTokenRes> tokenExtractor,
-										   TokenStorage tokenStorage
+										   TokenStorage tokenStorage,
+										   String redirectUri
 	) {
 		this.serviceConfig = serviceConfig;
 		this.personalConfig = personalConfig;
 		this.tokenExtractor = tokenExtractor;
 		this.tokenStorage = tokenStorage;
+		this.redirectUri = redirectUri;
 	}
 
 	/**
@@ -57,7 +60,7 @@ public class OAuth2GoogleAccesstokenFunction implements OAuth2AccessTokenFunctio
 
 		paramList.add(OAuth20Constants.CODE, verifier);
 //		paramList.add(OAuth20Constants.STATE, state);
-		paramList.add(OAuth20Constants.REDIRECT_URI, serviceConfig.getAuthorizeUri());
+		paramList.add(OAuth20Constants.REDIRECT_URI, redirectUri);
 
 		HttpRequest request = HttpRequest.create(serviceConfig.getTokenUri(), paramList);
 

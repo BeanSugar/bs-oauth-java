@@ -11,7 +11,7 @@ import org.scriptonbasestar.tool.core.check.Check;
 public abstract class StringValueModel implements ValueModel {
 	protected final String value;
 	protected StringValueModel(String value) {
-		Check.notNullOrEmptyString(value, "value must not null or empty");
+		Check.notEmptyString(value, "value must not null or empty");
 		this.value = value;
 	}
 }

@@ -1,6 +1,7 @@
 package org.scriptonbasestar.oauth.client;
 
 import com.google.gson.JsonParseException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -12,6 +13,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
+@Slf4j
 public class DefaultOAuth2ResourceFunction implements OAuth2ResourceFunction<String> {
 
 	private final String resourceUri;
@@ -22,39 +24,23 @@ public class DefaultOAuth2ResourceFunction implements OAuth2ResourceFunction<Str
 
 	@Override
 	public String run(String accessToken) {
-		CloseableHttpClient httpclient1 = HttpClients.createDefault();
-		try {
+		try (CloseableHttpClient httpClient = HttpClients.createDefault()){
 			HttpGet httpget1 = new HttpGet(resourceUri);
 			httpget1.addHeader("Authorization", "Bearer " + accessToken);
-			System.out.println("Executing request " + httpget1.getRequestLine());
-			ResponseHandler<String> responseHandler1 = new ResponseHandler<String>() {
-				@Override
-				public String handleResponse(
-					final HttpResponse response) throws IOException {
-					int status = response.getStatusLine().getStatusCode();
-					if (status >= 200 && status < 300) {
-						HttpEntity entity = response.getEntity();
-						String result = entity != null ? EntityUtils.toString(entity) : null;
-						return result;
-					} else {
-						throw new ClientProtocolException("Unexpected response status: " + status);
-					}
+			log.debug("Executing request " + httpget1.getRequestLine());
+			ResponseHandler<String> responseHandler1 = response -> {
+				int status = response.getStatusLine().getStatusCode();
+				if (status >= 200 && status < 300) {
+					HttpEntity entity = response.getEntity();
+					return entity != null ? EntityUtils.toString(entity) : null;
+				} else {
+					throw new ClientProtocolException("Unexpected response status: " + status);
 				}
 			};
-
-			String result = httpclient1.execute(httpget1, responseHandler1);
-			return result;
-		} catch (JsonParseException e) {
+			return httpClient.execute(httpget1, responseHandler1);
+		} catch (JsonParseException | IOException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				httpclient1.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			return null;
 		}
-		return null;
 	}
 }

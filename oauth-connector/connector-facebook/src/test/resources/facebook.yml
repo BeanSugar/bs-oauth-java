@@ -1,0 +1,11 @@
+components:
+
+  facebook:
+    authorize_url: "https://www.facebook.com/v3.1/dialog/oauth"
+    accesstoken_url: "https://graph.facebook.com/v3.1/oauth/access_token"
+    token_verb: POST
+    redirect_url: aaaaaaaaa
+    response_type: CODE
+
+
+
